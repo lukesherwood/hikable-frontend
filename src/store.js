@@ -5,13 +5,7 @@ import {
     compose
   } from 'redux';
   import hikesReducer from './reducers/hikesReducer'
-  import thunk from 'redux-thunk';
-  
-  // applyMiddleware allows us to make async calls to backend
-  // redux thunk allows us to juggle async calls to backend - ex:
-  // if we haven't received the api data yet, thunk will pause other 
-  // async actions until it is loaded.
-  
+  import thunk from 'redux-thunk';  
   
   const reducers = combineReducers({
     hikesReducer
