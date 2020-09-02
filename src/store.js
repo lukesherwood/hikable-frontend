@@ -4,7 +4,7 @@ import {
     combineReducers,
     compose
   } from 'redux';
-  
+  import hikesReducer from './reducers/hikesReducer'
   import thunk from 'redux-thunk';
   
   // applyMiddleware allows us to make async calls to backend
@@ -12,12 +12,9 @@ import {
   // if we haven't received the api data yet, thunk will pause other 
   // async actions until it is loaded.
   
-//   import crops from './reducers/crops';
-//   import cropFormData from './reducers/cropFormData';
   
   const reducers = combineReducers({
-    // crops,
-    // cropFormData
+    hikesReducer
   });
   
   const middleware = [thunk];
