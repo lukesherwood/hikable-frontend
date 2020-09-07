@@ -1,23 +1,25 @@
-import React from 'react'
+import React, { Component } from 'react';
+import Hike from './Hike'
 
-class Hikes extends React.Component {
-    hikes = () => {
-        if (this.props.hikes) {
-            console.log(this.props, "hikes")
-            return this.props.hikes.map(hike => <li key={hike.id}>{hike.title}</li>)
-        }        
-    }
+class Hikes extends Component {
 
-    render (){
-        return(
-            <div>
-                <h2>Hikes</h2>
-                <ul>
-                    {this.hikes()}
-                </ul>
-            </div>
+    render() {
+        const { hikes } = this.props;
+        const hikesList = hikes.map(hike => {
+        return (
+            <Hike
+                key={hike.id}
+                hike={hike}
+            />
         )
+        });
+    
+        return(
+        <ul>
+            {hikesList}
+        </ul>
+        );
     }
-}
+    };
 
-export default Hikes
+export default Hikes;

@@ -1,20 +1,12 @@
-export default function hikesReducer(state = {
-    hikes: [], loading: false}
-    , action) {
+const hikesReducer = (state = { hikes: []}, action) => {
     switch(action.type) {
-        case 'LOADING_HIKES':
-            return {
-                ...state, 
-                hikes: [state.hikes], 
-                loading: true
-            }
         case 'ADD_HIKES':
             return {
                 ...state, 
-                hikes: action.hikes,
-                loading: false
+                hikes: action.hikes
             }
         default:
             return state
     }
 }
+export default hikesReducer
