@@ -12,15 +12,14 @@ class HikesContainer extends React.Component {
     render (){
         return(
             <div>
-                {/* <Hikes hikes={this.props.hikes} fetchHikes={this.props.fetchHikes}/> */}
+                <Hikes hikes={this.props.hikes} fetchHikes={this.props.fetchHikes}/>
             </div>
         )
     }
 }
 const mapStateToProps = (state) => {
-  console.log(state.hikes)
   return {
-    hikes: state.hikes // why is state.hikes not working??
+    hikes: state.hikes
   }
 }
 
