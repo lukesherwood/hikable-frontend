@@ -1,11 +1,11 @@
 import React from 'react'
 
 class Hikes extends React.Component {
-
-    componentDidMount(){
-        fetch("http://localhost:3001/hikes").then(response => {
-        return response.json()
-      }).then(data => console.log(data))
+    hikes = () => {
+        if (this.props.hikes) {
+            console.log(this.props, "hikes")
+            return this.props.hikes.map(hike => <li key={hike.id}>{hike.title}</li>)
+        }        
     }
 
     render (){
@@ -13,7 +13,7 @@ class Hikes extends React.Component {
             <div>
                 <h2>Hikes</h2>
                 <ul>
-                    <li>This is hike 1</li>
+                    {this.hikes()}
                 </ul>
             </div>
         )
