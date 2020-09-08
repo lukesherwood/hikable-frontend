@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import HikesContainer from './HikesContainer';
+import Navbar from '../components/Navbar'
 
 class App extends Component {
 
@@ -8,8 +9,8 @@ class App extends Component {
     return (
       <div className="App">
           <div className='container'>
-            <h1>Hikable</h1>
-            {<HikesContainer/>}
+            <Navbar/>
+            <HikesContainer/>
           </div>
       </div>
     );

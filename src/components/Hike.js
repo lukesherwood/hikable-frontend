@@ -8,6 +8,7 @@ class Hike extends Component {
 
     return (
       <div>
+        
         <li>
           {hike.title}
         </li>
