@@ -14,7 +14,7 @@ class Hikes extends Component {
         });
       
         return(
-          <ul>
+          <ul className="cards">
             {hikeList}
           </ul>
         );
