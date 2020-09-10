@@ -11,7 +11,7 @@ class HikesContainer extends React.Component {
 
     render (){
         return(
-            <div>
+            <div className="hikes-container">
                 <Hikes hikes={this.props.hikes} fetchHikes={this.props.fetchHikes}/>
             </div>
         )

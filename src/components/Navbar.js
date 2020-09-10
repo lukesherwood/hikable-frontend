@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const linkStyle = {
     margin: '10px 6px 6px 10px',
     textDecoration: 'none',
-    color: 'grey'
+    color: 'black'
   }
 
 const Navbar = () => 
