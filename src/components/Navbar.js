@@ -2,16 +2,25 @@ import React from 'react'
 import { NavLink } from 'react-router-dom';
 
 const linkStyle = {
-    margin: '10px 6px 6px 10px',
     textDecoration: 'none',
-    color: 'black'
+    color: 'black',
+    float: "left",
+    textAlign: "center",
+    padding: "20px",
+    fontSize: "30px"
   }
 
 const Navbar = () => 
     <div className="nav-bar">
-        <h1>
-            <NavLink to="/" exact style={linkStyle}>Hikable</NavLink>
-        </h1>
+        <div>
+            <NavLink to="/" exact style={linkStyle} activeStyle={{background: 'goldenrod'}}>Hikable</NavLink>
+        </div>
+        <div>
+            <NavLink to="/lists" exact style={linkStyle} activeStyle={{background: 'goldenrod'}}>Lists</NavLink>
+        </div>
+        <div>
+            <NavLink to="/hikes" exact style={linkStyle} activeStyle={{background: 'goldenrod'}}>Hikes</NavLink>
+        </div>
     </div>
 
 
