@@ -7,8 +7,8 @@ class List extends Component {
     const { list } = this.props;
 
     return (
-      <li className="list-card card" id={list.id + "-list-card"}>
-       {list.name}
+      <li className="list-card" id={list.id + "-list-card"}>
+       {list.description}
       </li>
     );
   }

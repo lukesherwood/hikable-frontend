@@ -13,7 +13,6 @@ class ListsContainer extends React.Component {
     render (){
         return(
             <div className="lists-container">
-              {console.log(this.props.lists)}
              <Lists lists={this.props.lists} fetchLists={this.props.fetchLists}/>
             </div>
         )
@@ -21,7 +20,7 @@ class ListsContainer extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    lists: state.lists
+    lists: state.lists.lists
   }
 }
 
