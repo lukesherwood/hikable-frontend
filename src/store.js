@@ -1,20 +1,24 @@
 import {
     createStore, 
     applyMiddleware,
-    // combineReducers,
+    combineReducers,
     compose
   } from 'redux';
-  import hikesReducer from './reducers/hikesReducer'
+
   import thunk from 'redux-thunk';  
+
+  import hikes from './reducers/hikesReducer'
+  import lists from './reducers/listsReducer'
   
-  // const reducers = combineReducers({
-  //   hikesReducer
-  // });
+  const reducers = combineReducers({
+    hikes,
+    lists
+  });
   
   const middleware = [thunk];
   
   export default createStore(
-    hikesReducer,
+    reducers,
     compose(
       applyMiddleware(...middleware),
       window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

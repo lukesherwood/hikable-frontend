@@ -11,13 +11,13 @@ class Hike extends Component {
         <img src={hike.photo} alt={hike.title} width="600"></img>
         <div className="card-text">
         <h3>{hike.title}</h3>
-        <p className="hike-card-info">
+        <div className="hike-card-info">
         <div className="hike-card-location">{hike.location}</div>
         <div className="hike-card-description">{hike.description}</div>
         <div className="hike-card-difficulty">{hike.difficulty}</div>
         <div className="hike-card-duration">{hike.duration}</div>
         <div className="hike-card-length">{hike.length}</div>
-        </p>
+        </div>
         </div>
       </li>
     );

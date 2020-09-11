@@ -19,7 +19,7 @@ class HikesContainer extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    hikes: state.hikes
+    hikes: state.hikes.hikes
   }
 }
 

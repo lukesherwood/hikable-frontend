@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {fetchLists} from "../actions/listActions"
+import Lists from "../components/Lists"
 
 
 class ListsContainer extends React.Component {
@@ -12,7 +13,8 @@ class ListsContainer extends React.Component {
     render (){
         return(
             <div className="lists-container">
-             Lists should appear here...
+              {console.log(this.props.lists)}
+             <Lists lists={this.props.lists} fetchLists={this.props.fetchLists}/>
             </div>
         )
     }
