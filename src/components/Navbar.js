@@ -21,6 +21,9 @@ const Navbar = () =>
         <div>
             <NavLink to="/hikes" exact style={linkStyle} activeStyle={{background: 'goldenrod'}}>Hikes</NavLink>
         </div>
+        <div>
+            <NavLink to="/signIn" exact style={linkStyle} activeStyle={{background: 'goldenrod'}}>Sign up/Sign in</NavLink>
+        </div>
     </div>
 
 

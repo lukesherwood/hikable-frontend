@@ -4,6 +4,8 @@ import '../App.css';
 import HikesContainer from './HikesContainer';
 import Navbar from '../components/Navbar'
 import ListsContainer from './ListsContainer'
+import Home from './Home'
+import Sessions from '../components/Sessions'
 
 class App extends Component {
 
@@ -13,8 +15,10 @@ class App extends Component {
           <div className="container">
             <Navbar/>
             <Switch>
+            <Route exact path='/' component={Home}/>
             <Route exact path='/hikes' component={HikesContainer}/>
             <Route exact path='/lists' component={ListsContainer}/>
+            <Route exact path='/signIn' component={Sessions}/>
           </Switch>
             
           </div>
