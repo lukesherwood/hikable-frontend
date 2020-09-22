@@ -5,7 +5,7 @@ import HikesContainer from './HikesContainer';
 import Navbar from '../components/Navbar'
 import ListsContainer from './ListsContainer'
 import Home from './Home'
-import Sessions from '../components/Sessions'
+import SessionsContainer from '../containers/SessionsContainer'
 
 class App extends Component {
 
@@ -18,7 +18,7 @@ class App extends Component {
             <Route exact path='/' component={Home}/>
             <Route exact path='/hikes' component={HikesContainer}/>
             <Route exact path='/lists' component={ListsContainer}/>
-            <Route exact path='/signIn' component={Sessions}/>
+            <Route exact path='/signIn' component={SessionsContainer}/>
           </Switch>
             
           </div>

@@ -9,10 +9,12 @@ import {
 
   import hikes from './reducers/hikesReducer'
   import lists from './reducers/listsReducer'
+  import users from './reducers/usersReducer'
   
   const reducers = combineReducers({
     hikes,
-    lists
+    lists,
+    users
   });
   
   const middleware = [thunk];
