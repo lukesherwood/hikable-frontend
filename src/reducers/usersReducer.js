@@ -1,16 +1,15 @@
-const usersReducer = (state = { user: "", loading: false }, action) => {
+const usersReducer = (state = { user: "", loggedIn: false }, action) => {
     switch(action.type) {
-        case 'CREATING_USER':
+        case "SET_USER":
             return {
-                ...state, 
-                // lists: action.lists, 
-                loading: true
+                loggedIn: true,
+                user: {...action.payload}
             }
-        case 'ADD_USER':
+        case "LOG_OUT":
+            localStorage.clear()
             return {
-                ...state, 
-                user: action.user,
-                loading: false
+                loggedIn: false,
+                user: {}
             }
         default:
             return state

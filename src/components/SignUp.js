@@ -1,75 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
-
-// class SignUp extends Component {
-//   constructor(props) {
-// 		super(props);
-// 		this.state = {
-// 			username: '',
-// 			email: '',
-// 			password: '',
-// 			picture: '',
-// 		};
-// 	}
-
-//   handleChange = (event) => {
-//     this.setState({
-//       [event.target.name]: event.target.value,
-//     });
-//   };
-
-//   handleSubmit = (event) => {
-//     event.preventDefault();
-//     const {name, email, password} = this.state
-//     const user = {
-//       name: name,
-//       email: email,
-//       password: password,
-//     }
-//     console.log(user, "submitted user")
-//     this.props.fetchUsers(user)
-//   }
-
-//   render() {
-//     return (
-//       <div>
-//         <h2>Sign Up</h2>
-//         <form onSubmit={(event) => this.handleSubmit(event)}>
-//           <div className="form-group">
-//             <label>Name</label>
-//             <input
-//               type="text"
-//               name="name"
-//               onChange={(event) => this.handleChange(event)}
-//               value={this.state.name}
-//             />
-//           </div>
-//           <div className="form-group">
-//             <label>Email</label>
-//             <input
-//               type="email"
-//               name="email"
-//               onChange={(event) => this.handleChange(event)}
-//               value={this.state.email}
-//             />
-//           </div>
-//           <div className="form-group">
-//             <label>Password</label>
-//             <input
-//               type="password"
-//               name="password"
-//               onChange={(event) => this.handleChange(event)}
-//               value={this.state.password}
-//             />
-//           </div>
-//           <input type="submit" value="Sign Up" />
-//         </form>
-//       </div>
-//     );
-//   }
-// }
-
-// export default SignUp;
+import {connect} from 'react-redux'
+import {signUserUp} from '../actions/userActions'
 
 class Signup extends Component {
   constructor(props) {
@@ -82,36 +13,24 @@ class Signup extends Component {
       errors: "",
     };
   }
-  handleLogin = (data) => {
-    console.log(data)
-  }
+
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
     });
   };
+
   handleSubmit = (event) => {
     event.preventDefault();
-    const { username, email, password} = this.state;
+    const { username, email, password } = this.state;
     let user = {
-      name: username,
+      username: username,
       email: email,
       password: password,
-      };
-    console.log(user)
-    axios.post('http://localhost:3001/api/v1/users', {user}, {withCredentials: true})
-    .then(response => {
-      if (response.data.status === 'created') {
-        this.handleLogin(response.data)
-        this.redirect()
-      } else {
-        this.setState({
-          errors: response.data.errors
-        })
-      }
-    })
-    .catch(error => console.log('api errors:', error))
+    };
+    console.log(user, "submitted User")
+    this.props.signUserUp(this.state)
   };
 
   handleErrors = () => {
@@ -125,40 +44,60 @@ class Signup extends Component {
       </div>
     );
   };
+
   render() {
-    const { username, email, password } = this.state;
+    const { username, email, password, password_confirmation } = this.state;
     return (
       <div>
-        <h1>Sign Up</h1>{" "}
-        <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder="username"
-            type="text"
-            name="username"
-            value={username}
-            onChange={this.handleChange}
-          />
-          <input
-            placeholder="email"
-            type="text"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-          />
-          <input
-            placeholder="password"
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-          />{" "}
-          <button placeholder="submit" type="submit">
-            Sign Up
-          </button>
+        <h2>Sign Up</h2>
+        <form onSubmit={(event) => this.handleSubmit(event)}>
+          <div className="form-group">
+            <label>Username</label>
+            <input
+              type="text"
+              name="username"
+              onChange={(event) => this.handleChange(event)}
+              value={username}
+            />
+          </div>
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              onChange={(event) => this.handleChange(event)}
+              value={email}
+            />
+          </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              onChange={(event) => this.handleChange(event)}
+              value={password}
+            />
+          </div>
+          <div className="form-group">
+            <label>Confirm password</label>
+            <input
+              type="password"
+              name="password_confirmation"
+              onChange={(event) => this.handleChange(event)}
+              value={password_confirmation}
+            />
+          </div>
+          <input type="submit" value="Sign Up" />
         </form>
-        <div>{this.state.errors ? this.handleErrors() : null}</div>
       </div>
     );
   }
 }
-export default Signup;
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      signUserUp: (userInfo) => dispatch(signUserUp(userInfo))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Signup);
