@@ -1,15 +1,13 @@
 import React, { Component } from "react";
-import {connect} from 'react-redux'
-import {signUserUp} from '../actions/userActions'
+import { connect } from "react-redux";
+import { fetchUser } from "../actions/userActions";
 
-class Signup extends Component {
+class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
       email: "",
       password: "",
-      password_confirmation: "",
       errors: "",
     };
   }
@@ -23,15 +21,13 @@ class Signup extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { username, email, password, password_confirmation } = this.state;
+    const { email, password } = this.state;
     let user = {
-      username: username,
       email: email,
       password: password,
-      password_confirmation: password_confirmation
     };
-    console.log(user, "submitted User")
-    this.props.signUserUp(user)
+    console.log(user, "submitted User");
+    this.props.fetchUser(user);
   };
 
   handleErrors = () => {
@@ -47,20 +43,11 @@ class Signup extends Component {
   };
 
   render() {
-    const { username, email, password, password_confirmation } = this.state;
+    const { email, password } = this.state;
     return (
       <div>
-        <h2>Sign Up</h2>
+        <h2>Sign In</h2>
         <form onSubmit={(event) => this.handleSubmit(event)}>
-          <div className="form-group">
-            <label>Username</label>
-            <input
-              type="text"
-              name="username"
-              onChange={(event) => this.handleChange(event)}
-              value={username}
-            />
-          </div>
           <div className="form-group">
             <label>Email</label>
             <input
@@ -79,16 +66,7 @@ class Signup extends Component {
               value={password}
             />
           </div>
-          <div className="form-group">
-            <label>Confirm password</label>
-            <input
-              type="password"
-              name="password_confirmation"
-              onChange={(event) => this.handleChange(event)}
-              value={password_confirmation}
-            />
-          </div>
-          <input type="submit" value="Sign Up" />
+          <input type="submit" value="Sign In" />
         </form>
       </div>
     );
@@ -97,8 +75,8 @@ class Signup extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      signUserUp: (userInfo) => dispatch(signUserUp(userInfo))
-  }
-}
+    fetchUser: (userInfo) => dispatch(fetchUser(userInfo)),
+  };
+};
 
-export default connect(null, mapDispatchToProps)(Signup);
+export default connect(null, mapDispatchToProps)(SignIn);

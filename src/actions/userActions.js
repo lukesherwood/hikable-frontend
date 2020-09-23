@@ -23,48 +23,39 @@ export const signUserUp = (userInfo) => dispatch => {
   }).catch((error) => console.log("api errors:", error));
 }
 
-  // handleLogin = (data) => {
-  //   console.log(data);
-  //   const authHeader = data.headers.authorization;
-  //   if (authHeader.startsWith("Bearer ")) {
-  //     const token = authHeader.substring(7, authHeader.length);
-  //     localStorage.setItem("token", token);
-  //     this.setState({
-  //       user: data.data,
-  //     });
-  //   }
-  // };
+export const fetchUser = (userInfo) => dispatch => {
+  console.log(userInfo, "userinfo")
+  axios
+      .post(
+        "http://localhost:3001/api/v1/users/sign_in",
+        { user: userInfo },
+        { withCredentials: true }
+      )
+  .then(data => {
+      const authHeader = data.headers.authorization;
+    if (authHeader.startsWith("Bearer ")) {
+      const token = authHeader.substring(7, authHeader.length);
+      localStorage.setItem("token", token);
+      dispatch(setUser(data.data))
 
-  // return (dispatch) => {
-  //   return fetch("http://localhost:3001/api/v1/users", {
-  //     method: "POST",
-  //     headers: {
-  //         "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify({
-  //         user: data
-  //     })
-  // }).then(response => {
-  //     return response.json()
-  //   }).then(data => {
-  //     console.log(data, "data from server")
-  //     return dispatch({ type: 'ADD_USER', user: data })
-  //   })
-  // }
+      console.log("user is now", data.data)
+      console.log("token is set as", localStorage.getItem("token"))
+    }
+  }).catch((error) => console.log("api errors:", error));
+}
 
-  // axios
-  //     .post(
-  //       "http://localhost:3001/api/v1/users",
-  //       { user },
-  //       { withCredentials: true }
-  //     )
-  //     .then((response) => {
-  //       if (response.headers.authorization) {
-  //         this.handleLogin(response);
-  //       } else {
-  //         this.setState({
-  //           errors: response.data.errors,
-  //         });
-  //       }
-  //     })
-  //     .catch((error) => console.log("api errors:", error));
+export const autoLogin = () => dispatch => {
+  fetch(`http://localhost:3001/api/v1/users/sign_in`, {
+      headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`
+      }
+  })
+  .then(res => res.json())
+  .then(data => {
+      localStorage.setItem("token", data.token)
+      console.log(data.token, "should be", localStorage.getItem("token")) // this is not showing correctly upon refresh?? firefox addons interfering?
+      dispatch(setUser(data.data))
+  })
+}
