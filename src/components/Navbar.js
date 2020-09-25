@@ -1,30 +1,71 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import LogoutLogin from './LogoutLogin'
+import {logUserOut} from '../actions/userActions'
+import {connect} from 'react-redux'
 
-const linkStyle = {
-    textDecoration: 'none',
-    color: 'black',
-    float: "left",
-    textAlign: "center",
-    padding: "20px",
-    fontSize: "30px"
+
+export const linkStyle = {
+  textDecoration: "none",
+  color: "black",
+  float: "left",
+  textAlign: "center",
+  padding: "20px",
+  fontSize: "30px",
+};
+
+class Navbar extends React.Component {
+
+
+  render() {
+    return (
+      <div className="nav-bar">
+        <div>
+          <NavLink
+            to="/"
+            exact
+            style={linkStyle}
+            activeStyle={{ background: "goldenrod" }}
+          >
+            Hikable
+          </NavLink>
+        </div>
+        <div>
+          <NavLink
+            to="/lists"
+            exact
+            style={linkStyle}
+            activeStyle={{ background: "goldenrod" }}
+          >
+            Lists
+          </NavLink>
+        </div>
+        <div>
+          <NavLink
+            to="/hikes"
+            exact
+            style={linkStyle}
+            activeStyle={{ background: "goldenrod" }}
+          >
+            Hikes
+          </NavLink>
+        </div>
+        <LogoutLogin currentUser={this.props.user} loggedIn={this.props.loggedIn} logUserOut={this.props.logUserOut}/>
+      </div>
+    );
   }
+}
+const mapStateToProps = (state) => {
+  return {
+    user: state.users.user,
+    loggedIn: state.users.loggedIn
+  }
+}
 
-const Navbar = () => 
-    <div className="nav-bar">
-        <div>
-            <NavLink to="/" exact style={linkStyle} activeStyle={{background: 'goldenrod'}}>Hikable</NavLink>
-        </div>
-        <div>
-            <NavLink to="/lists" exact style={linkStyle} activeStyle={{background: 'goldenrod'}}>Lists</NavLink>
-        </div>
-        <div>
-            <NavLink to="/hikes" exact style={linkStyle} activeStyle={{background: 'goldenrod'}}>Hikes</NavLink>
-        </div>
-        <div>
-            <NavLink to="/signIn" exact style={linkStyle} activeStyle={{background: 'goldenrod'}}>Sign up/Sign in</NavLink>
-        </div>
-    </div>
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logUserOut: () => dispatch(logUserOut())
+  }
+}
 
-
-export default Navbar
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

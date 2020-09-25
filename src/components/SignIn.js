@@ -26,7 +26,6 @@ class SignIn extends Component {
       email: email,
       password: password,
     };
-    console.log(user, "submitted User");
     this.props.fetchUser(user);
   };
 
