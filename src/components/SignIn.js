@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import {withRouter } from "react-router-dom";
 import { fetchUser } from "../actions/userActions";
 
 class SignIn extends Component {
@@ -27,6 +28,7 @@ class SignIn extends Component {
       password: password,
     };
     this.props.fetchUser(user);
+    this.props.history.push('/');
   };
 
   handleErrors = () => {
@@ -78,4 +80,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(SignIn);
+export default withRouter(connect(null, mapDispatchToProps)(SignIn));

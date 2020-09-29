@@ -6,7 +6,7 @@ const listsReducer = (state = { lists: [], loading: false }, action) => {
                 lists: action.lists, 
                 loading: false
             }
-        case 'LOADING_LISTs':
+        case 'LOADING_LISTS':
             return {
                 ...state, 
                 lists: [...state.lists],

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Hikes from './Hikes'
 
 class List extends Component {
 
@@ -8,7 +9,12 @@ class List extends Component {
 
     return (
       <li className="list-card" id={list.id + "-list-card"}>
-       {list.description}
+       <h3>{list.name}</h3>
+       <h4>by: {list.user.username}</h4>
+       <p>{list.description}</p>
+       <ul>
+         <li><Hikes hikes={list.hikes}/></li>
+       </ul>
       </li>
     );
   }

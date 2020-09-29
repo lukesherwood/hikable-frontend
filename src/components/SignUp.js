@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux'
+import {withRouter } from "react-router-dom";
 import {signUserUp} from '../actions/userActions'
 
 class Signup extends Component {
@@ -30,8 +31,8 @@ class Signup extends Component {
       password: password,
       password_confirmation: password_confirmation
     };
-    console.log(user, "submitted User")
     this.props.signUserUp(user)
+    this.props.history.push('/');
   };
 
   handleErrors = () => {
@@ -101,4 +102,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Signup);
+export default withRouter(connect(null, mapDispatchToProps)(Signup));

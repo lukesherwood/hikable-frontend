@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import '../App.css';
-import HikesContainer from './HikesContainer';
-import Navbar from '../components/Navbar'
-import ListsContainer from './ListsContainer'
-import Home from './Home'
-import SessionsContainer from '../containers/SessionsContainer'
-import {autoLogin, logUserOut} from '../actions/userActions'
 import {connect} from 'react-redux'
+import '../App.css';
+
+import HikesContainer from './HikesContainer';
+import ListsContainer from './ListsContainer'
+import SessionsContainer from '../containers/SessionsContainer'
+import Home from './Home'
+import Navbar from '../components/Navbar'
+
+import {autoLogin, logUserOut} from '../actions/userActions'
+
+// React Notification
+import 'react-notifications/lib/notifications.css';
+import { NotificationContainer } from 'react-notifications';
 
 
 class App extends Component {
@@ -22,15 +28,13 @@ class App extends Component {
           <div className="container">
             <Navbar/>
             <Switch>
-            <Route exact path='/' component={Home}/>
-            <Route exact path='/hikes' component={HikesContainer}/>
-            <Route exact path='/lists' component={ListsContainer}/>
-            <Route exact path='/signIn' component={SessionsContainer}/>
-            <Route exact path='/signOut' component={SessionsContainer}/>
-          </Switch>
-          <div>
-         
-          </div>
+              <Route exact path='/' component={Home}/>
+              <Route exact path='/hikes' component={HikesContainer}/>
+              <Route exact path='/lists' component={ListsContainer}/>
+              <Route exact path='/signIn' component={SessionsContainer}/>
+              <Route exact path='/signOut' component={SessionsContainer}/>
+            </Switch>
+            <NotificationContainer />
           </div>
       </div>
     );

@@ -1,4 +1,6 @@
 import axios from "axios";
+// React Notification
+import { NotificationManager } from 'react-notifications';
 
 const setUser = (payload) => ({ type: "SET_USER", payload });
 
@@ -17,9 +19,11 @@ export const signUserUp = (userInfo) => (dispatch) => {
         const token = authHeader.substring(7, authHeader.length);
         localStorage.setItem("token", token);
         dispatch(setUser(data.data));
+        NotificationManager.success(`You have successfully signed up ${data.data.username}`, 'Successful!', 2000)
       }
     })
-    .catch((error) => console.log("api errors:", error));
+    .catch((error) =>
+    NotificationManager.error(`Error while Creating new user!, ${error}`, 'Error!'));
 };
 
 export const fetchUser = (userInfo) => (dispatch) => {
@@ -35,9 +39,10 @@ export const fetchUser = (userInfo) => (dispatch) => {
         const token = authHeader.substring(7, authHeader.length);
         localStorage.setItem("token", token);
         dispatch(setUser(data.data));
+        NotificationManager.success(`You have successfully logged in ${data.data.username}`, 'Successful!', 2000)
       }
     })
-    .catch((error) => console.log("api errors:", error));
+    .catch((error) => NotificationManager.error(`Error while signing in!, ${error}`, 'Error!'));
 };
 
 export const autoLogin = () => (dispatch) => {
@@ -54,9 +59,11 @@ export const autoLogin = () => (dispatch) => {
           if (data.message) {
             // An error will occur if the token is invalid.
             // If this happens, you may want to remove the invalid token.
+            NotificationManager.error(`Error while signing in! ${data.message}`, 'Error!')
             localStorage.removeItem("token");
           } else if(data.data.id) {
             dispatch(setUser(data.data));
+            NotificationManager.success(`You have successfully logged in ${data.data.username}`, 'Successful!', 2000)
           }
         });
     }
