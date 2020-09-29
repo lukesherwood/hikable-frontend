@@ -1,4 +1,6 @@
+import { NotificationManager } from 'react-notifications';
 const axios = require("axios").default;
+
 
 export const fetchLists = () => {
   return (dispatch) => {
@@ -16,7 +18,8 @@ export const fetchLists = () => {
       })
       .catch(function (error) {
         // handle error
-        console.log(error);
-      });
+        dispatch({ type: "ERROR_LOADING", error:error });
+        NotificationManager.error(`Error while fetching lists, ${error} - Unauthorized` , 'Error!');
+      })
   };
 };
