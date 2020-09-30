@@ -57,13 +57,11 @@ export const autoLogin = () => (dispatch) => {
       })
         .then((data) => {
           if (data.message) {
-            // An error will occur if the token is invalid.
-            // If this happens, you may want to remove the invalid token.
             NotificationManager.error(`Error while signing in! ${data.message}`, 'Error!')
             localStorage.removeItem("token");
           } else if(data.data.id) {
             dispatch(setUser(data.data));
-            NotificationManager.success(`You have successfully logged in ${data.data.username}`, 'Successful!', 2000)
+            NotificationManager.success(`Welcome back, ${data.data.username}`, 'Successful!', 2000)
           }
         });
     }

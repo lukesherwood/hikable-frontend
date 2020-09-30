@@ -25,19 +25,33 @@ class LogoutLogin extends React.Component {
 
         <div>
         {!this.props.loggedIn ? (
+          <div className="signUp-signIn-container">
           <NavLink
             to="/signIn"
             exact
             style={buttonStyle}
+            activeStyle={{ background: "goldenrod" }}
           >
-            Sign up/Sign in
+            Sign in
           </NavLink>
+           <NavLink
+           to="/signUp"
+           exact
+           style={buttonStyle}
+           activeStyle={{ background: "goldenrod" }}
+         >
+           Sign up
+         </NavLink>
+         </div>
         ) : (
+          <div className="logged-in-container">
+            {/* <div>Welcome {this.props.currentUser.username}</div> */}
           <button
             onClick={this.handleClick}
             style={buttonStyle}>
             Sign out
           </button>
+          </div>
         )}
       </div>
         )

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux'
-import {withRouter } from "react-router-dom";
+import {withRouter, Link } from "react-router-dom";
 import {signUserUp} from '../actions/userActions'
 
 class Signup extends Component {
@@ -91,6 +91,7 @@ class Signup extends Component {
           </div>
           <input type="submit" value="Sign Up" />
         </form>
+        <div>Already have an account? <Link to='/signIn'>Sign In</Link></div>
       </div>
     );
   }

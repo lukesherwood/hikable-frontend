@@ -5,15 +5,16 @@ import '../App.css';
 
 import HikesContainer from './HikesContainer';
 import ListsContainer from './ListsContainer'
-import SessionsContainer from '../containers/SessionsContainer'
 import Home from './Home'
-import Navbar from '../components/Navbar'
+import Navbar from './Navbar'
 
 import {autoLogin, logUserOut} from '../actions/userActions'
 
 // React Notification
 import 'react-notifications/lib/notifications.css';
 import { NotificationContainer } from 'react-notifications';
+import SignUp from '../components/SignUp';
+import SignIn from '../components/SignIn'
 
 
 class App extends Component {
@@ -31,8 +32,8 @@ class App extends Component {
               <Route exact path='/' component={Home}/>
               <Route exact path='/hikes' component={HikesContainer}/>
               <Route exact path='/lists' component={ListsContainer}/>
-              <Route exact path='/signIn' component={SessionsContainer}/>
-              <Route exact path='/signOut' component={SessionsContainer}/>
+              <Route exact path='/signIn' component={SignIn}/>
+              <Route exact path='/signUp' component={SignUp}/>
             </Switch>
             <NotificationContainer />
           </div>

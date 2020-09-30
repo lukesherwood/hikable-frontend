@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import LogoutLogin from './LogoutLogin'
+import LogoutOrLogin from '../components/LogoutOrLogin'
 import {logUserOut} from '../actions/userActions'
 import {connect} from 'react-redux'
 
@@ -50,7 +50,7 @@ class Navbar extends React.Component {
             Hikes
           </NavLink>
         </div>
-        <LogoutLogin currentUser={this.props.user} loggedIn={this.props.loggedIn} logUserOut={this.props.logUserOut}/>
+        <LogoutOrLogin currentUser={this.props.user} loggedIn={this.props.loggedIn} logUserOut={this.props.logUserOut}/>
       </div>
     );
   }

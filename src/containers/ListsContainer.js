@@ -16,8 +16,9 @@ class ListsContainer extends React.Component {
         return (
           <div>
             You need to 
-            <NavLink to="/signIn" exact> Sign up/Sign in</NavLink> 
-            to access lists
+            <NavLink to="/signIn" exact> Sign in </NavLink>  or
+            <NavLink to="/signUp" exact> Sign up </NavLink> 
+             to access lists
           </div>
         )
       }
