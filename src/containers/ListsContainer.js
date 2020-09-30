@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { NavLink } from "react-router-dom";
 import {fetchLists} from "../actions/listActions"
 import Lists from "../components/Lists"
+import CreateListForm from '../components/CreateListForm';
 
 
 class ListsContainer extends React.Component {
@@ -24,6 +25,7 @@ class ListsContainer extends React.Component {
       }
         return(
             <div className="lists-container">
+              <CreateListForm currentUser={this.props.currentUser} />
              <Lists lists={this.props.lists} fetchLists={this.props.fetchLists}/>
             </div>
         )
@@ -32,14 +34,15 @@ class ListsContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     lists: state.lists.lists,
-    error: state.lists.error
+    error: state.lists.error,
+    currentUser: state.users.user
   }
 }
 
    
   const mapDispatchToProps = dispatch => {
     return {
-      fetchLists: () => dispatch(fetchLists())
+      fetchLists: () => dispatch(fetchLists()),
     }
   }
 

@@ -97,10 +97,10 @@ class Signup extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => { // does this need to be connected? can't we passed dispatch in?
   return {
       signUserUp: (userInfo) => dispatch(signUserUp(userInfo))
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(Signup));
+export default withRouter(connect(null, mapDispatchToProps)(Signup)); 

@@ -19,6 +19,12 @@ const listsReducer = (state = { lists: [], loading: false, error: "" }, action) 
                 loading: false,
                 error: action.error
             }
+        case 'ADD_LIST':
+            return {
+                ...state,
+                loading: false,
+                lists: [...state.lists, action.list]
+            }
         default:
             return state
     }
