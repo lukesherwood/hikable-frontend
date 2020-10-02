@@ -9,9 +9,10 @@ class List extends Component {
 
     return (
       <li className="list-card" id={list.id + "-list-card"}>
-       <h3>{list.name}</h3>
+       <h2>{list.name}</h2>
        <h4>by: {list.user.username}</h4>
        <p>{list.description}</p>
+       <h3>Hikes:</h3>
        <ul>
          <li><Hikes hikes={list.hikes}/></li>
        </ul>

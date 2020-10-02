@@ -1,7 +1,5 @@
-import { NotificationManager } from 'react-notifications';
+import { NotificationManager } from "react-notifications";
 const axios = require("axios").default;
-
-
 
 export const fetchLists = () => {
   return (dispatch) => {
@@ -9,39 +7,75 @@ export const fetchLists = () => {
     axios
       .get("http://localhost:3001/api/v1/lists", {
         headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem("token")}`
-        }
-    })
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then((data) => {
         dispatch({ type: "ADD_LISTS", lists: data.data });
       })
       .catch(function (error) {
         // handle error
-        dispatch({ type: "ERROR_LOADING", error:error }); // changes state so that user login sign up links are shown if fetch doesn't work due to not being logged in
-      })
+        dispatch({ type: "ERROR_LOADING", error: error }); // changes state so that user login sign up links are shown if fetch doesn't work due to not being logged in
+      });
   };
 };
 
 export const createList = (listInfo) => {
   return (dispatch) => {
     dispatch({ type: "LOADING_LISTS" });
-  axios
-    .post(
-      "http://localhost:3001/api/v1/lists", { list: listInfo}, {
+    axios
+      .post(
+        "http://localhost:3001/api/v1/lists",
+        { list: listInfo },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+      .then((data) => {
+        dispatch({ type: "ADD_LIST", list: data.data });
+      })
+      .catch(function (error) {
+        // handle error
+        NotificationManager.error(
+          `Error while creating new list!, ${error}`,
+          "Error!"
+        );
+      });
+  };
+};
+
+export const addHikeToList = (list, hike) => {
+  const newListObj = {list:{ name: list.name, description: list.description, id: list.id, user_id: list.user.id}, hike:{hike_id: hike.id}}
+  console.log(newListObj)
+  return (dispatch) => {
+    axios
+      .put(`http://localhost:3001/api/v1/lists/${list.id}`, newListObj, {
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem("token")}`
-      }
-    }
-    ).then((data) => {
-      dispatch({ type: "ADD_LIST", list: data.data });
-    })
-    .catch(function (error) {
-      // handle error
-      NotificationManager.error(`Error while creating new list!, ${error}`, 'Error!')
-    })
-};
+          Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((data) => {
+        console.log("received from server", data.data)
+        dispatch({ type: "UPDATE_LIST", list: data.data });
+        NotificationManager.success(
+          `Successfully added a hike to your list, ${list.name}`,
+          "Success!"
+        );
+      })
+      .catch(function (error) {
+        // handle error
+        NotificationManager.error(
+          `Error while updating new list!, ${error}`,
+          "Error!"
+        );
+      });
+  };
 };
