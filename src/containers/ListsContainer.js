@@ -26,14 +26,14 @@ class ListsContainer extends React.Component {
         return(
             <div className="lists-container">
               <CreateListForm currentUser={this.props.currentUser} />
-             <Lists lists={this.props.lists} fetchLists={this.props.fetchLists}/>
+             <Lists lists={this.props.lists}/>
             </div>
         )
     }
 }
 const mapStateToProps = (state) => {
   return {
-    lists: state.lists.lists.filter(list => list.user.id === state.users.user.id),
+    lists: state.lists.lists,
     error: state.lists.error,
     currentUser: state.users.user
   }
