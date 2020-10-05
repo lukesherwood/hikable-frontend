@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { withRouter } from "react-router-dom";
 
 class DropDownMenu extends Component {
     handleClick = (event, list) => {
         this.props.addHikeToList(list, this.props.hike)
-        this.props.history.push('/lists');
     }
 
   render() {
@@ -24,4 +22,4 @@ class DropDownMenu extends Component {
   }
 };
 
-export default withRouter(DropDownMenu)
+export default DropDownMenu

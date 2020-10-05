@@ -17,17 +17,30 @@ class SaveHikeToList extends Component {
       showMenu: true,
     });
   };
+  handleDelete = () => {
+    console.log(this.props.hike, "deleted from", this.props.list)
+  }
 
   render() {
      const {lists} = this.props.lists
     return (
       <div>
+        <div>
         <button
           onClick={this.handleClick}
           className="add-to-list-button"
         >
           Add to my list
         </button>
+        </div>
+        <div>
+        <button
+          onClick={this.handleDelete}
+          className="remove-from-list-button"
+        >
+          Delete
+        </button>
+        </div>
         {this.state.showMenu ? (
           <div className="menu">
             <DropDownMenu data={lists} hike={this.props.hike} addHikeToList={this.props.addHikeToList}/>

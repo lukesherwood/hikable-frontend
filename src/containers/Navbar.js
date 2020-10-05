@@ -31,14 +31,16 @@ class Navbar extends React.Component {
           </NavLink>
         </div>
         <div>
+          { this.props.loggedIn ? 
           <NavLink
             to="/lists"
             exact
             style={linkStyle}
             activeStyle={{ background: "goldenrod" }}
           >
-            Lists
-          </NavLink>
+            My Lists
+          </NavLink> 
+          : null}
         </div>
         <div>
           <NavLink

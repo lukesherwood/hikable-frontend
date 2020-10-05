@@ -52,7 +52,6 @@ export const createList = (listInfo) => {
 
 export const addHikeToList = (list, hike) => {
   const newListObj = {list:{ name: list.name, description: list.description, id: list.id, user_id: list.user.id}, hike:{hike_id: hike.id}}
-  console.log(newListObj)
   return (dispatch) => {
     axios
       .put(`http://localhost:3001/api/v1/lists/${list.id}`, newListObj, {
@@ -63,7 +62,6 @@ export const addHikeToList = (list, hike) => {
         },
       })
       .then((data) => {
-        console.log("received from server", data.data)
         dispatch({ type: "UPDATE_LIST", list: data.data });
         NotificationManager.success(
           `Successfully added a hike to your list, ${list.name}`,

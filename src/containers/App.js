@@ -31,7 +31,7 @@ class App extends Component {
             <Switch>
               <Route exact path='/' component={Home}/>
               <Route exact path='/hikes' component={HikesContainer}/>
-              <Route exact path='/lists' component={ListsContainer}/>
+              {this.props.loggedIn ? <Route exact path='/lists' component={ListsContainer}/> : null }
               <Route exact path='/signIn' component={SignIn}/>
               <Route exact path='/signUp' component={SignUp}/>
             </Switch>
@@ -44,7 +44,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    userReducer: state.users
+    loggedIn: state.users.loggedIn
   }
 }
 

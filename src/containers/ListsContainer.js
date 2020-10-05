@@ -33,7 +33,7 @@ class ListsContainer extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    lists: state.lists.lists,
+    lists: state.lists.lists.filter(list => list.user.id === state.users.user.id),
     error: state.lists.error,
     currentUser: state.users.user
   }
