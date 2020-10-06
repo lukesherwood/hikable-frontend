@@ -7,6 +7,7 @@ import HikesContainer from './HikesContainer';
 import ListsContainer from './ListsContainer'
 import Home from './Home'
 import Navbar from './Navbar'
+import ListShow from '../components/ListShow'
 
 import {autoLogin, logUserOut} from '../actions/userActions'
 
@@ -15,12 +16,14 @@ import 'react-notifications/lib/notifications.css';
 import { NotificationContainer } from 'react-notifications';
 import SignUp from '../components/SignUp';
 import SignIn from '../components/SignIn'
+import { fetchLists } from '../actions/listActions';
 
 
 class App extends Component {
 
   componentDidMount(){
     this.props.autoLogin()
+    this.props.fetchLists()
   }
 
   render () {
@@ -31,27 +34,34 @@ class App extends Component {
             <Switch>
               <Route exact path='/' component={Home}/>
               <Route exact path='/hikes' component={HikesContainer}/>
-              {this.props.loggedIn ? <Route exact path='/lists' component={ListsContainer}/> : null }
+              {this.props.loggedIn ? 
+              <>
+              <Route exact path='/lists' component={ListsContainer}/> 
+              <Route path='/lists/:id' render={(params) => <ListShow lists={this.props.lists} params={params}/>}/>
+              </>
+              : null }
               <Route exact path='/signIn' component={SignIn}/>
               <Route exact path='/signUp' component={SignUp}/>
             </Switch>
             <NotificationContainer />
           </div>
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn: state.users.loggedIn
+    loggedIn: state.users.loggedIn,
+    lists: state.lists.lists
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     autoLogin: () => dispatch(autoLogin()),
-    logUserOut: () => dispatch(logUserOut())
+    logUserOut: () => dispatch(logUserOut()),
+    fetchLists: () => dispatch(fetchLists())
   }
 }
 

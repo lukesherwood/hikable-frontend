@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Hikes from './Hikes'
+import {Link} from 'react-router-dom'
+// import Hikes from './Hikes'
 
 class List extends Component {
 
@@ -10,12 +11,15 @@ class List extends Component {
     return (
       <li className="list-card" id={list.id + "-list-card"}>
        <h2>{list.name}</h2>
-       <h4>by: {list.user.username}</h4>
+       <Link to={`/lists/${list.id}`}>
+       More information
+      </Link>
+       {/* <h4>by: {list.user.username}</h4>
        <p>{list.description}</p>
        <h3>Hikes:</h3>
        <ul>
          <li><Hikes hikes={list.hikes}/></li>
-       </ul>
+       </ul> */}
       </li>
     );
   }

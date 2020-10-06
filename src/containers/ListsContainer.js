@@ -26,7 +26,7 @@ class ListsContainer extends React.Component {
         return(
             <div className="lists-container">
               <CreateListForm currentUser={this.props.currentUser} />
-             <Lists lists={this.props.lists}/>
+              <Lists lists={this.props.lists}/>
             </div>
         )
     }
