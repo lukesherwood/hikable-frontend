@@ -15,7 +15,7 @@ class ListShow extends Component {
             <h3>Hikes:</h3>
             <ul>
                 <li>
-                <Hikes hikes={list.hikes} />
+                <Hikes hikes={list.hikes} list={list} />
                 </li>
             </ul>
             </div>

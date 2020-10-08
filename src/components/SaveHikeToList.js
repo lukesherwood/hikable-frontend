@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { addHikeToList, fetchLists } from "../actions/listActions";
+import { addHikeToList, fetchLists, deleteHike } from "../actions/listActions";
 import { connect } from "react-redux";
 import DropDownMenu from "./DropDownMenu"
 
@@ -19,6 +19,7 @@ class SaveHikeToList extends Component {
   };
   handleDelete = () => {
     console.log(this.props.hike, "deleted from", this.props.list)
+    this.props.deleteHike(this.props.list, this.props.hike)
   }
 
   render() {
@@ -58,8 +59,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addHikeToList: (list, hikeId) => dispatch(addHikeToList(list, hikeId)),
+    addHikeToList: (list, hikeId) => dispatch(addHikeToList(list, hikeId)), // how does it get these list ans hikeID?
     fetchLists: () => dispatch(fetchLists()),
+    deleteHike: (list, hike) => dispatch(deleteHike(list, hike))
   };
 };
 

@@ -28,7 +28,7 @@ const listsReducer = (state = { lists: [], loading: false, error: "" }, action) 
         case 'UPDATE_LIST':
             const index = state.lists.findIndex(list => list.id === action.list.id)
             const newArray = [...state.lists]
-            newArray[index] = action.list
+            newArray[index] = action.list            
         return {
             ...state,
             loading: false,
