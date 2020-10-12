@@ -30,8 +30,8 @@ class App extends Component {
   render () {
     return (
       <div className="App">
+        <NavbarClass/>
           <Container fluid>
-            <NavbarClass/>
             <Switch>
               <Route exact path='/' component={Home}/>
               <Route exact path='/hikes' component={HikesContainer}/>

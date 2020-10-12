@@ -31,7 +31,13 @@ ul {
     padding: 0 20px 20px;
     text-align: left;
   }
-
+.navbar {
+    padding: 0;
+    font-size: xx-large;
+}
+.nav-link {
+    color: grey;
+}
 .cards {
     display: flex;
     flex-wrap: wrap;
@@ -40,17 +46,6 @@ ul {
 .card img {
     width: 100%;  
     height: auto; 
-}
-.nav-bar {
-    position: fixed;
-    top: 0;
-    background-color: rgb(200, 204, 214);
-    width: 100%;
-    overflow: hidden;
-}
-
-.nav-bar a:hover {
-    background-color: #4CAF50;
 }
 .list-card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);

@@ -4,56 +4,30 @@ import LogoutOrLogin from '../components/LogoutOrLogin'
 import {logUserOut} from '../actions/userActions'
 import {connect} from 'react-redux'
 import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
 
-
-export const linkStyle = {
-  textDecoration: "none",
-  color: "black",
-  float: "left",
-  textAlign: "center",
-  // padding: "20px",
-  fontSize: "30px",
-};
 
 class NavbarClass extends React.Component {
 
 
   render() {
     return (
-      <Navbar bg="dark" variant="dark">
-        <Navbar.Brand>
-          <NavLink
-            to="/"
-            exact
-            style={linkStyle}
-            activeStyle={{ background: "goldenrod" }}
-          >
-            Hikable
-          </NavLink>
+      <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
+        <Navbar.Brand href='/'>
+        <img src="/Hikable-logo.png" alt="" height="100"/>
         </Navbar.Brand>
-        <div>
-          { this.props.loggedIn ? 
-          <NavLink
-            to="/lists"
-            exact
-            style={linkStyle}
-            activeStyle={{ background: "goldenrod" }}
-          >
-            My Lists
-          </NavLink> 
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav variant="pills" className="mr-auto">
+          { this.props.loggedIn ?
+         <Nav.Link as={NavLink} to='/lists' exact>My Lists</Nav.Link>
           : null}
-        </div>
-        <div>
-          <NavLink
-            to="/hikes"
-            exact
-            style={linkStyle}
-            activeStyle={{ background: "goldenrod" }}
-          >
-            Hikes
-          </NavLink>
-        </div>
+        <>
+        <Nav.Link as={NavLink} to='/hikes' exact>Hikes</Nav.Link>
+        </>
+        </Nav>
         <LogoutOrLogin currentUser={this.props.user} loggedIn={this.props.loggedIn} logUserOut={this.props.logUserOut}/>
+        </Navbar.Collapse>
       </Navbar>
     );
   }

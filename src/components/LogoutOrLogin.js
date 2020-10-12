@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import { NotificationManager } from 'react-notifications';
+import { Nav } from 'react-bootstrap'
 
 export const buttonStyle = {
     textDecoration: "none",
@@ -25,33 +26,14 @@ class LogoutLogin extends React.Component {
 
         <div>
         {!this.props.loggedIn ? (
-          <div className="signUp-signIn-container">
-          <NavLink
-            to="/signIn"
-            exact
-            style={buttonStyle}
-            activeStyle={{ background: "goldenrod" }}
-          >
-            Sign in
-          </NavLink>
-           <NavLink
-           to="/signUp"
-           exact
-           style={buttonStyle}
-           activeStyle={{ background: "goldenrod" }}
-         >
-           Sign up
-         </NavLink>
-         </div>
+          <Nav>
+          <Nav.Link as={NavLink} to='/signIn' exact>Sign In</Nav.Link>
+          <Nav.Link as={NavLink} to='/signUp' exact>Register</Nav.Link>
+          </Nav>
         ) : (
-          <div className="logged-in-container">
-            {/* <div>Welcome {this.props.currentUser.username}</div> */}
-          <button
-            onClick={this.handleClick}
-            style={buttonStyle}>
+          <Nav.Link onClick={this.handleClick}>
             Sign out
-          </button>
-          </div>
+          </Nav.Link>
         )}
       </div>
         )
