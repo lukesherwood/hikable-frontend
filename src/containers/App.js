@@ -6,7 +6,7 @@ import '../App.css';
 import HikesContainer from './HikesContainer';
 import ListsContainer from './ListsContainer'
 import Home from './Home'
-import Navbar from './Navbar'
+import NavbarClass from './Navbar'
 import ListShow from '../components/ListShow'
 
 import {autoLogin, logUserOut} from '../actions/userActions'
@@ -17,6 +17,7 @@ import { NotificationContainer } from 'react-notifications';
 import SignUp from '../components/SignUp';
 import SignIn from '../components/SignIn'
 import { fetchLists } from '../actions/listActions';
+import Container from 'react-bootstrap/Container'
 
 
 class App extends Component {
@@ -29,8 +30,8 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-          <div className="container">
-            <Navbar/>
+          <Container fluid>
+            <NavbarClass/>
             <Switch>
               <Route exact path='/' component={Home}/>
               <Route exact path='/hikes' component={HikesContainer}/>
@@ -44,7 +45,7 @@ class App extends Component {
               <Route exact path='/signUp' component={SignUp}/>
             </Switch>
             <NotificationContainer />
-          </div>
+            </Container>
       </div>
     )
   }

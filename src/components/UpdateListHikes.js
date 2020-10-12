@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { addHikeToList, fetchLists, deleteHike } from "../actions/listActions";
 import { connect } from "react-redux";
 import DropDownMenu from "./DropDownMenu"
+import Button from 'react-bootstrap/Button';
 
-class SaveHikeToList extends Component {
+class UpdateListHikes extends Component {
   constructor() {
     super();
 
@@ -27,20 +28,24 @@ class SaveHikeToList extends Component {
     return (
       <div>
         <div>
-        <button
+        <Button
+          variant="outline-primary"
+          size="sm"
           onClick={this.handleClick}
           className="add-to-list-button"
         >
           Add to my list
-        </button>
+        </Button>
         </div>
         <div>
-        <button
+        <Button
+          variant="outline-danger"
+          size="sm"
           onClick={this.handleDelete}
           className="remove-from-list-button"
         >
           Delete
-        </button>
+        </Button>
         </div>
         {this.state.showMenu ? (
           <div className="menu">
@@ -65,4 +70,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SaveHikeToList);
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateListHikes);

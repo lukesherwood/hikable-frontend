@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import SaveHikeToList from '../components/SaveHikeToList'
+import UpdateListHikes from '../components/UpdateListHikes'
+
 // import {useParams} from 'react-router-dom'
 
 class Hike extends Component {
@@ -14,7 +15,7 @@ class Hike extends Component {
         <img src={hike.photo} alt={hike.title} width="600"></img>
         <div className="card-text">
         <h3>{hike.title}</h3>
-        <SaveHikeToList hike={hike} list={list}/>
+        <UpdateListHikes hike={hike} list={list}/>
         <div className="hike-card-info">
         <div className="hike-card-location">{hike.location}</div>
         <div className="hike-card-difficulty">{hike.difficulty}</div>

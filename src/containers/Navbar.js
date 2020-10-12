@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import LogoutOrLogin from '../components/LogoutOrLogin'
 import {logUserOut} from '../actions/userActions'
 import {connect} from 'react-redux'
+import Navbar from 'react-bootstrap/Navbar'
 
 
 export const linkStyle = {
@@ -10,17 +11,17 @@ export const linkStyle = {
   color: "black",
   float: "left",
   textAlign: "center",
-  padding: "20px",
+  // padding: "20px",
   fontSize: "30px",
 };
 
-class Navbar extends React.Component {
+class NavbarClass extends React.Component {
 
 
   render() {
     return (
-      <div className="nav-bar">
-        <div>
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand>
           <NavLink
             to="/"
             exact
@@ -29,7 +30,7 @@ class Navbar extends React.Component {
           >
             Hikable
           </NavLink>
-        </div>
+        </Navbar.Brand>
         <div>
           { this.props.loggedIn ? 
           <NavLink
@@ -53,7 +54,7 @@ class Navbar extends React.Component {
           </NavLink>
         </div>
         <LogoutOrLogin currentUser={this.props.user} loggedIn={this.props.loggedIn} logUserOut={this.props.logUserOut}/>
-      </div>
+      </Navbar>
     );
   }
 }
@@ -70,4 +71,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(NavbarClass);
