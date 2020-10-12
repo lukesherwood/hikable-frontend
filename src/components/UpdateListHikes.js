@@ -1,72 +1,66 @@
 import React, { Component } from "react";
 import { addHikeToList, fetchLists, deleteHike } from "../actions/listActions";
 import { connect } from "react-redux";
-import DropDownMenu from "./DropDownMenu"
-import Button from 'react-bootstrap/Button';
-
+import Button from "react-bootstrap/Button";
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import Dropdown from 'react-bootstrap/Dropdown'
 class UpdateListHikes extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      showMenu: false,
-    };
-  }
-  handleClick = () => {
+  
+  componentDidMount() {
     this.props.fetchLists();
-    this.setState({
-      showMenu: true,
-    });
-  };
-  handleDelete = () => {
-    console.log(this.props.hike, "deleted from", this.props.list)
-    this.props.deleteHike(this.props.list, this.props.hike)
   }
+  handleDelete = () => {
+    this.props.deleteHike(this.props.list, this.props.hike);
+  };
+  handleClick = (event, list) => {
+    this.props.addHikeToList(list, this.props.hike);
+  };
 
   render() {
-     const {lists} = this.props.lists
+    const { lists } = this.props.lists;
+    const listItems = lists.map(item => {
+      return (
+        <Dropdown.Item onClick={((e) => this.handleClick(e, item))}>{item.name}</Dropdown.Item>
+      )
+    });
     return (
       <div>
         <div>
-        <Button
+        <DropdownButton
+          id="dropdown-basic-button"
+          title="Add to list"
           variant="outline-primary"
           size="sm"
-          onClick={this.handleClick}
           className="add-to-list-button"
         >
-          Add to my list
-        </Button>
+          {listItems}
+        </DropdownButton>
         </div>
         <div>
-        <Button
-          variant="outline-danger"
-          size="sm"
-          onClick={this.handleDelete}
-          className="remove-from-list-button"
-        >
-          Delete
-        </Button>
+          <Button
+            variant="outline-danger"
+            size="sm"
+            onClick={this.handleDelete}
+            className="remove-from-list-button"
+          >
+            Delete
+          </Button>
         </div>
-        {this.state.showMenu ? (
-          <div className="menu">
-            <DropDownMenu data={lists} hike={this.props.hike} addHikeToList={this.props.addHikeToList}/>
-          </div>
-        ) : null}
       </div>
     );
   }
 }
 const mapStateToProps = (state) => {
-    return {
-        lists: state.lists
-      }
-}
+  return {
+    lists: state.lists,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     addHikeToList: (list, hikeId) => dispatch(addHikeToList(list, hikeId)), // how does it get these list ans hikeID?
     fetchLists: () => dispatch(fetchLists()),
-    deleteHike: (list, hike) => dispatch(deleteHike(list, hike))
+    deleteHike: (list, hike) => dispatch(deleteHike(list, hike)),
   };
 };
 
