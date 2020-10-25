@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { NavLink } from "react-router-dom";
 import {fetchLists} from "../actions/listActions"
 import Lists from "../components/Lists"
-import CreateListForm from '../components/CreateListForm';
+// import CreateListForm from '../components/CreateListForm';
 
 
 class ListsContainer extends React.Component {
@@ -25,8 +25,7 @@ class ListsContainer extends React.Component {
       }
         return(
             <div className="lists-container">
-              <CreateListForm currentUser={this.props.currentUser} />
-              <Lists lists={this.props.lists}/>
+              <Lists lists={this.props.lists} currentUser={this.props.currentUser}/>
             </div>
         )
     }

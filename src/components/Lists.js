@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import List from "./List"
+import CreateListForm from './CreateListForm'
 
 class Lists extends Component {
     render() {
@@ -15,9 +16,13 @@ class Lists extends Component {
         });
       
         return(
-          <ul className="cards">
-            {listsArray}
-          </ul>
+          <div>
+            <h2>Lists</h2>
+            <ul className="cards">
+              {listsArray}
+            <CreateListForm currentUser={this.props.currentUser} />
+            </ul>
+          </div>
         );
       }
       };
