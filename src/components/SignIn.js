@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {withRouter, Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { fetchUser } from "../actions/userActions";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 class SignIn extends Component {
   constructor(props) {
@@ -28,7 +30,7 @@ class SignIn extends Component {
       password: password,
     };
     this.props.fetchUser(user);
-    this.props.history.push('/');
+    this.props.history.push("/");
   };
 
   handleErrors = () => {
@@ -48,28 +50,39 @@ class SignIn extends Component {
     return (
       <div>
         <h2>Sign In</h2>
-        <form onSubmit={(event) => this.handleSubmit(event)}>
-          <div className="form-group">
-            <label>Email</label>
-            <input
-              type="email"
-              name="email"
-              onChange={(event) => this.handleChange(event)}
-              value={email}
-            />
-          </div>
-          <div className="form-group">
-            <label>Password</label>
-            <input
-              type="password"
-              name="password"
-              onChange={(event) => this.handleChange(event)}
-              value={password}
-            />
-          </div>
-          <input type="submit" value="Sign In" />
-        </form>
-        <div>Don't have an account? <Link to='/signUp'>Sign Up</Link></div>
+        <Form onSubmit={(event) => this.handleSubmit(event)}>
+          <Form.Row>
+            <Form.Group>
+              <Form.Label> Email </Form.Label>
+              <Form.Control
+                type="email"
+                className="mb-2 mr-sm-2"
+                name="email"
+                onChange={(event) => this.handleChange(event)}
+                value={email}
+              />
+            </Form.Group>
+          </Form.Row>
+          <Form.Row>
+            <Form.Group>
+              <Form.Label> Password </Form.Label>
+              <Form.Control
+                type="password"
+                className="mb-2 mr-sm-2"
+                name="password"
+                onChange={(event) => this.handleChange(event)}
+                value={password}
+              />
+            </Form.Group>
+          </Form.Row>
+          <Button variant="primary" type="submit">
+            Sign In
+          </Button>
+        </Form>
+        <br></br>
+        <div>
+          Don't have an account? <Link to="/signUp">Register</Link>
+        </div>
       </div>
     );
   }

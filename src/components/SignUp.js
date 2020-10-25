@@ -1,7 +1,10 @@
 import React, { Component } from "react";
-import {connect} from 'react-redux'
-import {withRouter, Link } from "react-router-dom";
-import {signUserUp} from '../actions/userActions'
+import { connect } from "react-redux";
+import { withRouter, Link } from "react-router-dom";
+import { signUserUp } from "../actions/userActions";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
 
 class Signup extends Component {
   constructor(props) {
@@ -29,10 +32,10 @@ class Signup extends Component {
       username: username,
       email: email,
       password: password,
-      password_confirmation: password_confirmation
+      password_confirmation: password_confirmation,
     };
-    this.props.signUserUp(user)
-    this.props.history.push('/');
+    this.props.signUserUp(user);
+    this.props.history.push("/");
   };
 
   handleErrors = () => {
@@ -52,55 +55,81 @@ class Signup extends Component {
     return (
       <div>
         <h2>Sign Up</h2>
-        <form onSubmit={(event) => this.handleSubmit(event)}>
-          <div className="form-group">
-            <label>Username</label>
-            <input
-              type="text"
-              name="username"
-              onChange={(event) => this.handleChange(event)}
-              value={username}
-            />
-          </div>
-          <div className="form-group">
-            <label>Email</label>
-            <input
-              type="email"
-              name="email"
-              onChange={(event) => this.handleChange(event)}
-              value={email}
-            />
-          </div>
-          <div className="form-group">
-            <label>Password</label>
-            <input
-              type="password"
-              name="password"
-              onChange={(event) => this.handleChange(event)}
-              value={password}
-            />
-          </div>
-          <div className="form-group">
-            <label>Confirm password</label>
-            <input
-              type="password"
-              name="password_confirmation"
-              onChange={(event) => this.handleChange(event)}
-              value={password_confirmation}
-            />
-          </div>
-          <input type="submit" value="Sign Up" />
-        </form>
-        <div>Already have an account? <Link to='/signIn'>Sign In</Link></div>
+        <Form onSubmit={(event) => this.handleSubmit(event)}>
+          <Form.Row>
+            <Col sm={4}>
+            <Form.Group>
+              <label>Username</label>
+              <Form.Control
+                type="text"
+                className="mb-2 mr-sm-2"
+                name="username"
+                onChange={(event) => this.handleChange(event)}
+                value={username}
+              />
+            </Form.Group>
+            </Col>
+          </Form.Row>
+          <Form.Row>
+          <Col sm={4}>
+            <Form.Group>
+              <Form.Label> Email </Form.Label>
+              <Form.Control
+                type="email"
+                className="mb-2 mr-sm-2"
+                name="email"
+                onChange={(event) => this.handleChange(event)}
+                value={email}
+              />
+            </Form.Group>
+            </Col>
+          </Form.Row>
+          <Form.Row>
+          <Col sm={4}>
+            <Form.Group>
+              <Form.Label> Password </Form.Label>
+              <Form.Control
+                type="password"
+                className="mb-2 mr-sm-2"
+                name="password"
+                onChange={(event) => this.handleChange(event)}
+                value={password}
+              />
+            </Form.Group>
+            </Col>
+          </Form.Row>
+          <Form.Row>
+          <Col sm={4}>
+            <Form.Group>
+              <Form.Label> Confirm Password </Form.Label>
+              <Form.Control
+                type="password"
+                className="mb-2 mr-sm-2"
+                name="password_confirmation"
+                onChange={(event) => this.handleChange(event)}
+                value={password_confirmation}
+              />
+            </Form.Group>
+            </Col>
+          </Form.Row>
+          <Button variant="primary" type="submit">
+            Sign Up
+          </Button>
+        </Form>
+        <br></br>
+        <div>
+          Already have an account? <Link to="/signIn">Sign In</Link>
+        </div>
       </div>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch) => { // does this need to be connected? can't we passed dispatch in?
+const mapDispatchToProps = (dispatch) => {
+  // does this need to be connected? can't we passed dispatch in?
   return {
-      signUserUp: (userInfo) => dispatch(signUserUp(userInfo))
-  }
-}
+    signUserUp: (userInfo) => dispatch(signUserUp(userInfo)),
+  };
+};
 
-export default withRouter(connect(null, mapDispatchToProps)(Signup)); 
+export default withRouter(connect(null, mapDispatchToProps)(Signup));
