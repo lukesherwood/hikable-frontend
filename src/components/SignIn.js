@@ -4,6 +4,7 @@ import { withRouter, Link } from "react-router-dom";
 import { fetchUser } from "../actions/userActions";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Col from 'react-bootstrap/Col'
 
 class SignIn extends Component {
   constructor(props) {
@@ -52,6 +53,7 @@ class SignIn extends Component {
         <h2>Sign In</h2>
         <Form onSubmit={(event) => this.handleSubmit(event)}>
           <Form.Row>
+            <Col sm={4}>
             <Form.Group>
               <Form.Label> Email </Form.Label>
               <Form.Control
@@ -62,8 +64,10 @@ class SignIn extends Component {
                 value={email}
               />
             </Form.Group>
+            </Col>
           </Form.Row>
           <Form.Row>
+            <Col sm={4}>
             <Form.Group>
               <Form.Label> Password </Form.Label>
               <Form.Control
@@ -74,6 +78,7 @@ class SignIn extends Component {
                 value={password}
               />
             </Form.Group>
+            </Col>
           </Form.Row>
           <Button variant="primary" type="submit">
             Sign In

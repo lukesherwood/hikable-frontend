@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { addHikeToList, fetchLists, deleteHike } from "../actions/listActions";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import Dropdown from 'react-bootstrap/Dropdown'
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 class UpdateListHikes extends Component {
-  
   componentDidMount() {
     this.props.fetchLists();
   }
@@ -18,33 +17,37 @@ class UpdateListHikes extends Component {
 
   render() {
     const { lists } = this.props.lists;
-    const listItems = lists.map(item => {
+    const listItems = lists.map((item) => {
       return (
-        <Dropdown.Item onClick={((e) => this.handleClick(e, item))}>{item.name}</Dropdown.Item>
-      )
+        <Dropdown.Item onClick={(e) => this.handleClick(e, item)}>
+          {item.name}
+        </Dropdown.Item>
+      );
     });
     return (
       <div>
         <div>
-        <DropdownButton
-          id="dropdown-basic-button"
-          title="Add to list"
-          variant="outline-primary"
-          size="sm"
-          className="add-to-list-button"
-        >
-          {listItems}
-        </DropdownButton>
+          <DropdownButton
+            id="dropdown-basic-button"
+            title="Add to list"
+            variant="outline-primary"
+            size="sm"
+            className="add-to-list-button"
+          >
+            {listItems}
+          </DropdownButton>
         </div>
         <div>
-          <Button
-            variant="outline-danger"
-            size="sm"
-            onClick={this.handleDelete}
-            className="remove-from-list-button"
-          >
-            Delete
-          </Button>
+          {this.props.list ? (
+            <Button
+              variant="outline-danger"
+              size="sm"
+              onClick={this.handleDelete}
+              className="remove-from-list-button"
+            >
+              Delete
+            </Button>
+          ) : null}
         </div>
       </div>
     );
