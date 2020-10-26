@@ -27,7 +27,8 @@ class UpdateListHikes extends Component {
     return (
       <div>
         <div>
-          <DropdownButton
+          {this.props.signedIn ?
+         ( <DropdownButton
             id="dropdown-basic-button"
             title="Add to list"
             variant="outline-primary"
@@ -35,7 +36,8 @@ class UpdateListHikes extends Component {
             className="add-to-list-button"
           >
             {listItems}
-          </DropdownButton>
+          </DropdownButton>) : null
+          }
         </div>
         <div>
           {this.props.list ? (
@@ -56,6 +58,7 @@ class UpdateListHikes extends Component {
 const mapStateToProps = (state) => {
   return {
     lists: state.lists,
+    signedIn: state.users.user
   };
 };
 

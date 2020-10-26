@@ -13,11 +13,7 @@ class ListShow extends Component {
             <h4>by: {list.user.username}</h4>
             <p>{list.description}</p>
             <h3>Hikes:</h3>
-            <ul>
-                <li>
                 <Hikes hikes={list.hikes} list={list} />
-                </li>
-            </ul>
             </div>
         )
       }
