@@ -26,7 +26,7 @@ class LogoutLogin extends React.Component {
 
         <div>
         {!this.props.loggedIn ? (
-          <Nav>
+          <Nav variant="pills">
           <Nav.Link as={NavLink} to='/signIn' exact>Sign In</Nav.Link>
           <Nav.Link as={NavLink} to='/signUp' exact>Register</Nav.Link>
           </Nav>
