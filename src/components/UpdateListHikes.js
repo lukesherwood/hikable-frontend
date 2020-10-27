@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
+// import CreateListForm from "./CreateListForm";
 class UpdateListHikes extends Component {
   componentDidMount() {
     this.props.fetchLists();
@@ -13,6 +14,9 @@ class UpdateListHikes extends Component {
   };
   handleClick = (event, list) => {
     this.props.addHikeToList(list, this.props.hike);
+  };
+  renderCreateForm = () => {
+    // return <CreateListForm/> not working, need to set up a modal
   };
 
   render() {
@@ -24,20 +28,25 @@ class UpdateListHikes extends Component {
         </Dropdown.Item>
       );
     });
+    listItems.push(
+      <Dropdown.Item onClick={this.renderCreateForm}>
+        Create a new list
+      </Dropdown.Item>
+    );
     return (
       <div>
         <div>
-          {this.props.signedIn  && !this.props.list ? // checked if signed in and not on a list page
-         ( <DropdownButton
-            id="dropdown-basic-button"
-            title="Add to list"
-            variant="outline-primary"
-            size="sm"
-            className="add-to-list-button"
-          >
-            {listItems}
-          </DropdownButton>) : null
-          }
+          {this.props.signedIn && !this.props.list ? ( // checked if signed in and not on a list page
+            <DropdownButton
+              id="dropdown-basic-button"
+              title="Add to list"
+              variant="outline-primary"
+              size="sm"
+              className="add-to-list-button"
+            >
+              {listItems}
+            </DropdownButton>
+          ) : null}
         </div>
         <div>
           {this.props.list ? ( // if on a list page only want to see remove from list
@@ -58,7 +67,7 @@ class UpdateListHikes extends Component {
 const mapStateToProps = (state) => {
   return {
     lists: state.lists,
-    signedIn: state.users.user
+    signedIn: state.users.user,
   };
 };
 

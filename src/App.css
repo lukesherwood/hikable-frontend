@@ -115,6 +115,10 @@ ul {
     background-color: #216b40!important;
 }
 
+.navbar-bottom {
+    font-size: 0.8rem;
+}
+
  @media only screen and (max-width: 600px) {
      .cards {
         display: block;

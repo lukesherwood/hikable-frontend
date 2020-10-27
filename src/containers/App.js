@@ -16,6 +16,7 @@ import 'react-notifications/lib/notifications.css';
 import { NotificationContainer } from 'react-notifications';
 import SignUp from '../components/SignUp';
 import SignIn from '../components/SignIn'
+import Footer from '../components/Footer'
 import { fetchLists } from '../actions/listActions';
 import Container from 'react-bootstrap/Container'
 
@@ -46,6 +47,7 @@ class App extends Component {
             </Switch>
             <NotificationContainer />
             </Container>
+            <Footer/>
       </div>
     )
   }

@@ -29,7 +29,6 @@ class CreateListForm extends Component {
       description: description,
       user_id: this.props.currentUser.id,
     };
-    console.log(list);
     this.props.createList(list);
     // this.props.history.push('/');
   };
