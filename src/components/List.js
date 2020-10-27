@@ -11,7 +11,7 @@ class List extends Component {
     return (
       <li className="list-card" id={list.id + "-list-card"}>
        <h2>{list.name}</h2>
-       <Link to={`/lists/${list.id}`}>
+       <Link className="btn btn-outline-primary" to={`/lists/${list.id}`}>
        More information
       </Link>
        {/* <h4>by: {list.user.username}</h4>

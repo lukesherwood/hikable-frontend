@@ -27,7 +27,7 @@ class UpdateListHikes extends Component {
     return (
       <div>
         <div>
-          {this.props.signedIn ?
+          {this.props.signedIn  && !this.props.list ? // checked if signed in and not on a list page
          ( <DropdownButton
             id="dropdown-basic-button"
             title="Add to list"
@@ -40,7 +40,7 @@ class UpdateListHikes extends Component {
           }
         </div>
         <div>
-          {this.props.list ? (
+          {this.props.list ? ( // if on a list page only want to see remove from list
             <Button
               variant="outline-danger"
               size="sm"

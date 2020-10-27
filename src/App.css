@@ -97,13 +97,24 @@ ul {
     font-size: 3rem;
     position: relative;
     top: 20%;
-    -webkit-text-stroke-width: 0.5px;
-    -webkit-text-stroke-color: black;
  }
- .home-link a{
-     text-decoration: none;
-     color: white;
- }
+
+ .btn-primary {
+    color: white;
+    background-color: #216b40;
+    border-color: white
+}
+
+.btn-primary:hover {
+    color: rgb(102, 101, 101);
+    background-color: #5e0000;
+    border-color: #000000
+}
+
+.nav-pills .nav-link.active {
+    background-color: #216b40!important;
+}
+
  @media only screen and (max-width: 600px) {
      .cards {
         display: block;
@@ -112,11 +123,7 @@ ul {
         width: 115%;
         margin-left: -49px;
      }
-     .list-card {
-        width: 100%;
-        left: 0px;
-        position: absolute;
-     }
+    
      .home-header {
         font-size: 2rem;
      }
