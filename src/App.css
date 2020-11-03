@@ -1,3 +1,13 @@
+body {
+    font-family: 'Titillium Web', "Bitstream Vera Serif", sans-serif;
+}
+
+.container-fluid {
+    min-height: 100vh; /* will cover the 100% of viewport */
+    display: block;
+    position: relative;
+}
+
 .hike-card-info {
     line-height: 150%;
 }
@@ -36,7 +46,7 @@ ul {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
-    justify-content: center;
+    /* justify-content: center; */
   }
 .card img {
     width: 100%;  
@@ -64,6 +74,7 @@ ul {
     color: white;
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6) ), url('/Hikable-home-image.jpg');
     height: 100%;
+    padding-bottom: 300px;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -119,13 +130,22 @@ ul {
     font-size: 0.8rem;
 }
 
+.footer {
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    display: inline-block;
+}
+
  @media only screen and (max-width: 600px) {
+
      .cards {
         display: block;
-        left: 0px;
-        position: absolute;
-        width: 115%;
-        margin-left: -49px;
+        left: -10px;
+        position: relative;
+        width: auto;
+        margin-left: -60px;
+        margin-right: -50px;
      }
     
      .home-header {

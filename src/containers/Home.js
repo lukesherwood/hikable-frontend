@@ -7,7 +7,7 @@ class Home extends Component {
     render () {
       return (
         <div className="home">
-          <div className="home-image" style={{height:"3600px", position: "absolute", width: "100%", left: "0px"}}> 
+          <div className="home-image" style={{height: "auto", position: "absolute", width: "100%", left: "0px"}}> 
           {/* image here with css */} 
           <div className="home-header">
             <p>Your favourite hike is just around the corner.</p>

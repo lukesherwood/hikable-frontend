@@ -48,6 +48,7 @@ class App extends Component {
             <NotificationContainer />
             </Container>
             <Footer/>
+            
       </div>
     )
   }

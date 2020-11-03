@@ -5,7 +5,7 @@ import Nav from "react-bootstrap/Nav";
 class Footer extends Component {
   render() {
     return (
-      <div className="sticky-bottom">
+      <div className="footer">
         <Navbar className="navbar-bottom justify-content-center" bg="dark" variant="dark">
           <Navbar.Brand href="/">
             <img src="/Hikable-logo.png" alt="hikable-logo" width="70" />
