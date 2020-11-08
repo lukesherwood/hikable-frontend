@@ -8,7 +8,7 @@ class Lists extends Component {
   render() {
     const { lists } = this.props;
     const listsArray = lists.map((list) => {
-      return <List key={list.id} list={list} />;
+      return <List key={list.id} list={list} deleteList={this.props.deleteList} />;
     });
 
     return (

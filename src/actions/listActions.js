@@ -51,8 +51,16 @@ export const createList = (listInfo) => {
 };
 
 export const addHikeToList = (list, hike) => {
-  console.log(list, hike)
-  const newListObj = {list:{ name: list.name, description: list.description, id: list.id, user_id: list.user.id}, hike:{hike_id: hike.id}}
+  console.log(list, hike);
+  const newListObj = {
+    list: {
+      name: list.name,
+      description: list.description,
+      id: list.id,
+      user_id: list.user.id,
+    },
+    hike: { hike_id: hike.id },
+  };
   return (dispatch) => {
     axios
       .put(`http://localhost:3001/api/v1/lists/${list.id}`, newListObj, {
@@ -80,17 +88,17 @@ export const addHikeToList = (list, hike) => {
 };
 
 export const deleteHike = (list, hike) => {
-  const newListObj = {list:{ id: list.id}, hike: {hike_id: hike.id}}
-  console.log(newListObj)
+  const newListObj = { list: { id: list.id }, hike: { hike_id: hike.id } };
+  console.log(newListObj);
   return (dispatch) => {
     axios
-    .put(`http://localhost:3001/api/v1/lists/${list.id}`, newListObj, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
+      .put(`http://localhost:3001/api/v1/lists/${list.id}`, newListObj, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then((data) => {
         dispatch({ type: "UPDATE_LIST", list: data.data });
         NotificationManager.success(
@@ -106,6 +114,35 @@ export const deleteHike = (list, hike) => {
         );
       });
   };
-};
+}
 
-
+export const deleteList = (inputList) => {
+  const data = {list: inputList}
+  console.log(data);
+  return (dispatch) => {
+    fetch(`http://localhost:3001/api/v1/lists/${inputList.id}`, {
+    method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => response.json())
+      .then(() => {
+        dispatch({ type: "DELETE_LIST", payload:inputList });
+        NotificationManager.success(
+          `Successfully deleted your list, ${inputList.name}`,
+          "Success!"
+        );
+      })
+      .catch(function (error) {
+        // handle error
+        NotificationManager.error(
+          `Error while deleting list!, ${error}`,
+          "Error!"
+        );
+      });
+  };
+}

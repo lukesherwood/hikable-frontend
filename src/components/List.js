@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
 // import Hikes from './Hikes'
 
 class List extends Component {
 
+  handleClick = (event, list) => {
+    this.props.deleteList(list)
+  }
 
   render() {
     const { list } = this.props;
@@ -14,6 +18,7 @@ class List extends Component {
        <Link className="btn btn-outline-primary" to={`/lists/${list.id}`}>
        More information
       </Link>
+      <Button onClick={(e) => this.handleClick(e, list)} variant="outline-danger"> Delete List</Button>
        {/* <h4>by: {list.user.username}</h4>
        <p>{list.description}</p>
        <h3>Hikes:</h3>

@@ -25,10 +25,18 @@ const listsReducer = (state = { lists: [], loading: false, error: "" }, action) 
                 loading: false,
                 lists: [...state.lists, action.list]
             }
+        case 'DELETE_LIST':
+            console.log(action)
+            return {
+                ...state, 
+                lists: state.lists.filter(l => l.id !== action.payload.id), 
+                loading: false,
+                error: ''
+            }         
         case 'UPDATE_LIST':
             const index = state.lists.findIndex(list => list.id === action.list.id)
             const newArray = [...state.lists]
-            newArray[index] = action.list            
+            newArray[index] = action.list   
         return {
             ...state,
             loading: false,

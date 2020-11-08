@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from "react-router-dom";
-import {fetchLists} from "../actions/listActions"
+import {deleteList, fetchLists} from "../actions/listActions"
 import Lists from "../components/Lists"
 // import CreateListForm from '../components/CreateListForm';
 
@@ -25,7 +25,7 @@ class ListsContainer extends React.Component {
       }
         return(
             <div className="lists-container">
-              <Lists lists={this.props.lists} currentUser={this.props.currentUser}/>
+              <Lists lists={this.props.lists} currentUser={this.props.currentUser} deleteList={this.props.deleteList}/>
             </div>
         )
     }
@@ -42,6 +42,7 @@ const mapStateToProps = (state) => {
   const mapDispatchToProps = dispatch => {
     return {
       fetchLists: () => dispatch(fetchLists()),
+      deleteList: (list) => dispatch(deleteList(list))
     }
   }
 

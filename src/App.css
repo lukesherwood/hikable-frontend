@@ -4,7 +4,6 @@ body {
 
 .container-fluid {
     min-height: 100vh; /* will cover the 100% of viewport */
-    display: block;
     position: relative;
 }
 
@@ -74,7 +73,7 @@ ul {
     color: white;
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6) ), url('/Hikable-home-image.jpg');
     height: 100%;
-    padding-bottom: 300px;
+    padding-bottom: 100px;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -89,15 +88,11 @@ ul {
     color: white;
     text-align: center;
     font-size: 5rem;
-    position: relative;
-    top: 8%;
  }
  .home-feature {
      color: white;
     text-align: center;
     font-size: 3rem;
-    position: relative;
-    top: 12%;
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: black;
  }
@@ -106,8 +101,6 @@ ul {
     color: white;
     text-align: center;
     font-size: 3rem;
-    position: relative;
-    top: 20%;
  }
 
  .btn-primary {
@@ -131,10 +124,9 @@ ul {
 }
 
 .footer {
-    top: auto;
     bottom: 0;
     width: 100%;
-    display: inline-block;
+    /* display: inline-block; */
 }
 
  @media only screen and (max-width: 600px) {
@@ -143,9 +135,8 @@ ul {
         display: block;
         left: -10px;
         position: relative;
-        width: auto;
-        margin-left: -60px;
-        margin-right: -50px;
+        margin-left: -50px;
+        margin-right: -33px;
      }
     
      .home-header {
