@@ -28,7 +28,7 @@ class Home extends Component {
           <div className="home-link">
             <Link to="/hikes" className="btn btn-primary btn-lg" role="button" >Click here to get started</Link>
           </div>
-          <br></br>
+           <br></br>
           </div>
         </div>
       );

@@ -13,7 +13,7 @@ class NavbarClass extends React.Component {
   render() {
     return (
       <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
-        <Navbar.Brand href='/'>
+        <Navbar.Brand as={NavLink} to='/'>
         <img src="/Hikable-logo.png" alt="" height="80" width="150"/>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
