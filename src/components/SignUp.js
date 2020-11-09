@@ -126,7 +126,6 @@ class Signup extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  // does this need to be connected? can't we passed dispatch in?
   return {
     signUserUp: (userInfo) => dispatch(signUserUp(userInfo)),
   };

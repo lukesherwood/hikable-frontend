@@ -9,12 +9,15 @@ class UpdateListHikes extends Component {
   componentDidMount() {
     this.props.fetchLists();
   }
+
   handleDelete = () => {
     this.props.deleteHike(this.props.list, this.props.hike);
   };
+
   handleClick = (event, list) => {
     this.props.addHikeToList(list, this.props.hike);
   };
+  
   renderCreateForm = () => {
     // return <CreateListForm/> not working, need to set up a modal
   };
@@ -36,7 +39,7 @@ class UpdateListHikes extends Component {
     return (
       <div>
         <div>
-          {this.props.signedIn && !this.props.list ? ( // checked if signed in and not on a list page
+          {this.props.signedIn && !this.props.list ? (
             <DropdownButton
               id="dropdown-basic-button"
               title="Add to list"
@@ -49,7 +52,7 @@ class UpdateListHikes extends Component {
           ) : null}
         </div>
         <div>
-          {this.props.list ? ( // if on a list page only want to see remove from list
+          {this.props.list ? (
             <Button
               variant="outline-danger"
               size="sm"
@@ -73,7 +76,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addHikeToList: (list, hikeId) => dispatch(addHikeToList(list, hikeId)), // how does it get these list ans hikeID?
+    addHikeToList: (list, hikeId) => dispatch(addHikeToList(list, hikeId)),
     fetchLists: () => dispatch(fetchLists()),
     deleteHike: (list, hike) => dispatch(deleteHike(list, hike)),
   };

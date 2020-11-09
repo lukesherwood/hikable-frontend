@@ -1,3 +1,4 @@
+import { NotificationManager } from "react-notifications";
 const axios = require("axios").default;
 
 export const fetchHikes = () => {
@@ -16,7 +17,10 @@ export const fetchHikes = () => {
       })
       .catch(function (error) {
         // handle error
-        console.log(error);
+        NotificationManager.error(
+          `Error while fetching hikes!, ${error}`,
+          "Error!"
+        );
       });
   };
 };

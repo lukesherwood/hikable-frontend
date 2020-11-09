@@ -19,12 +19,6 @@ class List extends Component {
        More information
       </Link>
       <Button onClick={(e) => this.handleClick(e, list)} variant="outline-danger"> Delete List</Button>
-       {/* <h4>by: {list.user.username}</h4>
-       <p>{list.description}</p>
-       <h3>Hikes:</h3>
-       <ul>
-         <li><Hikes hikes={list.hikes}/></li>
-       </ul> */}
       </li>
     );
   }

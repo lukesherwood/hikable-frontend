@@ -26,7 +26,6 @@ const listsReducer = (state = { lists: [], loading: false, error: "" }, action) 
                 lists: [...state.lists, action.list]
             }
         case 'DELETE_LIST':
-            console.log(action)
             return {
                 ...state, 
                 lists: state.lists.filter(l => l.id !== action.payload.id), 

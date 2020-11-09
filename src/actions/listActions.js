@@ -114,24 +114,23 @@ export const deleteHike = (list, hike) => {
         );
       });
   };
-}
+};
 
 export const deleteList = (inputList) => {
-  const data = {list: inputList}
-  console.log(data);
+  const data = { list: inputList };
   return (dispatch) => {
     fetch(`http://localhost:3001/api/v1/lists/${inputList.id}`, {
-    method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`
-        },
-        body: JSON.stringify(data),
-      })
-      .then(response => response.json())
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
       .then(() => {
-        dispatch({ type: "DELETE_LIST", payload:inputList });
+        dispatch({ type: "DELETE_LIST", payload: inputList });
         NotificationManager.success(
           `Successfully deleted your list, ${inputList.name}`,
           "Success!"
@@ -145,4 +144,4 @@ export const deleteList = (inputList) => {
         );
       });
   };
-}
+};

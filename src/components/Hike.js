@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import UpdateListHikes from '../components/UpdateListHikes'
 
-// import {useParams} from 'react-router-dom'
 
 class Hike extends Component {
     
