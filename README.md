@@ -1,68 +1,22 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Hikable - Your favorite hike is just around the corner
+### A directory of hikes that you can learn about and save for later
+The broad idea is an app like Yelp but for hiking tracks. Particularly relevant for New Zealand as there is a functioning public API which contains almost all hiking tracks in the country and their own website is rather poor and hard to navigate. 
+Backend is built with Ruby on Rails, users are securely managed with Devise and JWT tokens are used to manage user sessions. Database and server are with PostgreSQL.
+Frontend is built with React-JS and state is managed with Redux. Styling with Bootstrap and custom CSS.
 
-## Available Scripts
+## Get Started
+Make sure you've cloned both the front-end (https://github.com/lukesherwood/hikable-frontend) and back-end (https://github.com/lukesherwood/hikable-api)
+Navigate to the API directory and 'bundle install'
+Set up the database with 'rails db:create', 'rails db:migrate' and then run the seed data 'rails db:seed'
+Start the 'rails server'
+Navigate to the Frontend directory in a separate terminal and run 'npm start'
+You can then view the website in your browser at http://localhost:3000
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Future updates
+ - Add review functionality to be able to rate hikes in order to ensure that people find the best hikes.
+ - Hook into an external API (api.doc.govt.nz) so that all New Zealand hikes are populated.
+ - Add ability for user to add their own hikes to the database.
+ - Add filters to hikes page - for example by location, difficulty, distance from current location...
+ - Ability for users to add their own pictures to the hikes when reviewing.
+ - Link to Google Maps for driving directions from current location.
+  
