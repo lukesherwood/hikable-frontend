@@ -16,7 +16,6 @@ export const fetchLists = () => {
         dispatch({ type: "ADD_LISTS", lists: data.data });
       })
       .catch(function (error) {
-        // handle error
         dispatch({ type: "ERROR_LOADING", error: error }); // changes state so that user login sign up links are shown if fetch doesn't work due to not being logged in
       });
   };
@@ -41,7 +40,6 @@ export const createList = (listInfo) => {
         dispatch({ type: "ADD_LIST", list: data.data });
       })
       .catch(function (error) {
-        // handle error
         NotificationManager.error(
           `Error while creating new list!, ${error}`,
           "Error!"
@@ -78,7 +76,6 @@ export const addHikeToList = (list, hike) => {
         );
       })
       .catch(function (error) {
-        // handle error
         NotificationManager.error(
           `Error while updating new list!, ${error}`,
           "Error!"
@@ -107,7 +104,6 @@ export const deleteHike = (list, hike) => {
         );
       })
       .catch(function (error) {
-        // handle error
         NotificationManager.error(
           `Error while updating list!, ${error}`,
           "Error!"
@@ -137,7 +133,6 @@ export const deleteList = (inputList) => {
         );
       })
       .catch(function (error) {
-        // handle error
         NotificationManager.error(
           `Error while deleting list!, ${error}`,
           "Error!"

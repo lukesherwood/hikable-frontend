@@ -1,5 +1,4 @@
 import axios from "axios";
-// React Notification
 import { NotificationManager } from 'react-notifications';
 
 const setUser = (payload) => ({ type: "SET_USER", payload });
@@ -57,7 +56,6 @@ export const autoLogin = () => (dispatch) => {
       })
         .then((data) => {
           if (data.message) {
-            console.log("token expired")
             NotificationManager.error(`Error while signing in! ${data.message}`, 'Error!')
             localStorage.removeItem("token");
           } else if(data.data.id) {

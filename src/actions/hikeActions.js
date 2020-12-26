@@ -16,7 +16,6 @@ export const fetchHikes = () => {
         dispatch({ type: "ADD_HIKES", hikes: data.data });
       })
       .catch(function (error) {
-        // handle error
         NotificationManager.error(
           `Error while fetching hikes!, ${error}`,
           "Error!"

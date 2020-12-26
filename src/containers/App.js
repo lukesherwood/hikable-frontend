@@ -11,7 +11,6 @@ import ListShow from '../components/ListShow'
 
 import {autoLogin, logUserOut} from '../actions/userActions'
 
-// React Notification
 import 'react-notifications/lib/notifications.css';
 import { NotificationContainer } from 'react-notifications';
 import SignUp from '../components/SignUp';

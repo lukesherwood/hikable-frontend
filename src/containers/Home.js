@@ -1,14 +1,19 @@
-import React, { Component } from 'react';
-import {Link} from "react-router-dom";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 class Home extends Component {
-
-  
-    
-    render () {
-      return (
-        <div className="home">
-          <div className="home-image" style={{height: "auto", position: "absolute", width: "100%", left: "0px"}}> 
-          {/* image here with css */} 
+  render() {
+    return (
+      <div className="home">
+        <div
+          className="home-image"
+          style={{
+            height: "auto",
+            position: "absolute",
+            width: "100%",
+            left: "0px",
+          }}
+        >
+          {/* image here with css */}
           <br></br>
           <br></br>
           <div className="home-header">
@@ -26,13 +31,15 @@ class Home extends Component {
           <br></br>
           <br></br>
           <div className="home-link">
-            <Link to="/hikes" className="btn btn-primary btn-lg" role="button" >Click here to get started</Link>
+            <Link to="/hikes" className="btn btn-primary btn-lg" role="button">
+              Click here to get started
+            </Link>
           </div>
-           <br></br>
-          </div>
+          <br></br>
         </div>
-      );
-    }
+      </div>
+    );
   }
-  
-  export default Home;
+}
+
+export default Home;
