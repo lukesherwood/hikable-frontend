@@ -17,7 +17,7 @@ class Lists extends Component {
         <ul className="cards">
           {listsArray}
           <Accordion>
-            <Accordion.Toggle as={Button} variant="primary" eventKey="0">
+            <Accordion.Toggle as={Button} variant="primary" id="toggle-new-list-form" eventKey="0">
               Create a new list
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="0">

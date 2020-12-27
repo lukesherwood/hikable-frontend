@@ -30,6 +30,11 @@ class CreateListForm extends Component {
       user_id: this.props.currentUser.id,
     };
     this.props.createList(list);
+    this.setState({
+      name: "",
+      description: ""
+    })
+    document.getElementById('toggle-new-list-form').click()
   };
 
   render() {
