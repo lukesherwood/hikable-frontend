@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 // import Hikes from './Hikes'
 
-class List extends Component {
+function List (props) {
 
-  handleClick = (event, list) => {
-    this.props.deleteList(list)
+  function handleClick (event, list) {
+    props.deleteList(list)
   }
 
-  render() {
-    const { list } = this.props;
+    const { list } = props;
 
     return (
       <li className="list-card" id={list.id + "-list-card"}>
@@ -18,10 +17,9 @@ class List extends Component {
        <Link className="btn btn-outline-primary" to={`/lists/${list.id}`}>
        More information
       </Link>
-      <Button onClick={(e) => this.handleClick(e, list)} variant="outline-danger"> Delete List</Button>
+      <Button onClick={(e) => handleClick(e, list)} variant="outline-danger"> Delete List</Button>
       </li>
     );
   }
-};
 
 export default List;
