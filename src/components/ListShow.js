@@ -1,9 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import Hikes from "./Hikes";
 
-class ListShow extends Component {
-  render() {
-    const { lists, params } = this.props;
+function ListShow (props) {
+    const { lists, params } = props;
     if (lists) {
       let list = lists.find((l) => l.id === parseInt(params.match.params.id) );
       if (list) {
@@ -19,6 +18,5 @@ class ListShow extends Component {
     }
     return <div>Sorry that list doesn't exist</div>
   }
-}
 
 export default ListShow;
