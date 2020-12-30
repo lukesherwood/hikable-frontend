@@ -1,7 +1,7 @@
 import React from "react";
 import Hike from "./Hike";
 
-function Hikes(props) {
+export default function Hikes(props) {
   const { hikes } = props;
   const list = props.list || null;
   const hikeList = hikes.map((hike) => {
@@ -10,5 +10,3 @@ function Hikes(props) {
 
   return <ul className="cards">{hikeList}</ul>;
 }
-
-export default Hikes;

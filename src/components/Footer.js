@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
-function Footer() {
+export default function Footer() {
   return (
     <div className="footer">
       <Navbar
@@ -21,5 +21,3 @@ function Footer() {
     </div>
   );
 }
-
-export default Footer;

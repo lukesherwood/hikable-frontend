@@ -9,7 +9,6 @@ import Nav from 'react-bootstrap/Nav'
 
 class NavbarClass extends React.Component {
 
-
   render() {
     return (
       <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">

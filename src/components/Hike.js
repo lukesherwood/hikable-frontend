@@ -1,7 +1,7 @@
 import React from "react";
 import UpdateListHikes from "../components/UpdateListHikes";
 
-function Hike(props) {
+export default function Hike(props) {
   const { hike } = props;
 
   const list = props.list || null;
@@ -23,5 +23,3 @@ function Hike(props) {
     </li>
   );
 }
-
-export default Hike;

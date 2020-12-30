@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 // import Hikes from './Hikes'
 
-function List (props) {
+export default function List (props) {
 
   function handleClick (event, list) {
     props.deleteList(list)
@@ -21,5 +21,3 @@ function List (props) {
       </li>
     );
   }
-
-export default List;
