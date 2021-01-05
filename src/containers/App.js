@@ -5,7 +5,7 @@ import '../App.css';
 
 import HikesContainer from './HikesContainer';
 import ListsContainer from './ListsContainer'
-import Home from './Home'
+import Home from '../components/Home'
 import NavbarClass from './Navbar'
 import ListShow from '../components/ListShow'
 
@@ -13,8 +13,8 @@ import {autoLogin, logUserOut} from '../actions/userActions'
 
 import 'react-notifications/lib/notifications.css';
 import { NotificationContainer } from 'react-notifications';
-import SignUp from '../components/SignUp';
-import SignIn from '../components/SignIn'
+import SignUp from './SignUp';
+import SignIn from './SignIn'
 import Footer from '../components/Footer'
 import { fetchLists } from '../actions/listActions';
 import Container from 'react-bootstrap/Container'

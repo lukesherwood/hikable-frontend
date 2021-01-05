@@ -1,5 +1,5 @@
 import React from "react";
-import UpdateListHikes from "../components/UpdateListHikes";
+import UpdateListHikes from "../containers/UpdateListHikes";
 
 export default function Hike(props) {
   const { hike } = props;

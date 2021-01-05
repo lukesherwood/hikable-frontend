@@ -1,6 +1,6 @@
 import React from "react";
 import List from "./List";
-import CreateListForm from "./CreateListForm";
+import CreateListForm from "../containers/CreateListForm";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
 
