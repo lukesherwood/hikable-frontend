@@ -49,7 +49,6 @@ export const createList = (listInfo) => {
 };
 
 export const addHikeToList = (list, hike) => {
-  console.log(list, hike);
   const newListObj = {
     list: {
       name: list.name,
@@ -86,7 +85,6 @@ export const addHikeToList = (list, hike) => {
 
 export const deleteHike = (list, hike) => {
   const newListObj = { list: { id: list.id }, hike: { hike_id: hike.id } };
-  console.log(newListObj);
   return (dispatch) => {
     axios
       .put(`http://localhost:3001/api/v1/lists/${list.id}`, newListObj, {
