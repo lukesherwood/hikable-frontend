@@ -6,9 +6,6 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 // import CreateListForm from "./CreateListForm";
 class UpdateListHikes extends Component {
-  componentDidMount() {
-    this.props.fetchLists();
-  }
 
   handleDelete = () => {
     this.props.deleteHike(this.props.list, this.props.hike);
@@ -23,7 +20,7 @@ class UpdateListHikes extends Component {
   };
 
   render() {
-    const { lists } = this.props.lists;
+    const { lists } = this.props.lists; // need to pass in lists
     const listItems = lists.map((item) => {
       return (
         <Dropdown.Item onClick={(e) => this.handleClick(e, item)}>

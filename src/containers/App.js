@@ -43,6 +43,7 @@ class App extends Component {
               : null }
               <Route exact path='/signIn' component={SignIn}/>
               <Route exact path='/signUp' component={SignUp}/>
+              <Route render={() => <h1>404: page not found</h1>} />{" "}
             </Switch>
             <NotificationContainer />
           </Container>

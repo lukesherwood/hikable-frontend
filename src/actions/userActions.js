@@ -55,8 +55,8 @@ export const autoLogin = () => (dispatch) => {
         },
       })
         .then((data) => {
-          if (data.message) {
-            NotificationManager.error(`Error while signing in! ${data.message}`, 'Error!')
+          if (data.data.message) {
+            NotificationManager.error(`Error while signing in! ${data.data.message}`, 'Error!')
             localStorage.removeItem("token");
           } else if(data.data.id) {
             dispatch(setUser(data.data));
