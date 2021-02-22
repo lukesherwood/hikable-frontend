@@ -40,9 +40,6 @@ class CreateListForm extends Component {
           }}
         >
           {({
-            values,
-            handleChange,
-            handleBlur,
             touched,
             errors,
             handleSubmit,
@@ -51,29 +48,17 @@ class CreateListForm extends Component {
             <Form inline onSubmit={handleSubmit}>
               <Form.Group>
                 <Form.Label size="sm">Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  className={
-                    "mb-2 mr-sm-2 " + touched.name && errors.name
-                      ? 'is-invalid'
-                      : null
-                  }
+                <Field
+                  className={'form-control ' + (errors.name && touched.name ? 'is-invalid' : '')}
                   size="sm"
                   name="name"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.name}
                 />
                 <ErrorMessage name="name" component="div" className="text-danger"/>
               </Form.Group>
               <Form.Group>
                 <Form.Label size="sm">Description</Form.Label>
                 <Field
-                  className={ "mb-2 mr-sm-2 " +
-                  touched.description && errors.description
-                      ? 'is-invalid'
-                      : null
-                  }
+                  className={'form-control ' + (errors.description && touched.description ? 'is-invalid' : '')}
                   size="sm"
                   name="description"
                 />
