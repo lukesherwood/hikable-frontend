@@ -5,7 +5,7 @@ import { signUserUp } from "../actions/userActions";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
-import { Formik, Field, ErrorMessage } from "formik";
+import { Formik, Field, ErrorMessage} from "formik";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
@@ -31,7 +31,7 @@ class Signup extends Component {
       <div className="sign-up-container">
         <h2>Sign Up</h2>
         <Formik
-          initialValues={{ email: "", password: "" }}
+          initialValues={{ email: "", password: "", username: "", password_confirmation: "" }}
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
@@ -45,7 +45,8 @@ class Signup extends Component {
             this.props.signUserUp(user);
             resetForm();
             setSubmitting(false);
-            this.props.history.push("/");
+            const { history } = this.props
+            history.push('/')
           }}
         >
           {({ touched, errors, handleSubmit, isSubmitting }) => (

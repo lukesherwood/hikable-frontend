@@ -55,12 +55,14 @@ export const fetchUser = (userInfo) => (dispatch) => {
         );
       }
     })
-    .catch((error) =>
+    .catch((error) => {
+
       NotificationManager.error(
         `Error while signing in, please try again`,
         "Error!"
       )
-    );
+    }
+    )
 };
 
 export const autoLogin = () => (dispatch) => {

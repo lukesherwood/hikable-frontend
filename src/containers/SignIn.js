@@ -17,7 +17,12 @@ const validationSchema = Yup.object().shape({
 
 class SignIn extends Component {
 
+  state = {
+    redirect: false
+  }
+
   render() {
+
     return (
       <div className="sign-in-container">
         <h2>Sign In</h2>
@@ -32,10 +37,11 @@ class SignIn extends Component {
               email,
               password,
             };
-            this.props.fetchUser(user);
+            this.props.fetchUser(user)
+            const { history } = this.props
+            history.push('/')
             resetForm();
             setSubmitting(false);
-            this.props.history.push("/");
           }}
         >
           {({
