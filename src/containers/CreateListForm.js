@@ -46,13 +46,13 @@ class CreateListForm extends Component {
           <Form.Group>
             <Form.Label size="sm"> Name </Form.Label>
             <Form.Control
-              required
               type="text"
               className="mb-2 mr-sm-2"
               size="sm"
               name="name"
               onChange={(event) => this.handleChange(event)}
               value={name}
+              required
             />
           </Form.Group>
           <Form.Group>
@@ -64,6 +64,7 @@ class CreateListForm extends Component {
               name="description"
               onChange={(event) => this.handleChange(event)}
               value={description}
+              required
             />
           </Form.Group>
           <Button variant="primary" type="submit">

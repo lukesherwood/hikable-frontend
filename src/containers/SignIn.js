@@ -62,6 +62,7 @@ class SignIn extends Component {
                 name="email"
                 onChange={(event) => this.handleChange(event)}
                 value={email}
+                required
               />
             </Form.Group>
             </Col>
@@ -76,6 +77,7 @@ class SignIn extends Component {
                 name="password"
                 onChange={(event) => this.handleChange(event)}
                 value={password}
+                required
               />
             </Form.Group>
             </Col>

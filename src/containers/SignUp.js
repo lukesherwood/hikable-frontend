@@ -38,7 +38,7 @@ class Signup extends Component {
     this.props.history.push("/");
   };
 
-  handleErrors = () => {
+  handleErrors = () => { // does this even work???
     return (
       <div>
         <ul>
@@ -66,6 +66,7 @@ class Signup extends Component {
                 name="username"
                 onChange={(event) => this.handleChange(event)}
                 value={username}
+                required
               />
             </Form.Group>
             </Col>
@@ -80,6 +81,7 @@ class Signup extends Component {
                 name="email"
                 onChange={(event) => this.handleChange(event)}
                 value={email}
+                required
               />
             </Form.Group>
             </Col>
@@ -94,6 +96,7 @@ class Signup extends Component {
                 name="password"
                 onChange={(event) => this.handleChange(event)}
                 value={password}
+                required
               />
             </Form.Group>
             </Col>
@@ -108,6 +111,7 @@ class Signup extends Component {
                 name="password_confirmation"
                 onChange={(event) => this.handleChange(event)}
                 value={password_confirmation}
+                required
               />
             </Form.Group>
             </Col>
