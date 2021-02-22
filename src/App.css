@@ -1,163 +1,175 @@
 body {
-    font-family: 'Titillium Web', "Bitstream Vera Serif", sans-serif;
+  font-family: "Titillium Web", "Bitstream Vera Serif", sans-serif;
 }
 
 .container-fluid {
-    min-height: 100vh; /* will cover the 100% of viewport */
-    position: relative;
+  min-height: 100vh; /* will cover the 100% of viewport */
+  position: relative;
 }
 
 .hike-card-info {
-    line-height: 150%;
+  line-height: 150%;
 }
 
 .hike-card-location {
-    font-style: italic;
+  font-style: italic;
 }
 
 ul {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  }
-  
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-    min-width: 468px;
-    min-height: 60vh;
-    padding-right: 0px;
-    padding-left: 0px;
-  }
-
-  .card img {
-    width: 100%;
-    height: 35vh;
-    object-fit: cover;
-  }
-
-.navbar {
-    padding: 0;
-    font-size: xx-large;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.nav-link {
-    color: grey;
-}
-
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    /* justify-content: center; */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  min-width: 468px;
+  min-height: 60vh;
+  padding-right: 0px;
+  padding-left: 0px;
 }
 
 .card img {
-    width: 100%;  
+  width: 100%;
+  height: 35vh;
+  object-fit: cover;
+}
+
+.navbar {
+  padding: 0;
+  font-size: xx-large;
+}
+
+.nav-link {
+  color: grey;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  /* justify-content: center; */
+}
+
+.card img {
+  width: 100%;
 }
 
 .list-card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 100%;
-    padding: 0 20px 20px;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 100%;
+  padding: 0 20px 20px;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
 }
 
 .remove-from-list-button {
-    float: right;
+  float: right;
 }
 
 .add-to-list-button {
-    float: right;
+  float: right;
 }
 
 .dropDownMenu {
-    float: right;
+  float: right;
 }
 
 .home-image {
-    background-color: rgb(187, 187, 187);
-    color: white;
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6) ), url('/Hikable-home-image.jpg');
-    height: 100%;
-    padding-bottom: 100px;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+  background-color: rgb(187, 187, 187);
+  color: white;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+    url("/Hikable-home-image.jpg");
+  height: 100%;
+  padding-bottom: 100px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
 }
 
-.home-header { 
-    -webkit-text-stroke-width: 0.5px;
-    -webkit-text-stroke-color: black;
-    color: white;
-    text-align: center;
-    font-size: 5rem;
- }
+.home-header {
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: black;
+  color: white;
+  text-align: center;
+  font-size: 5rem;
+}
 
- .home-feature {
-     color: white;
-    text-align: center;
-    font-size: 3rem;
-    -webkit-text-stroke-width: 0.5px;
-    -webkit-text-stroke-color: black;
- }
+.home-feature {
+  color: white;
+  text-align: center;
+  font-size: 3rem;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: black;
+}
 
- .home-link {
-    color: white;
-    text-align: center;
-    font-size: 3rem;
- }
+.home-link {
+  color: white;
+  text-align: center;
+  font-size: 3rem;
+}
 
- .btn-primary {
-    color: white;
-    background-color: #216b40;
-    border-color: white
+.btn-primary {
+  color: white;
+  background-color: #216b40;
+  border-color: white;
 }
 
 .btn-primary:hover {
-    color: rgb(102, 101, 101);
-    background-color: #5e0000;
-    border-color: #000000
+  color: rgb(102, 101, 101);
+  background-color: #5e0000;
+  border-color: #000000;
 }
 
 .nav-pills .nav-link.active {
-    background-color: #216b40!important;
+  background-color: #216b40 !important;
 }
 
 .navbar-bottom {
-    font-size: 0.8rem;
+  font-size: 0.8rem;
 }
 
 .footer {
-    bottom: 0;
-    width: 100%;
-    /* display: inline-block; */
+  bottom: 0;
+  width: 100%;
+  /* display: inline-block; */
 }
 
- @media only screen and (max-width: 600px) {
+.error {
+  border: 2px solid #ff6565;
+}
 
-    .home-header {
-        font-size: 2rem;
-    }
-    .home-feature {
-        font-size: 2rem;
-    }
-    .home-link {
-        font-size: 2rem;
-    }
+.error-message {
+  color: #ff6565;
+  padding: 0.5em 0.2em;
+  height: 1em;
+  position: relative;
+  font-size: 0.8em;
+}
 
-    .card {
-        min-width: 320px;
-    }
-}  
+@media only screen and (max-width: 600px) {
+  .home-header {
+    font-size: 2rem;
+  }
+  .home-feature {
+    font-size: 2rem;
+  }
+  .home-link {
+    font-size: 2rem;
+  }
+
+  .card {
+    min-width: 320px;
+  }
+}
 /* separate into app and hike css files */
