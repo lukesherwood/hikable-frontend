@@ -23,19 +23,22 @@ ul {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }
   
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
-    flex: 0 0 500px;
-    margin: 10px;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
-}
+    min-width: 468px;
+    min-height: 60vh;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
 
-.card-text {
-    padding: 0 20px 20px;
-    text-align: left;
-}
+  .card img {
+    width: 100%;
+    height: 35vh;
+    object-fit: cover;
+  }
 
 .navbar {
     padding: 0;
@@ -143,14 +146,6 @@ ul {
 
  @media only screen and (max-width: 600px) {
 
-    .cards {
-        display: block;
-        left: -10px;
-        position: relative;
-        margin-left: -50px;
-        margin-right: -33px;
-    }
-
     .home-header {
         font-size: 2rem;
     }
@@ -159,6 +154,10 @@ ul {
     }
     .home-link {
         font-size: 2rem;
+    }
+
+    .card {
+        min-width: 320px;
     }
 }  
 /* separate into app and hike css files */

@@ -1,5 +1,6 @@
 import React from "react";
 import Hike from "./Hike";
+import Row from "react-bootstrap/Row";
 
 export default function Hikes(props) {
   const { hikes } = props;
@@ -8,5 +9,11 @@ export default function Hikes(props) {
     return <Hike key={hike.id} hike={hike} list={list} />;
   });
 
-  return <ul className="cards">{hikeList}</ul>;
+  return (
+    <div className="cards">
+      <Row xs={1} sm={2} md={3} lg={4}>
+        {hikeList}
+      </Row>
+    </div>
+  );
 }
