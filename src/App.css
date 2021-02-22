@@ -145,16 +145,8 @@ ul {
   /* display: inline-block; */
 }
 
-.error {
-  border: 2px solid #ff6565;
-}
-
-.error-message {
-  color: #ff6565;
-  padding: 0.5em 0.2em;
-  height: 1em;
-  position: relative;
-  font-size: 0.8em;
+.form-inline .form-group {
+  margin-right:20px;
 }
 
 @media only screen and (max-width: 600px) {

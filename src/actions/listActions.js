@@ -111,8 +111,6 @@ export const deleteHike = (list, hike) => {
 };
 
 export const deleteList = (inputList) => {
-  console.log(inputList)
-  // this submits list and user, need to remove user
   const data = { list: {name: inputList.name, description: inputList.description, id:inputList.id} };
   return (dispatch) => {
     fetch(`http://localhost:3001/api/v1/lists/${inputList.id}`, {
