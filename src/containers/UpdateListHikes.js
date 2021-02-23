@@ -40,7 +40,7 @@ class UpdateListHikes extends Component {
             <DropdownButton
               id="dropdown-basic-button"
               title="Add to list"
-              variant="outline-primary"
+              variant="primary"
               size="sm"
               className="add-to-list-button"
             >
