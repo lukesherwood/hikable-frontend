@@ -28,7 +28,7 @@ ul {
   transition: 0.3s;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
-  min-width: 468px;
+  min-width: 368px;
   min-height: 60vh;
   padding-right: 0px;
   padding-left: 0px;
@@ -161,7 +161,9 @@ ul {
   }
 
   .card {
-    min-width: 320px;
+    min-width: 300px;
+    left: -7px;
   }
+
 }
 /* separate into app and hike css files */

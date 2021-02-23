@@ -34,9 +34,8 @@ class CreateListForm extends Component {
               user_id: this.props.currentUser.id,
             };
             this.props.createList(list);
-            resetForm();
             setSubmitting(false);
-            document.getElementById("toggle-new-list-form").click();
+            document.getElementById("toggle-new-list-form") ? document.getElementById("toggle-new-list-form").click() : resetForm();
           }}
         >
           {({

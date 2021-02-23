@@ -38,6 +38,10 @@ export const createList = (listInfo) => {
       )
       .then((data) => {
         dispatch({ type: "ADD_LIST", list: data.data });
+        NotificationManager.success(
+          `Successfully created a list, ${data.data.name}`,
+          "Success!"
+        );
       })
       .catch(function (error) {
         NotificationManager.error(

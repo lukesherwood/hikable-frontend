@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
+import CreateListModal from '../components/CreateListModal'
 // import CreateListForm from "./CreateListForm";
 class UpdateListHikes extends Component {
 
@@ -13,10 +14,6 @@ class UpdateListHikes extends Component {
 
   handleClick = (event, list) => {
     this.props.addHikeToList(list, this.props.hike);
-  };
-  
-  renderCreateForm = () => {
-    // return <CreateListForm/> not working, need to set up a modal
   };
 
   render() {
@@ -29,9 +26,7 @@ class UpdateListHikes extends Component {
       );
     });
     listItems.push(
-      <Dropdown.Item onClick={this.renderCreateForm}>
-        Create a new list
-      </Dropdown.Item>
+        <CreateListModal hike={this.props.hike}/>
     );
     return (
       <div>
