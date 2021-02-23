@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
@@ -10,7 +11,7 @@ export default function Footer() {
         bg="dark"
         variant="dark"
       >
-        <Navbar.Brand href="/">
+        <Navbar.Brand as={NavLink} to='/'>
           <img src="/Hikable-logo.png" alt="hikable-logo" width="70" />
         </Navbar.Brand>
         <Nav.Item>2020 Hikable, All Rights Reserved</Nav.Item>
