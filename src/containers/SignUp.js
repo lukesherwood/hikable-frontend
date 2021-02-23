@@ -45,8 +45,6 @@ class Signup extends Component {
             this.props.signUserUp(user);
             resetForm();
             setSubmitting(false);
-            const { history } = this.props
-            history.push('/')
           }}
         >
           {({ touched, errors, handleSubmit, isSubmitting }) => (
@@ -144,9 +142,9 @@ class Signup extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    signUserUp: (userInfo) => dispatch(signUserUp(userInfo)),
+    signUserUp: (userInfo) => dispatch(signUserUp(userInfo, ownProps)),
   };
 };
 

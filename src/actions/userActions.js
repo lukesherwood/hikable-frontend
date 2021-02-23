@@ -5,7 +5,7 @@ const setUser = (payload) => ({ type: "SET_USER", payload });
 
 export const logUserOut = () => ({ type: "LOG_OUT" });
 
-export const signUserUp = (userInfo) => (dispatch) => {
+export const signUserUp = (userInfo, ownProps) => (dispatch) => {
   axios
     .post(
       "http://localhost:3001/api/v1/users",
@@ -18,24 +18,24 @@ export const signUserUp = (userInfo) => (dispatch) => {
       if (authHeader.startsWith("Bearer ")) {
         const token = authHeader.substring(7, authHeader.length);
         localStorage.setItem("token", token);
-        dispatch(setUser(data.data));
+        dispatch(setUser(data.data))
+        ownProps.history.push(`/`)
         NotificationManager.success(
           `Welcome ${data.data.username}, you have successfully created an account`,
           "Successful!",
           2000
-        );
+        )
       }
     })
-    .catch(
-      (error) =>
-        NotificationManager.error(
-          `Error while creating new user, please try again`,
-          "Error!"
-        ) // push back to sign in page??
-    );
+    .catch((error) => {
+      NotificationManager.error(
+        `Error while creating new user, please try again`,
+        "Error!"
+      );
+    });
 };
 
-export const fetchUser = (userInfo) => (dispatch) => {
+export const fetchUser = (userInfo, ownProps) => (dispatch) => {
   axios
     .post(
       "http://localhost:3001/api/v1/users/sign_in",
@@ -48,21 +48,20 @@ export const fetchUser = (userInfo) => (dispatch) => {
         const token = authHeader.substring(7, authHeader.length);
         localStorage.setItem("token", token);
         dispatch(setUser(data.data));
+        ownProps.history.push(`/`)
         NotificationManager.success(
           `Welcome ${data.data.username}`,
           "Successful!",
           2000
-        );
+        )
       }
     })
     .catch((error) => {
-
       NotificationManager.error(
         `Error while signing in, please try again`,
         "Error!"
-      )
-    }
-    )
+      );
+    });
 };
 
 export const autoLogin = () => (dispatch) => {

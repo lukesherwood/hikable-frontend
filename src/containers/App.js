@@ -19,15 +19,15 @@ import Footer from '../components/Footer'
 import { fetchLists } from '../actions/listActions';
 import Container from 'react-bootstrap/Container'
 
-
 class App extends Component {
-
+  
   componentDidMount(){
     this.props.autoLogin()
     this.props.fetchLists()
   }
 
   render () {
+    
     return (
       <div className="App">
         <NavbarClass/>
@@ -56,7 +56,8 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     loggedIn: state.users.loggedIn,
-    lists: state.lists.lists
+    lists: state.lists.lists,
+    redirect: state.users.redirect
   }
 }
 

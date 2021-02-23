@@ -16,7 +16,7 @@ export default function Home() {
         <br></br>
         <br></br>
         <div className="home-header">
-          <p>Your favourite hike is just around the corner.</p>
+          <p>Your favorite hike is just around the corner.</p>
         </div>
         <br></br>
         <br></br>

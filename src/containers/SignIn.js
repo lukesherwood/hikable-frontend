@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import { Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
+
 const validationSchema = Yup.object().shape({
   email: Yup.string().email().required("Email is required"),
   password: Yup.string()
@@ -16,20 +17,14 @@ const validationSchema = Yup.object().shape({
 });
 
 class SignIn extends Component {
-
-  state = {
-    redirect: false
-  }
-
   render() {
-
     return (
       <div className="sign-in-container">
         <h2>Sign In</h2>
+
         <Formik
           initialValues={{ email: "", password: "" }}
           validationSchema={validationSchema}
-
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
             const { email, password } = values;
@@ -37,26 +32,22 @@ class SignIn extends Component {
               email,
               password,
             };
-            this.props.fetchUser(user)
-            const { history } = this.props
-            history.push('/')
+            this.props.fetchUser(user);
             resetForm();
             setSubmitting(false);
           }}
         >
-          {({
-            touched,
-            errors,
-            handleSubmit,
-            isSubmitting,
-          }) => (
+          {({ touched, errors, handleSubmit, isSubmitting }) => (
             <Form onSubmit={handleSubmit}>
               <Form.Row>
                 <Col sm={4}>
                   <Form.Group>
                     <Form.Label size="sm">Email</Form.Label>
                     <Field
-                      className={'form-control ' + (errors.email && touched.email ? 'is-invalid' : '')}
+                      className={
+                        "form-control " +
+                        (errors.email && touched.email ? "is-invalid" : "")
+                      }
                       size="sm"
                       name="email"
                       type="email"
@@ -74,7 +65,12 @@ class SignIn extends Component {
                   <Form.Group>
                     <Form.Label size="sm">Password</Form.Label>
                     <Field
-                      className={'form-control ' + (errors.password && touched.password ? 'is-invalid' : '')}
+                      className={
+                        "form-control " +
+                        (errors.password && touched.password
+                          ? "is-invalid"
+                          : "")
+                      }
                       name="password"
                       type="password"
                     />
@@ -100,11 +96,16 @@ class SignIn extends Component {
     );
   }
 }
-
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    fetchUser: (userInfo) => dispatch(fetchUser(userInfo)),
+    loggedIn: state.users.loggedIn
   };
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(SignIn));
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    fetchUser: (userInfo) => dispatch(fetchUser(userInfo, ownProps)),
+  };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignIn));

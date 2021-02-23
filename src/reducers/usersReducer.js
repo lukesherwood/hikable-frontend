@@ -13,6 +13,11 @@ const usersReducer = (state = { user: "", loggedIn: false }, action) => {
                 loggedIn: false,
                 user: {}
             }
+        case "REDIRECT":
+            return {
+                ...state,
+                redirect: action.payload
+            }
         default:
             return state
     }
