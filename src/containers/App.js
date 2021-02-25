@@ -41,8 +41,8 @@ class App extends Component {
               <Route exact path='/hikes' component={HikesContainer}/>
               <Route path='/hikes/:id' render={(params) => <HikeShow hikes={this.props.hikes} params={params}/>}/>
 
-              <AuthRoutes exact path='/lists' component={ListsContainer}/> 
-              <AuthRoutes path='/lists/:id' render={(params) => <ListShow lists={this.props.lists} params={params}/>}/>
+              <AuthRoutes exact path='/lists' loggedIn={this.props.loggedIn} component={ListsContainer} /> 
+              <AuthRoutes path='/lists/:id' loggedIn={this.props.loggedIn} render={(params) => <ListShow lists={this.props.lists} params={params}/>}/>
 
               <Route exact path='/signIn' component={SignIn}/>
               <Route exact path='/signUp' component={SignUp}/>
