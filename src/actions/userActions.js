@@ -84,11 +84,6 @@ export const autoLogin = () => (dispatch) => {
           localStorage.removeItem("token");
         } else if (data.data.id) {
           dispatch(setUser(data.data));
-          NotificationManager.success(
-            `Welcome back, ${data.data.username}`,
-            "Successful!",
-            2000
-          );
         }
       });
   }

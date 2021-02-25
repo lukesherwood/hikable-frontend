@@ -33,7 +33,7 @@ export default function CreateListModal() {
     return (
       <>
         <Dropdown.Item onClick={() => setModalShow(true)}>
-          Add hike to a new list
+          Create a new list
         </Dropdown.Item>
   
         <CreateNewModalForm

@@ -26,7 +26,7 @@ class UpdateListHikes extends Component {
       );
     });
     listItems.push(
-        <CreateListModal hike={this.props.hike}/>
+        <CreateListModal addHikeToList={this.props.addHikeToList}/>
     );
     return (
       <div>

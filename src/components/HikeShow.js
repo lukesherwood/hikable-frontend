@@ -8,6 +8,7 @@ export default function HikeShow(props) {
         return (
           <div className="hike-item">
             <h2>{hike.title}</h2>
+            <img src={hike.photo} alt={`${hike.name}`}/>
             <div className="hike-card-location">{hike.location}</div>
             <div className="hike-card-difficulty">{hike.difficulty}</div>
             <div className="hike-card-duration">{hike.duration}</div>
@@ -19,4 +20,3 @@ export default function HikeShow(props) {
     }
     return <div>Sorry that hike doesn't exist</div>;
   }
-//   no hikes in state??

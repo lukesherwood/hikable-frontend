@@ -20,6 +20,7 @@ import { fetchLists } from '../actions/listActions';
 import { fetchHikes } from '../actions/hikeActions';
 import Container from 'react-bootstrap/Container'
 import HikeShow from '../components/HikeShow';
+import AuthRoutes from '../components/AuthRoutes';
 
 class App extends Component {
   
@@ -39,12 +40,10 @@ class App extends Component {
               <Route exact path='/' component={Home}/>
               <Route exact path='/hikes' component={HikesContainer}/>
               <Route path='/hikes/:id' render={(params) => <HikeShow hikes={this.props.hikes} params={params}/>}/>
-              {this.props.loggedIn ? 
-              <>
-              <Route exact path='/lists' component={ListsContainer}/> 
-              <Route path='/lists/:id' render={(params) => <ListShow lists={this.props.lists} params={params}/>}/>
-              </>
-              : null }
+
+              <AuthRoutes exact path='/lists' component={ListsContainer}/> 
+              <AuthRoutes path='/lists/:id' render={(params) => <ListShow lists={this.props.lists} params={params}/>}/>
+
               <Route exact path='/signIn' component={SignIn}/>
               <Route exact path='/signUp' component={SignUp}/>
               <Route render={() => <h1>404: page not found</h1>} />{" "}
