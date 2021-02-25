@@ -20,13 +20,13 @@ class UpdateListHikes extends Component {
     const { lists } = this.props.lists; // need to pass in lists
     const listItems = lists.map((item) => {
       return (
-        <Dropdown.Item onClick={(e) => this.handleClick(e, item)}>
+        <Dropdown.Item key={item.name} onClick={(e) => this.handleClick(e, item)}>
           {item.name}
         </Dropdown.Item>
       );
     });
     listItems.push(
-        <CreateListModal addHikeToList={this.props.addHikeToList}/>
+        <CreateListModal key={"create-list"}addHikeToList={this.props.addHikeToList}/>
     );
     return (
       <div>
