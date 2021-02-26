@@ -21,9 +21,11 @@ class LogoutLogin extends React.Component {
           <Nav.Link as={NavLink} to='/signUp' exact>Register</Nav.Link>
           </Nav>
         ) : (
-          <Nav.Link onClick={this.handleClick}>
+          <Nav variant="pills">
+          <Nav.Link as={NavLink} to='/signOut' onClick={this.handleClick}>
             Sign out
           </Nav.Link>
+          </Nav>
         )}
       </div>
         )

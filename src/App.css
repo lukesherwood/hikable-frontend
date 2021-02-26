@@ -136,6 +136,10 @@ ul {
   background-color: #216b40 !important;
 }
 
+.search-form {
+  padding-right: 40px;
+}
+
 .navbar-bottom {
   font-size: 0.8rem;
 }

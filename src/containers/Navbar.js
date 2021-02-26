@@ -5,6 +5,7 @@ import {logUserOut} from '../actions/userActions'
 import {connect} from 'react-redux'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
+import SearchHikesForm from "./SearchHikesForm";
 
 
 class NavbarClass extends React.Component {
@@ -25,6 +26,7 @@ class NavbarClass extends React.Component {
         <Nav.Link as={NavLink} to='/hikes' exact>Hikes</Nav.Link>
         </>
         </Nav>
+        <SearchHikesForm/>
         <LogoutOrLogin currentUser={this.props.user} loggedIn={this.props.loggedIn} logUserOut={this.props.logUserOut}/>
         </Navbar.Collapse>
       </Navbar>
