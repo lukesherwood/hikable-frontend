@@ -5,7 +5,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { useSelector } from "react-redux";
 import CreateListForm from '../containers/CreateListForm';
 
-function CreateNewModalForm(props) {
+function CreateNewModalForm(props) { // this can be exported to its own file
   const currentUser = useSelector((state) => state.users.user);
     // need to get currentUser to add to create list form
     

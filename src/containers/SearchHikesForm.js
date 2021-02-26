@@ -1,29 +1,45 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { searchHikes } from '../actions/hikeActions'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Formik, Field } from "formik";
-import * as Yup from "yup";
+// import * as Yup from "yup";
+import ModalHikes from '../components/ModalHikes'
 
-const validationSchema = Yup.object().shape({
-  keyword: Yup.string()
-    .required("*Keyword is required"),
-});
+
+// const validationSchema = Yup.object().shape({
+//   keyword: Yup.string()
+//     .required("*Keyword is required"),
+// });
+
 class SearchHikesForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {modalShow: false  }
+  }
 
   render() {
     return (
       <div className="search-form">
+        <ModalHikes
+          show={this.state.modalShow}
+          onHide={() => this.setState({modalShow: false})
+        }
+          hikes={this.props.hikes}
+        />
         <Formik
           initialValues={{ keyword: ""}}
-          validationSchema={validationSchema}
+          // validationSchema={validationSchema}
 
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
             const { keyword } = values;
             this.props.searchHikes(keyword);
             setSubmitting(false);
-            // document.getElementById("toggle-new-list-form") ? document.getElementById("toggle-new-list-form").click() : resetForm();
+            this.setState({modalShow: true})
+            // we want to set modal to show 
+            resetForm();
           }}
         >
           {({
@@ -41,7 +57,6 @@ class SearchHikesForm extends Component {
                   size="sm"
                   name="keyword"
                 />
-                {/* <ErrorMessage name="keyword" size="sm" component="div" className="invalid-feedback"/> */}
               </Form.Group>
               <Button variant="outline-success" type="submit" disabled={isSubmitting}>
                 Search
@@ -53,11 +68,16 @@ class SearchHikesForm extends Component {
     );
   }
 }
-
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    // searchHikes: (hike) => dispatch(searchHikes(hike)),
+    hikes: state.hikes.searchHikes, // change this to be the received hikes from server
   };
 };
 
-export default connect(null, mapDispatchToProps)(SearchHikesForm);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    searchHikes: (keyword) => dispatch(searchHikes(keyword)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchHikesForm);

@@ -9,13 +9,14 @@ export default function Hike(props) {
   const { hike } = props;
   const list = props.list || null;
   const lists = useSelector((state) => state.lists);
+  const pictureWidth = props.picture || "600"
   return (
     <Card className="recipe-card col mx-2 mb-3" id={hike.id + "-hike-card"}>
       <Card.Img
         variant="top"
         src={hike.photo}
         alt={hike.title}
-        width="600"
+        width={pictureWidth}
       ></Card.Img>
       <Card.Body>
         <Card.Title>{hike.title}</Card.Title>
