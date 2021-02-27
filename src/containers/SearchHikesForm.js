@@ -10,7 +10,7 @@ import ModalHikes from '../components/ModalHikes'
 class SearchHikesForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {modalShow: false, results: [] }
+    this.state = {modalShow: false, results: [], keyword: "" }
   }
 
   fuseSearch = (keyword) =>  {
@@ -35,17 +35,17 @@ class SearchHikesForm extends Component {
       <div className="search-form">
         <ModalHikes
           show={this.state.modalShow}
-          onHide={() => this.setState({modalShow: false})
-        }
+          onHide={() => this.setState({modalShow: false})}
+          keyword={this.state.keyword}
           hikes={this.state.results}
         />
         <Formik
           initialValues={{ keyword: ""}}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
-            const { keyword } = values;
-            const results = this.fuseSearch(keyword)
-            this.setState({results: results})
+            this.setState({keyword: values })
+            const results = this.fuseSearch(this.state.keyword.keyword)
+            this.setState({results})
             setSubmitting(false);
             this.setState({modalShow: true}) 
             resetForm();

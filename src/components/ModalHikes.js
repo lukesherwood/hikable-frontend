@@ -16,7 +16,7 @@ export default function ModalHikes(props) {
           centered
         >
           <Modal.Body>
-            <h3>Hikes</h3>
+            <h3>Results for '{props.keyword.keyword}'</h3>
             {hikeList}
             {hikes.length === 0 ? "Sorry no hikes found" : null}
           </Modal.Body>

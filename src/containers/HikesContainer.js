@@ -2,7 +2,7 @@ import React from "react";
 import { fetchHikes } from "../actions/hikeActions";
 import { connect } from "react-redux";
 import Hikes from "../components/Hikes";
-import SearchBar from '../components/SearchBar'
+// import SearchBar from '../components/SearchBar'
 
 class HikesContainer extends React.Component {
   componentDidMount() {
@@ -12,10 +12,9 @@ class HikesContainer extends React.Component {
   render() {
     return (
       <div className="hikes-container">
-        <SearchBar
+        {/* <SearchBar
         placeholder="Search"
-        onChange={(e) => console.log(e.target.value)}
-       />
+       /> */}
         <Hikes hikes={this.props.hikes} />
       </div>
     );
