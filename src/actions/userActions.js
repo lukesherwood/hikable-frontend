@@ -85,6 +85,11 @@ export const autoLogin = () => (dispatch) => {
         } else if (data.data.id) {
           dispatch(setUser(data.data));
         }
-      });
+      })
+      .catch((error) => {
+        NotificationManager.error(
+          `Error while signing in, please try again`,
+          "Error!"
+      )})
   }
 };

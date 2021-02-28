@@ -32,7 +32,8 @@ class SearchHikesForm extends Component {
 
   render() {
     return (
-      <div className="search-form">
+      // need to make this div width-100
+      <div className="search-form col-xs-12"> 
         <ModalHikes
           show={this.state.modalShow}
           onHide={() => this.setState({modalShow: false})}
@@ -57,7 +58,7 @@ class SearchHikesForm extends Component {
             handleSubmit,
             isSubmitting,
           }) => (
-            <Form className="form-inline my-2 my-lg-0 ml-auto" onSubmit={handleSubmit}>
+            <Form className="form-inline p-2" onSubmit={handleSubmit}>
               <Form.Group>
                 <Field
                   type="search"

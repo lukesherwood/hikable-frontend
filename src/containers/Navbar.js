@@ -26,9 +26,9 @@ class NavbarClass extends React.Component {
         <Nav.Link as={NavLink} to='/hikes' exact>Hikes</Nav.Link>
         </>
         </Nav>
-        <SearchHikesForm/>
         <LogoutOrLogin currentUser={this.props.user} loggedIn={this.props.loggedIn} logUserOut={this.props.logUserOut}/>
         </Navbar.Collapse>
+        <SearchHikesForm/>
       </Navbar>
     );
   }
