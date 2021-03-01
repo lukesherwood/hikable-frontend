@@ -33,7 +33,7 @@ class SearchHikesForm extends Component {
   render() {
     return (
       // need to make this div width-100
-      <div className="search-form col-xs-12"> 
+      <div> 
         <ModalHikes
           show={this.state.modalShow}
           onHide={() => this.setState({modalShow: false})}
@@ -58,8 +58,8 @@ class SearchHikesForm extends Component {
             handleSubmit,
             isSubmitting,
           }) => (
-            <Form className="form-inline p-2" onSubmit={handleSubmit}>
-              <Form.Group>
+            <Form className="row pr-0" onSubmit={handleSubmit}>
+              <Form.Group className="col-10 pr-0 col-md-8">
                 <Field
                   type="search"
                   placeholder="Search for hikes"
@@ -68,9 +68,11 @@ class SearchHikesForm extends Component {
                   name="keyword"
                 />
               </Form.Group>
-              <Button variant="outline-success" type="submit" disabled={isSubmitting}>
+              <Form.Group className="col-1 pl-0 pr-2">
+              <Button variant="outline-success" className="d-flex" type="submit" disabled={isSubmitting}>
                 Search
               </Button>
+              </Form.Group>
             </Form>
           )}
         </Formik>

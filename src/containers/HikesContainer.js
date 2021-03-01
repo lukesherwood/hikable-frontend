@@ -12,9 +12,6 @@ class HikesContainer extends React.Component {
   render() {
     return (
       <div className="hikes-container">
-        {/* <SearchBar
-        placeholder="Search"
-       /> */}
         <Hikes hikes={this.props.hikes} />
       </div>
     );

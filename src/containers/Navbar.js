@@ -12,7 +12,7 @@ class NavbarClass extends React.Component {
 
   render() {
     return (
-      <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
+      <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
         <Navbar.Brand as={NavLink} to='/'>
         <img src="/Hikable-logo.png" alt="" height="80" width="150"/>
         </Navbar.Brand>
@@ -27,8 +27,8 @@ class NavbarClass extends React.Component {
         </>
         </Nav>
         <LogoutOrLogin currentUser={this.props.user} loggedIn={this.props.loggedIn} logUserOut={this.props.logUserOut}/>
-        </Navbar.Collapse>
         <SearchHikesForm/>
+        </Navbar.Collapse>
       </Navbar>
     );
   }

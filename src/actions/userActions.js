@@ -90,6 +90,8 @@ export const autoLogin = () => (dispatch) => {
         NotificationManager.error(
           `Error while signing in, please try again`,
           "Error!"
-      )})
+      )
+      localStorage.removeItem("token");
+    })
   }
 };

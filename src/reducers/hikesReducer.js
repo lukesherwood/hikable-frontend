@@ -18,6 +18,12 @@ const hikesReducer = (state = { hikes: [], loading: false }, action) => {
         searchHikes: action.hikes,
         loading: false,
       };
+    case "FILTER_BY_DIFFICULTY":
+      return {
+        ...state,
+        searchHikes: action.hikes,
+        loading: false,
+      }
     default:
       return state;
   }
