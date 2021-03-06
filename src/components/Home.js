@@ -5,12 +5,6 @@ export default function Home() {
     <div className="home">
       <div
         className="home-image"
-        style={{
-          height: "auto",
-          position: "absolute",
-          width: "100%",
-          left: "0px",
-        }}
       >
         {/* image here with css */}
         <br></br>

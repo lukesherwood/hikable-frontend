@@ -3,7 +3,9 @@ body {
 }
 
 .container-fluid {
-  min-height: 100vh;
+  min-height: auto;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .hike-card-info {
@@ -85,7 +87,7 @@ ul {
   color: white;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
     url("/Hikable-home-image.jpg");
-  height: 100%;
+  height: auto;
   padding-bottom: 100px;
   background-position: center center;
   background-repeat: no-repeat;
@@ -94,6 +96,8 @@ ul {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
+  left: 0;
+  width: 100%;
 }
 
 .home-header {
