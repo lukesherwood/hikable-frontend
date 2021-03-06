@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 // import { searchHikes } from '../actions/hikeActions'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Nav from 'react-bootstrap/Nav'
 import { Formik, Field } from "formik";
 import Fuse from 'fuse.js'
 // import * as Yup from "yup";
@@ -33,7 +34,7 @@ class SearchHikesForm extends Component {
   render() {
     return (
       // need to make this div width-100
-      <div> 
+      <Nav> 
         <ModalHikes
           show={this.state.modalShow}
           onHide={() => this.setState({modalShow: false})}
@@ -58,8 +59,8 @@ class SearchHikesForm extends Component {
             handleSubmit,
             isSubmitting,
           }) => (
-            <Form className="row pr-0" onSubmit={handleSubmit}>
-              <Form.Group className="col-10 pr-0 col-md-8">
+            <Form className="row pr-20 vertical-center" onSubmit={handleSubmit}>
+              <Form.Group className="col-9 pr-0 col-md-8">
                 <Field
                   type="search"
                   placeholder="Search for hikes"
@@ -68,7 +69,7 @@ class SearchHikesForm extends Component {
                   name="keyword"
                 />
               </Form.Group>
-              <Form.Group className="col-1 pl-0 pr-2">
+              <Form.Group className="col-1 pl-0 pr-0">
               <Button variant="outline-success" className="d-flex" type="submit" disabled={isSubmitting}>
                 Search
               </Button>
@@ -76,7 +77,7 @@ class SearchHikesForm extends Component {
             </Form>
           )}
         </Formik>
-      </div>
+      </Nav>
     );
   }
 }

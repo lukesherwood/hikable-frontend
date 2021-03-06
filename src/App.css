@@ -3,8 +3,7 @@ body {
 }
 
 .container-fluid {
-  min-height: 100vh; /* will cover the 100% of viewport */
-  position: relative;
+  min-height: 100vh;
 }
 
 .hike-card-info {
@@ -145,13 +144,18 @@ ul {
 }
 
 .footer {
-  bottom: 0;
-  width: 100%;
-  /* display: inline-block; */
+    clear: both;
+    position: relative;
+    margin-top:auto;
+    /* display: inline-block; */
 }
 
 .form-inline .form-group {
   margin-right:20px;
+}
+
+.vertical-center {
+  padding-top: 20px;
 }
 
 @media only screen and (max-width: 600px) {
