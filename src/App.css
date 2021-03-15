@@ -4,13 +4,19 @@ body {
 
 .container-fluid {
   min-height: 100%; 
-  /*  this is and issue, works well mostly with 100vh and works better at tother things with auto */
-  /* overflow-y: hidden; */
   padding-left: 0;
   padding-right: 0;
+  /*  this is and issue, works well mostly with 100vh and works better at tother things with auto */
   overflow: hidden;
 }
+.hikes-container {
+  padding-left: 10px;
+}
 .lists-container {
+  min-height: 100vh;
+  padding-left: 10px;
+}
+.hike-item {
   min-height: 100vh;
   padding-left: 10px;
 }
