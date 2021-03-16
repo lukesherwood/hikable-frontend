@@ -10,6 +10,7 @@ body {
   overflow: hidden;
 }
 .hikes-container {
+  min-height: 100vh;
   padding-left: 10px;
 }
 .lists-container {
@@ -50,7 +51,7 @@ ul {
   transition: 0.3s;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
-  min-width: 368px;
+  min-width: 268px;
   min-height: 60vh;
   padding-right: 0px;
   padding-left: 0px;
@@ -78,10 +79,6 @@ ul {
   padding-left: 0px;
   padding-bottom: 40px;
   /* justify-content: center; */
-}
-
-.card img {
-  width: 100%;
 }
 
 .list-card {
