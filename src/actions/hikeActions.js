@@ -1,11 +1,13 @@
 import { NotificationManager } from "react-notifications";
+import { config } from '../Constants' 
 const axios = require("axios").default;
+const WEB_URL = config.url.API_URL
 
 export const fetchHikes = () => {
   return (dispatch) => {
     dispatch({ type: "LOADING_HIKES" });
     axios
-      .get("http://localhost:3001/api/v1/hikes", {
+      .get(WEB_URL+"/hikes", {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -32,7 +34,7 @@ export const searchHikes = (keyword) => {
   };
   return (dispatch) => {
     axios
-      .post(`http://localhost:3001/api/v1/hikes/search_hikes`, hike, {
+      .post(WEB_URL+"/hikes/search_hikes", hike, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",

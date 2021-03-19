@@ -4,10 +4,9 @@ import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
-import CreateListModal from '../components/CreateListModal'
+import CreateListModal from "../components/CreateListModal";
 // import CreateListForm from "./CreateListForm";
 class UpdateListHikes extends Component {
-
   handleDelete = () => {
     this.props.deleteHike(this.props.list, this.props.hike);
   };
@@ -20,13 +19,19 @@ class UpdateListHikes extends Component {
     const { lists } = this.props.lists; // need to pass in lists
     const listItems = lists.map((item) => {
       return (
-        <Dropdown.Item key={item.name} onClick={(e) => this.handleClick(e, item)}>
+        <Dropdown.Item
+          key={item.name}
+          onClick={(e) => this.handleClick(e, item)}
+        >
           {item.name}
         </Dropdown.Item>
       );
     });
     listItems.push(
-        <CreateListModal key={"create-list"}addHikeToList={this.props.addHikeToList}/>
+      <CreateListModal
+        key={"create-list"}
+        addHikeToList={this.props.addHikeToList}
+      />
     );
     return (
       <div>

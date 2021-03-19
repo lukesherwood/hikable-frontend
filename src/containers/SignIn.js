@@ -8,7 +8,6 @@ import Col from "react-bootstrap/Col";
 import { Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-
 const validationSchema = Yup.object().shape({
   email: Yup.string().email().required("Email is required"),
   password: Yup.string()
@@ -98,7 +97,7 @@ class SignIn extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    loggedIn: state.users.loggedIn
+    loggedIn: state.users.loggedIn,
   };
 };
 

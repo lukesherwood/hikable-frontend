@@ -5,7 +5,7 @@ import { signUserUp } from "../actions/userActions";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
-import { Formik, Field, ErrorMessage} from "formik";
+import { Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
@@ -17,25 +17,26 @@ const validationSchema = Yup.object().shape({
     .required("Password is required")
     .min(6, "Password is too short - should be 6 chars minimum"),
   password_confirmation: Yup.string()
-  .required("Confirmation password is required")
-  .oneOf(
-    [Yup.ref("password"), null],
-    "Passwords must match"
-  ),
+    .required("Confirmation password is required")
+    .oneOf([Yup.ref("password"), null], "Passwords must match"),
 });
 
 class Signup extends Component {
-
   render() {
     return (
       <div className="sign-up-container">
         <h2>Sign Up</h2>
         <Formik
-          initialValues={{ email: "", password: "", username: "", password_confirmation: "" }}
+          initialValues={{
+            email: "",
+            password: "",
+            username: "",
+            password_confirmation: "",
+          }}
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
-            const { username, email, password, password_confirmation } = values
+            const { username, email, password, password_confirmation } = values;
             let user = {
               username,
               email,
@@ -51,10 +52,15 @@ class Signup extends Component {
             <Form onSubmit={handleSubmit}>
               <Form.Row>
                 <Col sm={4}>
-                <Form.Group>
+                  <Form.Group>
                     <Form.Label size="sm">Username</Form.Label>
                     <Field
-                      className={'form-control ' + (errors.username && touched.username ? 'is-invalid' : '')}
+                      className={
+                        "form-control " +
+                        (errors.username && touched.username
+                          ? "is-invalid"
+                          : "")
+                      }
                       name="username"
                     />
                     <ErrorMessage
@@ -68,9 +74,12 @@ class Signup extends Component {
               <Form.Row>
                 <Col sm={4}>
                   <Form.Group>
-                  <Form.Label size="sm">Email</Form.Label>
-                  <Field
-                      className={'form-control ' + (errors.email && touched.email ? 'is-invalid' : '')}
+                    <Form.Label size="sm">Email</Form.Label>
+                    <Field
+                      className={
+                        "form-control " +
+                        (errors.email && touched.email ? "is-invalid" : "")
+                      }
                       name="email"
                       type="email"
                     />

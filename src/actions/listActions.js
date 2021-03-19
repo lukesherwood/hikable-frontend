@@ -1,11 +1,13 @@
 import { NotificationManager } from "react-notifications";
+import { config } from '../Constants' 
 const axios = require("axios").default;
+const WEB_URL = config.url.API_URL
 
 export const fetchLists = () => {
   return (dispatch) => {
     dispatch({ type: "LOADING_LISTS" });
     axios
-      .get("http://localhost:3001/api/v1/lists", {
+      .get(WEB_URL+"/lists", {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -26,7 +28,7 @@ export const createList = (listInfo) => {
     dispatch({ type: "LOADING_LISTS" });
     axios
       .post(
-        "http://localhost:3001/api/v1/lists",
+        WEB_URL+"/lists",
         { list: listInfo },
         {
           headers: {
@@ -64,7 +66,7 @@ export const addHikeToList = (list, hike) => {
   };
   return (dispatch) => {
     axios
-      .put(`http://localhost:3001/api/v1/lists/${list.id}`, newListObj, {
+      .put(WEB_URL+`/lists/${list.id}`, newListObj, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -91,7 +93,7 @@ export const deleteHike = (list, hike) => {
   const newListObj = { list: { id: list.id }, hike: { hike_id: hike.id } };
   return (dispatch) => {
     axios
-      .put(`http://localhost:3001/api/v1/lists/${list.id}`, newListObj, {
+      .put(WEB_URL+`/lists/${list.id}`, newListObj, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -117,7 +119,7 @@ export const deleteHike = (list, hike) => {
 export const deleteList = (inputList) => {
   const data = { list: {name: inputList.name, description: inputList.description, id:inputList.id} };
   return (dispatch) => {
-    fetch(`http://localhost:3001/api/v1/lists/${inputList.id}`, {
+    fetch(WEB_URL+`/lists/${inputList.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

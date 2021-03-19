@@ -16,7 +16,6 @@ const validationSchema = Yup.object().shape({
     .required("*Description is required"),
 });
 class CreateListForm extends Component {
-
   render() {
     return (
       <div className="list-card">
@@ -24,7 +23,6 @@ class CreateListForm extends Component {
         <Formik
           initialValues={{ name: "", description: "" }}
           validationSchema={validationSchema}
-
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
             const { name, description } = values;
@@ -35,33 +33,46 @@ class CreateListForm extends Component {
             };
             this.props.createList(list);
             setSubmitting(false);
-            document.getElementById("toggle-new-list-form") ? document.getElementById("toggle-new-list-form").click() : resetForm();
+            document.getElementById("toggle-new-list-form")
+              ? document.getElementById("toggle-new-list-form").click()
+              : resetForm();
           }}
         >
-          {({
-            touched,
-            errors,
-            handleSubmit,
-            isSubmitting,
-          }) => (
+          {({ touched, errors, handleSubmit, isSubmitting }) => (
             <Form inline onSubmit={handleSubmit}>
               <Form.Group>
                 <Form.Label size="sm">Name</Form.Label>
                 <Field
-                  className={'form-control ' + (errors.name && touched.name ? 'is-invalid' : '')}
+                  className={
+                    "form-control " +
+                    (errors.name && touched.name ? "is-invalid" : "")
+                  }
                   size="sm"
                   name="name"
                 />
-                <ErrorMessage name="name" component="div" className="text-danger"/>
+                <ErrorMessage
+                  name="name"
+                  component="div"
+                  className="text-danger"
+                />
               </Form.Group>
               <Form.Group>
                 <Form.Label size="sm">Description</Form.Label>
                 <Field
-                  className={'form-control ' + (errors.description && touched.description ? 'is-invalid' : '')}
+                  className={
+                    "form-control " +
+                    (errors.description && touched.description
+                      ? "is-invalid"
+                      : "")
+                  }
                   size="sm"
                   name="description"
                 />
-                <ErrorMessage name="description" component="div" className="text-danger"/>
+                <ErrorMessage
+                  name="description"
+                  component="div"
+                  className="text-danger"
+                />
               </Form.Group>
               <Button variant="primary" type="submit" disabled={isSubmitting}>
                 Create List

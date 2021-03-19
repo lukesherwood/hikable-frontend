@@ -11,7 +11,7 @@ export default function Footer() {
         bg="dark"
         variant="dark"
       >
-        <Navbar.Brand as={NavLink} to='/'>
+        <Navbar.Brand as={NavLink} to="/">
           <img src="/Hikable-logo.png" alt="hikable-logo" width="70" />
         </Navbar.Brand>
         <Nav.Item>2020 Hikable, All Rights Reserved</Nav.Item>

@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Card from "react-bootstrap/Card";
 import UpdateListHikes from "../containers/UpdateListHikes";
@@ -9,7 +9,7 @@ export default function Hike(props) {
   const { hike } = props;
   const list = props.list || null;
   const lists = useSelector((state) => state.lists);
-  const pictureWidth = props.picture || "600"
+  const pictureWidth = props.picture || "600";
   return (
     <Card className="recipe-card col mx-2 mb-3" id={hike.id + "-hike-card"}>
       <Card.Img
@@ -20,7 +20,7 @@ export default function Hike(props) {
       ></Card.Img>
       <Card.Body>
         <Card.Title>{hike.title}</Card.Title>
-        
+
         <Card.Subtitle className="mb-2 text-muted">
           {hike.location}
         </Card.Subtitle>
@@ -34,7 +34,7 @@ export default function Hike(props) {
           More information
         </Link>
         <UpdateListHikes hike={hike} list={list} lists={lists} />
-        </ButtonGroup>
+      </ButtonGroup>
     </Card>
   );
 }

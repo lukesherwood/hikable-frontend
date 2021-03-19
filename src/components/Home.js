@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <div className="home">
-      <div
-        className="home-image"
-      >
+      <div className="home-image">
         {/* image here with css */}
         <br></br>
         <br></br>
