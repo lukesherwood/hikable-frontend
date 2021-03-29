@@ -11,7 +11,7 @@ export default function Hike(props) {
   const lists = useSelector((state) => state.lists);
   const pictureWidth = props.picture || "600";
   return (
-    <Card className="recipe-card col mx-2 mb-3" id={hike.id + "-hike-card"}>
+    <Card className="hike-card col mx-2 mb-3" id={hike.id + "-hike-card"}>
       <Card.Img
         variant="top"
         src={hike.photo}
