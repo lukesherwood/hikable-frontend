@@ -1,6 +1,6 @@
 const prod = {
   url: {
-    API_URL: 'http://hikable.herokuapps.com/api/v1/',
+    API_URL: 'http://hikable.herokuapp.com/api/v1/',
   },
 };
 const dev = {
