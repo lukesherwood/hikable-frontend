@@ -1,4 +1,4 @@
-const hikesReducer = (state = { hikes: [], loading: false }, action) => {
+const hikesReducer = (state = { hikes: [], loading: false, page: 1, pages: 1 }, action) => {
   switch (action.type) {
     case "ADD_HIKES":
       return {
@@ -9,7 +9,7 @@ const hikesReducer = (state = { hikes: [], loading: false }, action) => {
     case "LOADING_HIKES":
       return {
         ...state,
-        hikes: [...state.hikes],
+        hikes: [state.hikes],
         loading: true,
       };
     case "SEARCH_HIKES":
@@ -23,7 +23,14 @@ const hikesReducer = (state = { hikes: [], loading: false }, action) => {
         ...state,
         searchHikes: action.hikes,
         loading: false,
-      }
+      };
+    case "SET_PAGES":
+      return {
+        ...state,
+        page: action.data.page,
+        pages: action.data.pages,
+        loading: false,
+      };
     default:
       return state;
   }

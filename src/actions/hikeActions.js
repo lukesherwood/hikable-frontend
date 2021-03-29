@@ -3,11 +3,12 @@ import { config } from '../Constants'
 const axios = require("axios").default;
 const WEB_URL = config.url.API_URL
 
-export const fetchHikes = () => {
+export const fetchHikes = (page) => {
+  const page_number  = page || "1"
   return (dispatch) => {
     dispatch({ type: "LOADING_HIKES" });
     axios
-      .get(WEB_URL+"/hikes", {
+      .get(WEB_URL+`/hikes/?page=${page_number}`, { // page here is undefined???
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -15,7 +16,8 @@ export const fetchHikes = () => {
         },
       })
       .then((data) => {
-        dispatch({ type: "ADD_HIKES", hikes: data.data });
+        dispatch({ type: "ADD_HIKES", hikes: data.data.hikes });
+        dispatch({ type: "SET_PAGES", data: data.data });
       })
       .catch(function (error) {
         NotificationManager.error(
