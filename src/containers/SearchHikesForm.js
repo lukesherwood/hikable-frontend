@@ -7,7 +7,7 @@ import Nav from "react-bootstrap/Nav";
 import { Formik, Field } from "formik";
 import Fuse from "fuse.js";
 // import * as Yup from "yup";
-import ModalRecipes from "../components/ModalRecipes";
+import ModalHikes from "../components/ModalHikes";
 class SearchHikesForm extends Component {
   constructor(props) {
     super(props);

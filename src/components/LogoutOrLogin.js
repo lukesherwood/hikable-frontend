@@ -11,7 +11,7 @@ class LogoutLogin extends React.Component {
       "Successful!",
       2000
     );
-    this.props.history.push("/");
+    this.props.history.push("/"); // the key to using this was to add withRouter!!
   };
 
   render() {
