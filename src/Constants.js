@@ -1,6 +1,6 @@
 const prod = {
   url: {
-    API_URL: 'http://hikableapi-env.eba-5d2dgb8p.us-east-2.elasticbeanstalk.com/api/v1/',
+    API_URL: 'http://hikable.herokuapps.com/api/v1/',
   },
 };
 const dev = {
