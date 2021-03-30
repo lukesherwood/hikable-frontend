@@ -159,6 +159,12 @@ ul {
   background-color: #216b40 !important;
 }
 
+.nav-link, .navbar-brand{
+  padding-right: 15px !important;
+  padding-left: 15px !important;
+  font-size: 0.9em !important;
+  }
+
 .search-form {
   padding-right: 40px;
 }

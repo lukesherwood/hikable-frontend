@@ -17,23 +17,23 @@ class NavbarClass extends React.Component {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav variant="pills" className="mr-auto">
-            {this.props.loggedIn ? (
-              <Nav.Link as={NavLink} to="/lists" exact>
-                My Lists
-              </Nav.Link>
-            ) : null}
             <>
               <Nav.Link as={NavLink} to="/hikes" exact>
                 Hikes
               </Nav.Link>
             </>
+            {this.props.loggedIn ? (
+              <Nav.Link as={NavLink} to="/lists" exact>
+                My Lists
+              </Nav.Link>
+            ) : null}
           </Nav>
+          <SearchHikesForm />
           <LogoutOrLogin
             currentUser={this.props.user}
             loggedIn={this.props.loggedIn}
             logUserOut={this.props.logUserOut}
           />
-          <SearchHikesForm />
         </Navbar.Collapse>
       </Navbar>
     );

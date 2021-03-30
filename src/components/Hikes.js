@@ -12,7 +12,7 @@ export default function Hikes(props) {
 
   return (
     <div>
-      <FilterHikes />
+      {/* <FilterHikes /> */}
       <div className="cards">
         <Row xs={1} sm={2} md={3} lg={4}>
           {hikeList}
