@@ -29,7 +29,6 @@ const hikesReducer = (state = { hikes: [], loading: false, page: "1", pages: "1"
         ...state,
         page: action.data.page,
         pages: action.data.pages,
-        loading: false,
       };
     default:
       return state;

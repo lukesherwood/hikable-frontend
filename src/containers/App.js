@@ -22,6 +22,7 @@ import Container from "react-bootstrap/Container";
 import HikeShow from "../components/HikeShow";
 import AuthRoutes from "../components/AuthRoutes";
 
+
 class App extends Component {
   componentDidMount() {
     this.props.autoLogin();
