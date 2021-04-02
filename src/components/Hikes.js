@@ -1,7 +1,7 @@
 import React from "react";
 import Hike from "./Hike";
 import Row from "react-bootstrap/Row";
-import FilterHikes from "./FilterHikes";
+// import FilterHikes from "./FilterHikes";
 
 export default function Hikes(props) {
   const { hikes } = props;

@@ -8,7 +8,7 @@ export const fetchHikes = (page) => {
   return (dispatch) => {
     dispatch({ type: "LOADING_HIKES" });
     axios
-      .get(WEB_URL+`/hikes/?page=${page_number}`, { // page here is undefined???
+      .get(WEB_URL+`/hikes/?page=${page_number}`, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
