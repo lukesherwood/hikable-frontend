@@ -74,7 +74,7 @@ class CreateListForm extends Component {
                   className="text-danger"
                 />
               </Form.Group>
-              <Button variant="primary" type="submit" disabled={isSubmitting}>
+              <Button className="btn-custom" type="submit" disabled={isSubmitting}>
                 Create List
               </Button>
             </Form>

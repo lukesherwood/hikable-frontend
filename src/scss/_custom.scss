@@ -1,0 +1,40 @@
+$primary: #216b40;
+$border-radius: 8px;
+$rfs-base-font-size: 0.8rem;
+$enable-responsive-font-sizes: true;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 950px,
+  xl: 1200px,
+);
+
+@mixin theme-color {
+  background-color: $primary !important;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#1186ed),
+    to(#094b84)
+  );
+  background-image: -moz-linear-gradient(top, lighten($primary, 10), darken($primary, 10));
+  background-image: -ms-linear-gradient(top, lighten($primary, 10), darken($primary, 10));
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, #1186ed),
+    color-stop(100%, #094b84)
+  );
+  background-image: -webkit-linear-gradient(top, lighten($primary, 10), darken($primary, 10));
+  background-image: -o-linear-gradient(top, lighten($primary, 10), darken($primary, 10));
+  background-image: linear-gradient(lighten($primary, 10), darken($primary, 10));
+  border-color: lighten($primary, 10), darken($primary, 10) hsl(208, 86%, 22.5%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.36);
+  -webkit-font-smoothing: antialiased;
+}
