@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-// import Hikes from './Hikes'
+import Card from "react-bootstrap/Card";
+import { ButtonGroup } from "react-bootstrap";
 
 export default function List(props) {
   function handleClick(event, list) {
@@ -11,15 +12,19 @@ export default function List(props) {
   const { list } = props;
 
   return (
-    <li className="list-card" id={list.id + "-list-card"}>
+    <Card className="list-card" id={list.id + "-list-card"}>
       <h2>{list.name}</h2>
+      <ButtonGroup>
       <Link className="btn btn-outline-primary" to={`/lists/${list.id}`}>
-        More information
+        More Information
       </Link>
+      <div className="">
       <Button onClick={(e) => handleClick(e, list)} variant="outline-danger">
         {" "}
         Delete List
       </Button>
-    </li>
+      </div>
+      </ButtonGroup>
+    </Card>
   );
 }

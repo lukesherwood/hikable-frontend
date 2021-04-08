@@ -22,7 +22,6 @@ import Container from "react-bootstrap/Container";
 import HikeShow from "../components/HikeShow";
 import AuthRoutes from "../components/AuthRoutes";
 
-
 class App extends Component {
   componentDidMount() {
     this.props.autoLogin();
@@ -34,9 +33,9 @@ class App extends Component {
     return (
       <div className="App">
         <NavbarClass />
-        <Container fluid>
-          <Switch>
-            <Route exact path="/" component={Home} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Container>
             <Route exact path="/hikes" component={HikesContainer} />
             <Route
               path="/hikes/:id"
@@ -59,10 +58,9 @@ class App extends Component {
             />
             <Route exact path="/signIn" component={SignIn} />
             <Route exact path="/signUp" component={SignUp} />
-            <Route render={() => <h1>404: page not found</h1>} />{" "}
-          </Switch>
-          <NotificationContainer />
-        </Container>
+          </Container>
+        </Switch>
+        <NotificationContainer />
         <Footer />
       </div>
     );

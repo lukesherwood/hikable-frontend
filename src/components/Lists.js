@@ -1,7 +1,8 @@
 import React from "react";
 import List from "./List";
 import CreateListForm from "../containers/CreateListForm";
-import Accordion from "react-bootstrap/Accordion";
+import Accordion from "react-bootstrap/Accordion"
+import Row from "react-bootstrap/Row"
 import Button from "react-bootstrap/Button";
 
 export default function Lists(props) {
@@ -13,7 +14,7 @@ export default function Lists(props) {
   return (
     <div>
       <h2>Lists</h2>
-      <ul className="cards">
+      <Row lg={1}>
         {listsArray}
         <Accordion>
           <Accordion.Toggle
@@ -28,7 +29,7 @@ export default function Lists(props) {
             <CreateListForm currentUser={props.currentUser} />
           </Accordion.Collapse>
         </Accordion>
-      </ul>
+      </Row>
     </div>
   );
 }

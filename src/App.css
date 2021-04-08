@@ -2,59 +2,23 @@ body {
   font-family: "Titillium Web", "Bitstream Vera Serif", sans-serif;
 }
 
-.container-fluid {
-  min-height: 100%; 
-  padding-left: 0;
-  padding-right: 0;
-  /*  this is and issue, works well mostly with 100vh and works better at tother things with auto */
-  overflow: hidden;
-}
-.hikes-container {
+.container {
   min-height: 100vh;
-  padding-left: 10px;
-}
-.lists-container {
-  min-height: 100vh;
-  padding-left: 10px;
-}
-.hike-item {
-  min-height: 100vh;
-  padding-left: 10px;
-}
-.sign-in-container {
-  min-height: 100vh;
-  padding-left: 10px;
-}
-.sign-up-container {
-  min-height: 100vh;
-  padding-left: 10px;
-}
-
-.hike-card-info {
-  line-height: 150%;
-}
-
-.hike-card-location {
-  font-style: italic;
-}
-
-ul {
-  list-style-type: none;
+  display: flex;
+  justify-content: center;
 }
 
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.card {
+.hike-card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
   min-width: 268px;
   min-height: 60vh;
-  padding-right: 0px;
-  padding-left: 0px;
 }
 
 .card img {
@@ -73,12 +37,12 @@ ul {
 }
 
 .cards {
-  display: flex;
+  /* display: flex; */
   flex-wrap: wrap;
   align-items: stretch;
   padding-left: 0px;
   padding-bottom: 40px;
-  /* justify-content: center; */
+  justify-content: center;
 }
 
 .list-card {
