@@ -42,7 +42,7 @@ class UpdateListHikes extends Component {
               title="Add to list"
               variant="primary"
               size="sm"
-              className="add-to-list-button"
+              className="float-right"
             >
               {listItems}
             </DropdownButton>
@@ -54,7 +54,7 @@ class UpdateListHikes extends Component {
               variant="outline-danger"
               size="sm"
               onClick={this.handleDelete}
-              className="remove-from-list-button"
+              className="float-right"
             >
               Delete
             </Button>
