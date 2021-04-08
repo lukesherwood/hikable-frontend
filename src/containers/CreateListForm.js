@@ -10,10 +10,10 @@ const validationSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, "*Names must have at least 2 characters")
     .max(100, "*Names can't be longer than 100 characters")
-    .required("*Name is required"),
+    .required("*required"),
   description: Yup.string()
     .max(500, "*Description must be less than 500 characters")
-    .required("*Description is required"),
+    .required("*required"),
 });
 class CreateListForm extends Component {
   render() {

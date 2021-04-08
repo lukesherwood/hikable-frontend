@@ -1,21 +1,26 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
 body {
   font-family: "Titillium Web", "Bitstream Vera Serif", sans-serif;
 }
 
 .container {
-  min-height: 100vh;
+  min-height: 100vh; /* will cover the 100% of viewport */
+  max-width: 1200px;
+  position: relative;
   display: flex;
   justify-content: center;
+  overflow: hidden;
 }
-
 
 .hike-card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
-  min-width: 268px;
   min-height: 60vh;
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 .list-card {
@@ -25,7 +30,10 @@ body {
   padding: 0 20px 20px;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
-  max-width: 600px;
+  max-width: 800px;
+  padding-right: 0px;
+  padding-left: 0px;
+  padding-bottom: 0px;
 }
 
 .card:hover {
@@ -33,7 +41,6 @@ body {
 }
 
 .card img {
-  width: 100%;
   height: 35vh;
   object-fit: cover;
 }
@@ -134,6 +141,7 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
+  
   .home-header {
     font-size: 2rem;
   }
@@ -143,11 +151,13 @@ body {
   .home-link {
     font-size: 2rem;
   }
-
-  .card {
-    min-width: 300px;
-    left: -7px;
+  .hike-card {
+    width: 100vw;
   }
-
+  .row {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0px;
+  }
 }
 /* separate into app and hike css files */
