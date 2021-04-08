@@ -11,7 +11,7 @@ export default function Hikes(props) {
   });
 
   return (
-    <Row xs={1} sm={2} md={3} className="justify-content-center">
+    <Row xs={1} sm={2} md={3} lg={4} className="justify-content-center">
       {hikeList}
     </Row>
   );

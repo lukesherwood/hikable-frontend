@@ -29,7 +29,7 @@ export default function Hike(props) {
         <div className="hike-card-description">{hike.description}</div>
       </Card.Body>
       <ButtonGroup>
-        <Link className="btn btn-primary btn-sm" to={`/hikes/${hike.id}`}>
+        <Link className="btn btn-custom btn-sm" to={`/hikes/${hike.id}`}>
           More information
         </Link>
         <UpdateListHikes hike={hike} list={list} lists={lists} />

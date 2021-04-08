@@ -3,7 +3,6 @@ import List from "./List";
 import CreateListForm from "../containers/CreateListForm";
 import Accordion from "react-bootstrap/Accordion"
 import Row from "react-bootstrap/Row"
-import Button from "react-bootstrap/Button";
 
 export default function Lists(props) {
   const { lists } = props;
@@ -16,10 +15,9 @@ export default function Lists(props) {
       <h2>Lists</h2>
       <Row lg={1}>
         {listsArray}
-        <Accordion>
+        <Accordion className="list-card">
           <Accordion.Toggle
-            as={Button}
-            variant="primary"
+            className="btn btn-custom"
             id="toggle-new-list-form"
             eventKey="0"
           >

@@ -22,7 +22,7 @@ export default function Home() {
         <br></br>
         <br></br>
         <div className="home-link">
-          <Link to="/hikes" className="btn btn-primary btn-lg" role="button">
+          <Link to="/hikes" className="btn btn-custom btn-lg" role="button">
             Click here to get started
           </Link>
         </div>
