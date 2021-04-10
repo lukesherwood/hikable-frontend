@@ -10,7 +10,7 @@ import SearchHikesForm from "./SearchHikesForm";
 class NavbarClass extends React.Component {
   render() {
     return (
-      <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
+      <Navbar collapseOnSelect sticky="top" expand="md" bg="dark" variant="dark">
         <Navbar.Brand as={NavLink} to="/">
           <img src="/Hikable-logo.png" alt="" height="80" width="150" />
         </Navbar.Brand>

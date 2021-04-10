@@ -9,6 +9,7 @@ import Loader from "react-loader-spinner";
 class HikesContainer extends React.Component {
   componentDidMount() {
     this.props.fetchHikes();
+   
   }
 
   render() {

@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email().required("Email is required"),
@@ -15,8 +16,10 @@ const validationSchema = Yup.object().shape({
 });
 
 class SignIn extends Component {
+
   render() {
     return (
+      this.props.loggedIn ? <Redirect to="/"/> : (
       <div className="sessions-container">
         <h2 className="recipe-header">Sign In</h2>
 
@@ -71,7 +74,12 @@ class SignIn extends Component {
                   className="invalid-feedback"
                 />
               </Form.Group>
-              <Button variant="primary" className="btn-custom" type="submit" disabled={isSubmitting}>
+              <Button
+                variant="primary"
+                className="btn-custom"
+                type="submit"
+                disabled={isSubmitting}
+              >
                 Sign In
               </Button>
             </Form>
@@ -82,6 +90,7 @@ class SignIn extends Component {
           Don't have an account? <Link to="/signUp">Register</Link>
         </div>
       </div>
+      )
     );
   }
 }
