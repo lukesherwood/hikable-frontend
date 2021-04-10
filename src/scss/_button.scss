@@ -6,3 +6,7 @@
   border-color: rgb(0, 10, 17) !important;
   color: rgb(0, 10, 17) !important;
 }
+
+.page-item.active .page-link {
+  @include theme-color;
+}

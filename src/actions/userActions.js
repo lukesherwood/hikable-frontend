@@ -7,7 +7,7 @@ const setUser = (payload) => ({ type: "SET_USER", payload });
 
 export const logUserOut = () => ({ type: "LOG_OUT" });
 
-export const signUserUp = (userInfo, ownProps) => (dispatch) => {
+export const signUserUp = (userInfo) => (dispatch) => {
   axios
     .post(WEB_URL + "/users", { user: userInfo }, { withCredentials: true })
     .then((data) => {
@@ -17,7 +17,7 @@ export const signUserUp = (userInfo, ownProps) => (dispatch) => {
         const token = authHeader.substring(7, authHeader.length);
         localStorage.setItem("token", token);
         dispatch(setUser(data.data));
-        ownProps.history.push(`/`);
+        // ownProps.history.push(`/`);
         NotificationManager.success(
           `Welcome ${data.data.username}, you have successfully created an account`,
           "Successful!",
@@ -46,7 +46,7 @@ export const fetchUser = (userInfo, ownProps) => (dispatch) => {
         const token = authHeader.substring(7, authHeader.length);
         localStorage.setItem("token", token);
         dispatch(setUser(data.data));
-        ownProps.history.push(`/`);
+        // ownProps.history.push(`/`);
         NotificationManager.success(
           `Welcome ${data.data.username}`,
           "Successful!",

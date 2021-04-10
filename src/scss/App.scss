@@ -12,16 +12,18 @@ body {
 
 .container {
   min-height: 100vh; 
-  max-width: 1200px;
-  position: relative;
+  // position: relative;
   display: flex;
   justify-content: center;
-  overflow: hidden;
 }
 
 .form-container {
   background-color: #f1f1f1;
   padding: 5px;
+}
+
+.hikes-container {
+  width: 100%;
 }
 
 .sessions-container {
@@ -39,9 +41,16 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
+
+  .container {
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    justify-content: left;
+  }
+
   .row {
-    margin-left: 0px;
-    margin-right: 0px;
     padding: 0px;
+    margin-right: 0px;
   }
 }

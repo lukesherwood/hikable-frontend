@@ -24,7 +24,7 @@ import AuthRoutes from "../components/AuthRoutes";
 
 class App extends Component {
   componentDidMount() {
-    this.props.autoLogin();
+    this.props.autoLogin(this.props);
     this.props.fetchLists();
     this.props.fetchHikes();
   }
@@ -33,9 +33,9 @@ class App extends Component {
     return (
       <div className="App">
         <NavbarClass />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Container>
+        <Container>
+          <Switch>
+            <Route exact path="/" component={Home} />
             <Route exact path="/hikes" component={HikesContainer} />
             <Route
               path="/hikes/:id"
@@ -59,8 +59,8 @@ class App extends Component {
             <Route exact path="/signIn" component={SignIn} />
             <Route exact path="/signUp" component={SignUp} />
             <NotificationContainer />
-          </Container>
-        </Switch>
+          </Switch>
+        </Container>
         <Footer />
       </div>
     );
@@ -75,9 +75,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
-    autoLogin: () => dispatch(autoLogin()),
+    autoLogin: (props) => dispatch(autoLogin(props)),
     logUserOut: () => dispatch(logUserOut()),
     fetchLists: () => dispatch(fetchLists()),
     fetchHikes: () => dispatch(fetchHikes()),

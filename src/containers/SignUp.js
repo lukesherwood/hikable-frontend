@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter, Link, Redirect } from "react-router-dom";
 import { signUserUp } from "../actions/userActions";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -23,6 +23,7 @@ const validationSchema = Yup.object().shape({
 class Signup extends Component {
   render() {
     return (
+      this.props.loggedIn ? <Redirect to="/"/> : (
       <div className="sessions-container">
         <h2 className="recipe-header">Sign Up</h2>
         <Formik
@@ -127,13 +128,14 @@ class Signup extends Component {
           Already have an account? <Link to="/signIn">Sign In</Link>
         </div>
       </div>
+      )
     );
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    signUserUp: (userInfo) => dispatch(signUserUp(userInfo, ownProps)),
+    signUserUp: (userInfo) => dispatch(signUserUp(userInfo)),
   };
 };
 

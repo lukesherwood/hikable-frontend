@@ -10,7 +10,7 @@ export default function ListShow(props) {
         <div className="list-item">
           <h2>{list.name}</h2>
           <p>{list.description}</p>
-          <h3>Hikes:</h3>
+          <h3>Saved Hikes:</h3>
           <Hikes hikes={list.hikes} list={list} />
         </div>
       );
