@@ -28,8 +28,7 @@ class SearchHikesForm extends Component {
 
   render() {
     return (
-      // need to make this div width-100
-      <Nav>
+      <Nav className="search-bar-nav">
         <ModalHikes
           show={this.state.modalShow}
           onHide={() => this.setState({ modalShow: false })}
@@ -49,8 +48,8 @@ class SearchHikesForm extends Component {
           }}
         >
           {({ touched, errors, handleSubmit, isSubmitting }) => (
-            <Form className="row pr-20 vertical-center" onSubmit={handleSubmit}>
-              <Form.Group className="col-9 pr-0 col-md-8">
+            <Form className="row w-100" onSubmit={handleSubmit}>
+              <Form.Group className="col pr-0">
                 <Field
                   type="search"
                   placeholder="Search for hikes"
@@ -62,10 +61,9 @@ class SearchHikesForm extends Component {
                   name="keyword"
                 />
               </Form.Group>
-              <Form.Group className="col-1 pl-0 pr-0">
+              <Form.Group className="pl-0 pr-0">
                 <Button
                   variant="outline-success"
-                  className="d-flex"
                   type="submit"
                   disabled={isSubmitting}
                 >

@@ -4,13 +4,14 @@
 @import "./card";
 @import "./button";
 @import "./header";
+@import "./home";
 
 body {
   font-family: "Titillium Web", "Bitstream Vera Serif", sans-serif;
 }
 
 .container {
-  min-height: 100vh; /* will cover the 100% of viewport */
+  min-height: 100vh; 
   max-width: 1200px;
   position: relative;
   display: flex;
@@ -33,101 +34,14 @@ body {
   background-color: #f1f1f1;
 }
 
-.nav-link {
-  color: grey;
-}
-
-.home-image {
-  background-color: rgb(187, 187, 187);
-  color: white;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
-    url("/Hikable-home-image.jpg");
-  height: auto;
-  padding-bottom: 100px;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  left: 0;
-  width: 100%;
-}
-
-.home-header {
-  -webkit-text-stroke-width: 0.5px;
-  -webkit-text-stroke-color: black;
-  color: white;
-  text-align: center;
-  font-size: 5rem;
-}
-
-.home-feature {
-  color: white;
-  text-align: center;
-  font-size: 3rem;
-  -webkit-text-stroke-width: 0.5px;
-  -webkit-text-stroke-color: black;
-}
-
-.home-link {
-  color: white;
-  text-align: center;
-  font-size: 3rem;
-}
-
-.nav-pills .nav-link.active {
-  background-color: #216b40 !important;
-}
-
-.nav-link,
-.navbar-brand {
-  padding-right: 15px !important;
-  padding-left: 15px !important;
-  font-size: 0.9em !important;
-}
-
-.search-form {
-  padding-right: 40px;
-}
-
-.navbar-bottom {
-  font-size: 0.8rem;
-}
-
-.footer {
-  clear: both;
-  position: relative;
-  margin-top: auto;
-  /* display: inline-block; */
-}
-
 .form-inline .form-group {
   margin-right: 20px;
 }
 
-.vertical-center {
-  padding-top: 20px;
-}
-
 @media only screen and (max-width: 600px) {
-  .home-header {
-    font-size: 2rem;
-  }
-  .home-feature {
-    font-size: 2rem;
-  }
-  .home-link {
-    font-size: 2rem;
-  }
-  .hike-card {
-    width: 100vw;
-  }
   .row {
     margin-left: 0px;
     margin-right: 0px;
     padding: 0px;
   }
 }
-/* separate into app and hike css files */

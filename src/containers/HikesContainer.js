@@ -27,14 +27,14 @@ class HikesContainer extends React.Component {
             />
           </div>
         ) : (
-          <>
+          <div className="justify-content-center">
             <Hikes hikes={hikes} />
             <PaginationComponent
               pages={this.props.pages}
               page={this.props.page}
               fetchData={this.props.fetchHikes}
             />
-          </>
+          </div>
         )}
       </div>
     );

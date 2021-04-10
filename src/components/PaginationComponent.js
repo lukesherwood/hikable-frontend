@@ -16,7 +16,7 @@ export default function PaginationComponent(props) {
 
     return (
         <div>
-          <Pagination>
+          <Pagination className="justify-content-center">
             <Pagination.First disabled={page === 1 ? true : false} onClick={() => props.fetchData(1)}/>
             <Pagination.Prev disabled={page === 1 ? true : false} onClick={() => props.fetchData(page - 1)}/>
             {items}

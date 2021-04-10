@@ -8,12 +8,12 @@
 .nav-link {
   padding-right: 15px !important;
   padding-left: 15px !important;
+  color: grey;
 }
 
 .search-bar-nav {
   width: 450px;
   padding-top: 20px;
-
 }
 
 .navbar {
@@ -22,6 +22,21 @@
   align-items: center;
   padding: 0;
   font-size: x-large;
+}
+
+.nav-link {
+  padding-right: 15px !important;
+  padding-left: 15px !important;
+}
+
+.navbar-bottom {
+  font-size: 0.8rem;
+}
+
+.footer {
+  clear: both;
+  position: relative;
+  margin-top: auto;
 }
 
 @media only screen and (max-width: 1200px) {
