@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 // import { searchHikes } from '../actions/hikeActions'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Nav from "react-bootstrap/Nav";
 import { Formik, Field } from "formik";
 import Fuse from "fuse.js";
 // import * as Yup from "yup";
@@ -28,7 +27,7 @@ class SearchHikesForm extends Component {
 
   render() {
     return (
-      <Nav className="search-bar-nav">
+      <div className="search-bar-nav ml-auto">
         <ModalHikes
           show={this.state.modalShow}
           onHide={() => this.setState({ modalShow: false })}
@@ -73,7 +72,7 @@ class SearchHikesForm extends Component {
             </Form>
           )}
         </Formik>
-      </Nav>
+      </div>
     );
   }
 }

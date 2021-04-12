@@ -16,7 +16,7 @@ class LogoutLogin extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         {!this.props.loggedIn ? (
           <>
             <Nav.Item>
@@ -42,7 +42,7 @@ class LogoutLogin extends React.Component {
             </Nav.Link>
           </Nav.Item>
         )}
-      </div>
+      </>
     );
   }
 }

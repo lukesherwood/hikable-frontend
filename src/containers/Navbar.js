@@ -18,9 +18,9 @@ class NavbarClass extends React.Component {
         </Nav.Item>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav variant="pills" className="mr-auto">
+          <Nav variant="pills" className="w-100">
             <Nav.Item>
-              <Nav.Link eventKey={4 }as={NavLink} to="/hikes" exact>
+              <Nav.Link eventKey={4} as={NavLink} to="/hikes" exact>
                 Hikes
               </Nav.Link>
             </Nav.Item>
@@ -31,12 +31,12 @@ class NavbarClass extends React.Component {
                 </Nav.Link>
               </Nav.Item>
             ) : null}
-          <SearchHikesForm />
-          <LogoutOrLogin
-            currentUser={this.props.user}
-            loggedIn={this.props.loggedIn}
-            logUserOut={this.props.logUserOut}
-          />
+              <SearchHikesForm />
+              <LogoutOrLogin
+                currentUser={this.props.user}
+                loggedIn={this.props.loggedIn}
+                logUserOut={this.props.logUserOut}
+              />
           </Nav>
         </Navbar.Collapse>
       </Navbar>

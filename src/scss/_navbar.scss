@@ -6,9 +6,8 @@
 }
 
 .nav-link {
-  padding-right: 15px !important;
-  padding-left: 15px !important;
   color: grey;
+  padding: 20px !important;
 }
 
 .search-bar-nav {
@@ -24,11 +23,6 @@
   font-size: x-large;
 }
 
-.nav-link {
-  padding-right: 30px !important;
-  padding-left: 30px !important;
-}
-
 .navbar-bottom {
   font-size: 0.8rem;
 }
@@ -39,15 +33,16 @@
   margin-top: auto;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 960px) {
   .search-bar-nav {
-    width: 260px;
+    width: 300px;
   }
 }
 
-@media only screen and (max-width: 950px) {
+@media only screen and (max-width: 766px) {
   .search-bar-nav {
     width: 90%;
     padding: 0px;
+    margin-left: 5px !important;
   }
 }
