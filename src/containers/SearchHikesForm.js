@@ -63,7 +63,6 @@ class SearchHikesForm extends Component {
               </Form.Group>
               <Form.Group className="pl-0 pr-0">
                 <Button
-                  eventKey="4" 
                   variant="outline-success"
                   type="submit"
                   disabled={isSubmitting}
