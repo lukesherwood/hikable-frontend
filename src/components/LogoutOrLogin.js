@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { NotificationManager } from "react-notifications";
 import { Nav } from "react-bootstrap";
 class LogoutLogin extends React.Component {
@@ -19,16 +19,16 @@ class LogoutLogin extends React.Component {
       <div>
         {!this.props.loggedIn ? (
           <Nav variant="pills">
-            <Nav.Link as={NavLink} to="/signIn" exact>
+            <Nav.Link as={Link} eventKey="4" to="/signIn" exact>
               Sign In
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/signUp" exact>
+            <Nav.Link as={Link} eventKey="5" to="/signUp" exact>
               Register
             </Nav.Link>
           </Nav>
         ) : (
           <Nav variant="pills">
-            <Nav.Link as={NavLink} to="/signOut" onClick={this.handleClick}>
+            <Nav.Link as={Link} eventKey="6" to="/signOut" onClick={this.handleClick}>
               Sign out
             </Nav.Link>
           </Nav>

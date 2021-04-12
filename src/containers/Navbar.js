@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import LogoutOrLogin from "../components/LogoutOrLogin";
 import { logUserOut } from "../actions/userActions";
 import { connect } from "react-redux";
@@ -10,22 +10,26 @@ import SearchHikesForm from "./SearchHikesForm";
 class NavbarClass extends React.Component {
   render() {
     return (
-      <Navbar collapseOnSelect sticky="top" expand="md" bg="dark" variant="dark">
-        <Navbar.Brand as={NavLink} to="/">
-          <img src="/Hikable-logo.png" alt="" height="80" width="150" />
-        </Navbar.Brand>
+      <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
+        <Nav.Item>
+          <Navbar.Brand as={Link} to="/" eventKey="3">
+            <img src="/Hikable-logo.png" alt="" height="80" width="150" />
+          </Navbar.Brand>
+        </Nav.Item>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav variant="pills" className="mr-auto">
-            <>
-              <Nav.Link as={NavLink} to="/hikes" exact>
+            <Nav.Item>
+              <Nav.Link eventKey="1" as={Link} to="/hikes" exact>
                 Hikes
               </Nav.Link>
-            </>
+            </Nav.Item>
             {this.props.loggedIn ? (
-              <Nav.Link as={NavLink} to="/lists" exact>
-                My Lists
-              </Nav.Link>
+              <Nav.Item>
+                <Nav.Link eventKey="2" as={Link} to="/lists" exact>
+                  My Lists
+                </Nav.Link>
+              </Nav.Item>
             ) : null}
           </Nav>
           <SearchHikesForm />

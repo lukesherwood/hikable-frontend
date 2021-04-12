@@ -13,7 +13,7 @@ export default function Lists(props) {
   return (
     <div>
       <h2>Lists</h2>
-      <Row lg={1}>
+      <Row xs={1} className="lists-card-row">
         {listsArray}
         <Accordion className="list-card">
           <Accordion.Toggle
