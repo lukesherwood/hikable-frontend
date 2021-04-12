@@ -11,7 +11,7 @@ export default function Hikes(props) {
   });
 
   return (
-    <Row>
+    <Row className="hike-cards-row">
       {hikeList}
     </Row>
   );

@@ -33,7 +33,7 @@ class App extends Component {
     return (
       <div className="App">
         <NavbarClass />
-        <Container>
+        <Container >
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/hikes" component={HikesContainer} />

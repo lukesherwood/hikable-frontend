@@ -6,9 +6,14 @@
   @include card-effect;
   min-height: 60vh;
   min-width: 355px;
+  max-width: 380px;
   padding-left: 0px; //required for img to be full width
   padding-right: 0px;
 }
+// .hike-cards-row {
+//   margin: auto;
+// }
+
 
 .list-card {
   @include card-effect;
@@ -21,11 +26,11 @@
 .card img {
   height: 35vh;
   object-fit: cover;
-  width: 100%;
 }
 
 @media only screen and (max-width: 600px) {
   .hike-card {
-    min-width: 98%;
+    min-width: 100%;
+    max-width: none;
   }
 }
