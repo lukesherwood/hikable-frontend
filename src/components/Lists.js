@@ -11,8 +11,8 @@ export default function Lists(props) {
   });
 
   return (
-    <div>
-      <h2>Lists</h2>
+    <div className="justify-content-center">
+      <h2 className="text-center">Lists</h2>
       <Row xs={1} className="lists-card-row">
         {listsArray}
         <Accordion className="list-card">

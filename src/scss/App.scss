@@ -40,6 +40,15 @@ body {
   margin-right: 20px;
 }
 
+.list-item {
+  background-color: lightgray;
+  @include card-effect
+}
+
+.list-hikes-rows {
+  padding: 10px;
+}
+
 @media only screen and (max-width: 600px) {
 
   .container {

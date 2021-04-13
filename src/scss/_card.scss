@@ -14,14 +14,19 @@
 //   margin: auto;
 // }
 
-
 .list-card {
   @include card-effect;
   max-width: 800px;
   padding-right: 0px;
   padding-left: 0px;
   padding-bottom: 0px;
+  // max-height: 50px;
+  position: relative;
+  display: block;
 }
+// .list-form {
+//   max-height: 100px;
+// }
 
 .lists-card-row {
   margin-left: 0px;

@@ -62,7 +62,7 @@ export const fetchUser = (userInfo, ownProps) => (dispatch) => {
     });
 };
 
-export const autoLogin = () => (dispatch) => {
+export const autoLogin = () => (dispatch, props) => {
   const token = localStorage.token;
   if (token) {
     axios

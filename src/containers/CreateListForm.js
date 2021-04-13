@@ -18,7 +18,7 @@ const validationSchema = Yup.object().shape({
 class CreateListForm extends Component {
   render() {
     return (
-      <div className="list-card">
+      <div className="list-card list-form">
         <h3>Create a new list</h3>
         <Formik
           initialValues={{ name: "", description: "" }}

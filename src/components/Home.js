@@ -5,7 +5,7 @@ export default function Home() {
     <div className="home">
       <div className="home-image">
         {/* image here with css */}
-        <div className="home-header p-4">
+        <div className="home-header pt-5 pb-4">
           <p>Your favorite hike is just around the corner.</p>
         </div>
         <div className="home-feature p-3">

@@ -1,5 +1,6 @@
 import React from "react";
 import Hikes from "./Hikes";
+import { Jumbotron } from "react-bootstrap";
 
 export default function ListShow(props) {
   const { lists, params } = props;
@@ -7,11 +8,16 @@ export default function ListShow(props) {
     let list = lists.find((l) => l.id === parseInt(params.match.params.id));
     if (list) {
       return (
-        <div className="list-item">
-          <h2>{list.name}</h2>
-          <p>{list.description}</p>
+        <div className="list-item w-100">
+          <Jumbotron className="header-theme">
+            <div className="display-4">{list.name}</div>
+            <div className="lead font-italic">{list.description}</div>
+            <hr className="my-4" />
+          </Jumbotron>
+          <div className="list-hikes-rows">
           <h3>Saved Hikes:</h3>
           <Hikes hikes={list.hikes} list={list} />
+          </div>
         </div>
       );
     }
