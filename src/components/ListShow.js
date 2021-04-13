@@ -8,7 +8,7 @@ export default function ListShow(props) {
     let list = lists.find((l) => l.id === parseInt(params.match.params.id));
     if (list) {
       return (
-        <div className="list-item w-100">
+        <div className="list-item w-100 rounded">
           <Jumbotron className="header-theme">
             <div className="display-4">{list.name}</div>
             <div className="lead font-italic">{list.description}</div>

@@ -15,7 +15,7 @@ export default function Lists(props) {
       <h2 className="text-center">Lists</h2>
       <Row xs={1} className="lists-card-row">
         {listsArray}
-        <Accordion className="list-card">
+        <Accordion>
           <Accordion.Toggle
             className="btn btn-custom"
             id="toggle-new-list-form"

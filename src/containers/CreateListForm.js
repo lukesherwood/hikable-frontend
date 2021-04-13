@@ -18,7 +18,7 @@ const validationSchema = Yup.object().shape({
 class CreateListForm extends Component {
   render() {
     return (
-      <div className="list-card list-form">
+      <div className="list-form">
         <h3>Create a new list</h3>
         <Formik
           initialValues={{ name: "", description: "" }}
@@ -33,15 +33,16 @@ class CreateListForm extends Component {
             };
             this.props.createList(list);
             setSubmitting(false);
-            document.getElementById("toggle-new-list-form")
-              ? document.getElementById("toggle-new-list-form").click()
-              : resetForm();
+            // document.getElementById("toggle-new-list-form")
+            document.getElementById("toggle-new-list-form").click()
+            resetForm();
           }}
         >
           {({ touched, errors, handleSubmit, isSubmitting }) => (
-            <Form inline onSubmit={handleSubmit}>
-              <Form.Group>
-                <Form.Label size="sm">Name</Form.Label>
+            <Form className="p-2" onSubmit={handleSubmit}>
+              <Form.Row>
+              <Form.Group className="col-md-6">
+                {/* <Form.Label size="sm" className="p-2">Name</Form.Label> */}
                 <Field
                   className={
                     "form-control " +
@@ -49,6 +50,7 @@ class CreateListForm extends Component {
                   }
                   size="sm"
                   name="name"
+                  placeholder="Name"
                 />
                 <ErrorMessage
                   name="name"
@@ -56,8 +58,8 @@ class CreateListForm extends Component {
                   className="text-danger"
                 />
               </Form.Group>
-              <Form.Group>
-                <Form.Label size="sm">Description</Form.Label>
+              <Form.Group className="col-md-6">
+                {/* <Form.Label size="sm" className="p-2">Description</Form.Label> */}
                 <Field
                   className={
                     "form-control " +
@@ -67,6 +69,7 @@ class CreateListForm extends Component {
                   }
                   size="sm"
                   name="description"
+                  placeholder="Description"
                 />
                 <ErrorMessage
                   name="description"
@@ -77,6 +80,7 @@ class CreateListForm extends Component {
               <Button className="btn-custom" type="submit" disabled={isSubmitting}>
                 Create List
               </Button>
+              </Form.Row>
             </Form>
           )}
         </Formik>
