@@ -27,9 +27,14 @@ class LogoutLogin extends React.Component {
             </NavDropdown.Item>
           </>
         ) : (
-          <NavDropdown.Item as={Link} to="/signUp" onClick={this.handleClick}>
-            Sign Out
-          </NavDropdown.Item>
+          <>
+            <NavDropdown.Item as={Link} to="/user">
+              Profile
+            </NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/signUp" onClick={this.handleClick}>
+              Sign Out
+            </NavDropdown.Item>
+          </>
         )}
       </>
     );

@@ -20,28 +20,34 @@ class NavbarClass extends React.Component {
         </Nav.Item>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-            <Nav.Item>
-              <Nav.Link eventKey={1} as={NavLink} to="/hikes" exact>
-                Hikes
-              </Nav.Link>
-            </Nav.Item>
-            {this.props.loggedIn ? (
+          <Nav.Item>
+            <Nav.Link eventKey={1} as={NavLink} to="/hikes" exact>
+              Hikes
+            </Nav.Link>
+          </Nav.Item>
+          {this.props.loggedIn ? (
+            <>
               <Nav.Item>
                 <Nav.Link eventKey={2} as={NavLink} to="/lists" exact>
                   My Lists
                 </Nav.Link>
               </Nav.Item>
-            ) : null}
-            <SearchHikesForm />
-            <Nav.Item>
-              <NavDropdown alignRight title={navDropdownTitle} id="basic-nav-dropdown">
-                  <LogoutOrLogin
-                    currentUser={this.props.user}
-                    loggedIn={this.props.loggedIn}
-                    logUserOut={this.props.logUserOut}
-                  />
-              </NavDropdown>
-            </Nav.Item>
+            </>
+          ) : null}
+          <SearchHikesForm />
+          <Nav.Item>
+            <NavDropdown
+              alignRight
+              title={navDropdownTitle}
+              id="basic-nav-dropdown"
+            >
+              <LogoutOrLogin
+                currentUser={this.props.user}
+                loggedIn={this.props.loggedIn}
+                logUserOut={this.props.logUserOut}
+              />
+            </NavDropdown>
+          </Nav.Item>
         </Navbar.Collapse>
       </Navbar>
     );

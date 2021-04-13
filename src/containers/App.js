@@ -21,6 +21,7 @@ import { fetchHikes } from "../actions/hikeActions";
 import Container from "react-bootstrap/Container";
 import HikeShow from "../components/HikeShow";
 import AuthRoutes from "../components/AuthRoutes";
+import UserProfile from '../components/UserProfile'
 
 class App extends Component {
   componentDidMount() {
@@ -56,6 +57,13 @@ class App extends Component {
                 <ListShow lists={this.props.lists} params={params} />
               )}
             />
+            <AuthRoutes
+              path="/user"
+              loggedIn={this.props.loggedIn}
+              render={(params) => (
+                <UserProfile user={this.props.user} />
+              )}
+            />
             <Route exact path="/signIn" component={SignIn} />
             <Route exact path="/signUp" component={SignUp} />
           </Switch>
@@ -72,6 +80,7 @@ const mapStateToProps = (state) => {
     loggedIn: state.users.loggedIn,
     lists: state.lists.lists,
     hikes: state.hikes.hikes,
+    user: state.users.user
   };
 };
 
