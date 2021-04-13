@@ -133,10 +133,16 @@ class Signup extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: state.users.loggedIn,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     signUserUp: (userInfo) => dispatch(signUserUp(userInfo)),
   };
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(Signup));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Signup));

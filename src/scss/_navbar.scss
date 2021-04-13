@@ -1,13 +1,18 @@
 @import "../../node_modules/bootstrap/scss/mixins";
 
-.nav-pills .nav-link.active {
+.nav-link.active {
   // import this from button
   @include theme-color;
+  border-radius: 8px;
 }
 
 .nav-link {
   color: grey;
   padding: 20px !important;
+}
+
+.nav-link:hover {
+  color: white;
 }
 
 .search-bar-nav {
@@ -33,6 +38,7 @@
   position: relative;
   margin-top: auto;
 }
+
 
 @media only screen and (max-width: 960px) {
   .search-bar-nav {
