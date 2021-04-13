@@ -4,43 +4,43 @@ import { connect } from "react-redux";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Formik, Field } from "formik";
-import Fuse from "fuse.js";
+// import Fuse from "fuse.js";
 // import * as Yup from "yup";
 import ModalHikes from "../components/ModalHikes";
+import { searchHikes } from '../actions/hikeActions'
 class SearchHikesForm extends Component {
   constructor(props) {
     super(props);
     this.state = { modalShow: false, results: [], keyword: "" };
   }
 
-  fuseSearch = (keyword) => {
-    const hikes = this.props.hikes;
-    const fuse = new Fuse(hikes, {
-      threshold: 0.3,
-      keys: ["title", "difficulty", "location", "description"],
-    });
-    const matches = fuse.search(keyword);
-    return matches.map(({ item }) => {
-      return item;
-    });
-  };
+  // fuseSearch = (keyword) => {
+  //   const hikes = this.props.hikes;
+  //   const fuse = new Fuse(hikes, {
+  //     threshold: 0.3,
+  //     keys: ["title", "difficulty", "location", "description"],
+  //   });
+  //   const matches = fuse.search(keyword);
+  //   return matches.map(({ item }) => {
+  //     return item;
+  //   });
+  // };
 
   render() {
     return (
       <div className="search-bar-nav ml-auto">
         <ModalHikes
           show={this.state.modalShow}
-          onHide={() => this.setState({ modalShow: false })}
+          onHide={() => this.setState({ modalShow: false })} // might be able to clear hikes from state here aswell so that you can't see results of hike a second time
           keyword={this.state.keyword}
-          hikes={this.state.results}
+          hikes={this.props.hikes}
         />
         <Formik
           initialValues={{ keyword: "" }}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
             this.setState({ keyword: values });
-            const results = this.fuseSearch(this.state.keyword.keyword);
-            this.setState({ results });
+            this.props.searchHikes(this.state.keyword.keyword);
             setSubmitting(false);
             this.setState({ modalShow: true });
             resetForm();
@@ -78,14 +78,14 @@ class SearchHikesForm extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    hikes: state.hikes.hikes, // change this to be the received hikes from server
+    hikes: state.hikes.searchHikes // change this to be the received hikes from server
   };
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     searchHikes: (keyword) => dispatch(searchHikes(keyword)),
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    searchHikes: (keyword) => dispatch(searchHikes(keyword)),
+  };
+};
 
-export default connect(mapStateToProps, null)(SearchHikesForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchHikesForm);
