@@ -54,3 +54,30 @@ export const searchHikes = (keyword) => {
       });
   };
 };
+
+export const deleteHike = (list, hike) => {
+  const HikeObj = { hike: { id: hike.id, list_id: list.id} };
+  return (dispatch) => {
+    axios
+      .put(WEB_URL+`/hikes/${hike.id}/remove_hike_list`, HikeObj, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((data) => {
+        dispatch({ type: "UPDATE_LIST", list: data.data });
+        NotificationManager.success(
+          `Successfully removed a hike from your list, ${list.name}`,
+          "Success!"
+        );
+      })
+      .catch(function (error) {
+        NotificationManager.error(
+          `Error while updating list!, ${error}`,
+          "Error!"
+        );
+      });
+  };
+};

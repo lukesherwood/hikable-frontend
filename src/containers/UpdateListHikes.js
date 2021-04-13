@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { addHikeToList, fetchLists, deleteHike } from "../actions/listActions";
+import { addHikeToList, fetchLists } from "../actions/listActions";
+import { deleteHike } from '../actions/hikeActions'
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
 import DropdownButton from "react-bootstrap/DropdownButton";

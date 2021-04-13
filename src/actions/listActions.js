@@ -89,33 +89,6 @@ export const addHikeToList = (list, hike) => {
   };
 };
 
-export const deleteHike = (list, hike) => {
-  const newListObj = { list: { id: list.id }, hike: { hike_id: hike.id } };
-  return (dispatch) => {
-    axios
-      .put(WEB_URL+`/lists/${list.id}`, newListObj, {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then((data) => {
-        dispatch({ type: "UPDATE_LIST", list: data.data });
-        NotificationManager.success(
-          `Successfully removed a hike from your list, ${list.name}`,
-          "Success!"
-        );
-      })
-      .catch(function (error) {
-        NotificationManager.error(
-          `Error while updating list!, ${error}`,
-          "Error!"
-        );
-      });
-  };
-};
-
 export const deleteList = (inputList) => {
   const data = { list: {name: inputList.name, description: inputList.description, id:inputList.id} };
   return (dispatch) => {
