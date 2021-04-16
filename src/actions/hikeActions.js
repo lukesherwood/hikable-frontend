@@ -29,14 +29,9 @@ export const fetchHikes = (page) => {
 };
 
 export const searchHikes = (keyword) => {
-  const hike = {
-    hike: {
-      keyword: keyword,
-    },
-  };
   return (dispatch) => {
     axios
-      .post(WEB_URL+"/hikes/search_hikes", hike, {
+      .get(WEB_URL+`/hikes?keyword=${keyword}`, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -44,7 +39,7 @@ export const searchHikes = (keyword) => {
         },
       })
       .then((data) => {
-        dispatch({ type: "SEARCH_HIKES", hikes: data.data });
+        dispatch({ type: "SEARCH_HIKES", hikes: data.data.hikes });
       })
       .catch(function (error) {
         // NotificationManager.error(

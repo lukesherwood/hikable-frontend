@@ -5,6 +5,7 @@ import Hike from "./Hike";
 
 export default function ModalHikes(props) {
   let hikes = props.hikes || [];
+  
   const hikeList = hikes.map((hike) => {
     return <Hike key={hike.id} hike={hike} picture={"150"} />;
   });
