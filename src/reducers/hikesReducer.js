@@ -18,18 +18,18 @@ const hikesReducer = (state = { hikes: [], loading: false, page: "1", pages: "1"
         searchHikes: action.hikes,
         loading: false,
       };
-    case "FILTER_BY_DIFFICULTY":
-      return {
-        ...state,
-        searchHikes: action.hikes,
-        loading: false,
-      };
     case "SET_PAGES":
       return {
         ...state,
         page: action.data.page,
         pages: action.data.pages,
       };
+    case "SET_QUERY":
+      return {
+        ...state,
+        filterBy: action.data.filterBy,
+        keyword: action.data.keyword
+      }
     default:
       return state;
   }

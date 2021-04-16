@@ -1,7 +1,6 @@
 import React from "react";
 import Hike from "./Hike";
 import Row from "react-bootstrap/Row";
-// import FilterHikes from "./FilterHikes";
 
 export default function Hikes(props) {
   const { hikes } = props;
@@ -11,8 +10,10 @@ export default function Hikes(props) {
   });
 
   return (
+    <>
     <Row className="hike-cards-row">
       {hikeList}
     </Row>
+    </>
   );
 }
