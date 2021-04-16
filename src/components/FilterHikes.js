@@ -10,40 +10,77 @@ export default function FilterHikes() {
   };
   return (
     <div className="filters">
-      <h4>Browse by Difficulty</h4>
-      <Button className="btn-custom">All</Button>
       <Button
         onClick={() => {
-          handleClick("difficulty", "Easiest");
+          handleClick(null, null); // sets filterBy and keyword as null
         }}
         className="btn-custom"
       >
-        Easiest
+        All Hikes
       </Button>
-      <Button
-        onClick={() => {
-          handleClick("difficulty", "Easy");
-        }}
-        className="btn-custom"
-      >
-        Easy
-      </Button>
-      <Button
-        onClick={() => {
-          handleClick("difficulty", "Intermediate");
-        }}
-        className="btn-custom"
-      >
-        Intermediate
-      </Button>
-      <Button
-        onClick={() => {
-          handleClick("difficulty", "Advanced");
-        }}
-        className="btn-custom"
-      >
-        Advanced
-      </Button>
+      <div className="difficulty filters">
+        <h4>Browse by Difficulty</h4>
+        <Button
+          onClick={() => {
+            handleClick("difficulty", "Easiest");
+          }}
+          className="btn-custom"
+        >
+          Easiest
+        </Button>
+        <Button
+          onClick={() => {
+            handleClick("difficulty", "Easy");
+          }}
+          className="btn-custom"
+        >
+          Easy
+        </Button>
+        <Button
+          onClick={() => {
+            handleClick("difficulty", "Intermediate");
+          }}
+          className="btn-custom"
+        >
+          Intermediate
+        </Button>
+        <Button
+          onClick={() => {
+            handleClick("difficulty", "Advanced");
+          }}
+          className="btn-custom"
+        >
+          Advanced
+        </Button>
+      </div>
+
+      <div className="duration filters">
+        <h4>Browse by Duration</h4>
+        <Button
+          onClick={() => {
+            handleClick("duration", "min");
+          }}
+          className="btn-custom"
+        >
+          Short
+        </Button>
+        <Button
+          onClick={() => {
+            handleClick("duration", "hr");
+          }}
+          className="btn-custom"
+        >
+          Day Walk
+        </Button>
+        <Button
+          onClick={() => {
+            handleClick("duration", "days");
+          }}
+          className="btn-custom"
+        >
+          Overnight Walk
+        </Button>
+      </div>
     </div>
   );
 }

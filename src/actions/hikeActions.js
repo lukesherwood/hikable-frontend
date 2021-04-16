@@ -5,13 +5,12 @@ const WEB_URL = config.url.API_URL
 
 export const fetchHikes = (filterBy, keyword, page) => {
   let stringQuery = ""
-
   const page_number  = page || "1"
   return (dispatch) => {
     if (filterBy && keyword) {
       stringQuery = `&${filterBy}=${keyword}`
-      dispatch({ type: "SET_QUERY", data: {filterBy: filterBy, keyword: keyword} });
     }
+    dispatch({ type: "SET_QUERY", data: {filterBy: filterBy, keyword: keyword} });
     dispatch({ type: "LOADING_HIKES" });
     axios
       .get(WEB_URL+`/hikes/?page=${page_number}` + stringQuery, {
