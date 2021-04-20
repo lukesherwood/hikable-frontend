@@ -18,7 +18,7 @@ class HikesContainer extends React.Component {
     return (
       <div className="hikes-container">
         <div className="justify-content-center">
-          <FilterHikes />
+          <FilterHikes fetchData={this.props.fetchHikes}/>
           {loading ? (
             <div className="vh-100 w-100">
               <Loader
@@ -36,8 +36,7 @@ class HikesContainer extends React.Component {
             pages={this.props.pages}
             page={this.props.page}
             fetchData={this.props.fetchHikes}
-            filterBy={this.props.filterBy}
-            keyword={this.props.keyword}
+            filterData={this.props.filterData}
           />
         </div>
       </div>
@@ -51,8 +50,7 @@ const mapStateToProps = (state) => {
     hikes: state.hikes.hikes,
     page: state.hikes.page,
     pages: state.hikes.pages,
-    filterBy: state.hikes.filterBy,
-    keyword: state.hikes.keyword
+    filterData: state.hikes.filterData,
   };
 };
 

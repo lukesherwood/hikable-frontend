@@ -1,19 +1,27 @@
 import { NotificationManager } from "react-notifications";
-import { config } from '../Constants' 
+import { config } from "../Constants";
 const axios = require("axios").default;
-const WEB_URL = config.url.API_URL
+const WEB_URL = config.url.API_URL;
 
-export const fetchHikes = (filterBy, keyword, page) => {
-  let stringQuery = ""
-  const page_number  = page || "1"
+export const fetchHikes = (filterData, page) => {
+  // console.log(filterData, "data");
+  let stringQuery = "";
+  const page_number = page || "1";
   return (dispatch) => {
-    if (filterBy && keyword) {
-      stringQuery = `&${filterBy}=${keyword}`
+    if (filterData) {
+      for (const filter in filterData) {
+        for (const query in filterData[filter]) {
+          if (filterData[filter][query]) {
+          stringQuery += `&${filter}=${query}`; // this appears to be the wrong query only fetches for last query
+          dispatch({ type: "SET_QUERY", data: {filterData} });
+          }
+        }
+      }
     }
-    dispatch({ type: "SET_QUERY", data: {filterBy: filterBy, keyword: keyword} });
+
     dispatch({ type: "LOADING_HIKES" });
     axios
-      .get(WEB_URL+`/hikes/?page=${page_number}` + stringQuery, {
+      .get(WEB_URL + `/hikes/?page=${page_number}` + stringQuery, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -36,7 +44,7 @@ export const fetchHikes = (filterBy, keyword, page) => {
 export const searchHikes = (keyword) => {
   return (dispatch) => {
     axios
-      .get(WEB_URL+`/hikes?keyword=${keyword}`, {
+      .get(WEB_URL + `/hikes?keyword=${keyword}`, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -85,10 +93,10 @@ export const searchHikes = (keyword) => {
 // };
 
 export const deleteHike = (list, hike) => {
-  const HikeObj = { hike: { id: hike.id, list_id: list.id} };
+  const HikeObj = { hike: { id: hike.id, list_id: list.id } };
   return (dispatch) => {
     axios
-      .put(WEB_URL+`/hikes/${hike.id}/remove_hike_list`, HikeObj, {
+      .put(WEB_URL + `/hikes/${hike.id}/remove_hike_list`, HikeObj, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",

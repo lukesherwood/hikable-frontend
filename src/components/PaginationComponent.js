@@ -8,13 +8,12 @@ export default function PaginationComponent(props) {
 
   let page = props.page;
   let pages = props.pages;
-  let filterBy = props.filterBy
-  let keyword = props.keyword
+  let filterData = props.filterData
   let items = [];
   for (let number = page; number <= page + 4 && number < pages; number++) {
     items.push(
       <Pagination.Item
-        onClick={() => props.fetchData(filterBy, keyword, number)}
+        onClick={() => props.fetchData(filterData, number)}
         key={"pageFilter" + number}
         active={number === page}
       >
@@ -28,24 +27,24 @@ export default function PaginationComponent(props) {
       <Pagination className="justify-content-center">
         <Pagination.First
           disabled={page === 1 ? true : false}
-          onClick={() => props.fetchData(filterBy, keyword, 1)}
+          onClick={() => props.fetchData(filterData, 1)}
         />
         <Pagination.Prev
           disabled={page === 1 ? true : false}
-          onClick={() => props.fetchData(filterBy, keyword, page - 1)}
+          onClick={() => props.fetchData(filterData, page - 1)}
         />
         {items}
         <Pagination.Ellipsis />
-        <Pagination.Item onClick={() => props.fetchData(filterBy, keyword, pages)}>
+        <Pagination.Item onClick={() => props.fetchData(filterData, pages)}>
           {pages}
         </Pagination.Item>
         <Pagination.Next
           disabled={page === pages ? true : false}
-          onClick={() => props.fetchData(filterBy, keyword, page + 1)}
+          onClick={() => props.fetchData(filterData, page + 1)}
         />
         <Pagination.Last
           disabled={page === pages ? true : false}
-          onClick={() => props.fetchData(filterBy, keyword, pages)}
+          onClick={() => props.fetchData(filterData, pages)}
         />
       </Pagination>
       <br />

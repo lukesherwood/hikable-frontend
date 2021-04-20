@@ -1,86 +1,110 @@
-import React from "react";
-import { Button } from "react-bootstrap";
-import { fetchHikes } from "../actions/hikeActions";
-import { useDispatch } from "react-redux";
+import React, { Component } from "react";
+import {
+  ButtonGroup,
+  DropdownButton,
+  Dropdown,
+  Form,
+  Button
+} from "react-bootstrap";
+// import { fetchHikes } from "../actions/hikeActions";
 
-export default function FilterHikes() {
-  const dispatch = useDispatch();
-  const handleClick = (filterBy, keyword) => {
-    dispatch(fetchHikes(filterBy, keyword));
+export default class FilterHikes extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { //problem here is that we can't use pagination properly unless data is saved into redux store?
+      difficulty: {
+        Easiest: false,
+        Easy: false,
+        Intermediate: false,
+        Advanced: false,
+      },
+    };
+  }
+  
+  handleClick = (event) => {
+    const filter = event.target.value 
+    this.setState((prevState) => ({difficulty: {...prevState.difficulty, [filter]: !this.state.difficulty[filter]}})) // just need to abstract this a bit to be able to use for all filters
   };
-  return (
-    <div className="filters">
-      <Button
-        onClick={() => {
-          handleClick(null, null); // sets filterBy and keyword as null
-        }}
-        className="btn-custom"
-      >
-        All Hikes
-      </Button>
-      <div className="difficulty filters">
-        <h4>Browse by Difficulty</h4>
-        <Button
-          onClick={() => {
-            handleClick("difficulty", "Easiest");
-          }}
-          className="btn-custom"
-        >
-          Easiest
-        </Button>
-        <Button
-          onClick={() => {
-            handleClick("difficulty", "Easy");
-          }}
-          className="btn-custom"
-        >
-          Easy
-        </Button>
-        <Button
-          onClick={() => {
-            handleClick("difficulty", "Intermediate");
-          }}
-          className="btn-custom"
-        >
-          Intermediate
-        </Button>
-        <Button
-          onClick={() => {
-            handleClick("difficulty", "Advanced");
-          }}
-          className="btn-custom"
-        >
-          Advanced
-        </Button>
-      </div>
 
-      <div className="duration filters">
-        <h4>Browse by Duration</h4>
-        <Button
-          onClick={() => {
-            handleClick("duration", "min");
-          }}
-          className="btn-custom"
-        >
-          Short
-        </Button>
-        <Button
-          onClick={() => {
-            handleClick("duration", "hr");
-          }}
-          className="btn-custom"
-        >
-          Day Walk
-        </Button>
-        <Button
-          onClick={() => {
-            handleClick("duration", "days");
-          }}
-          className="btn-custom"
-        >
-          Overnight Walk
-        </Button>
+  handleSubmit = () => {
+    this.props.fetchData(this.state)
+  }
+
+  handleReset = () => {
+    this.setState({
+      difficulty: {
+        Easiest: false,
+        Easy: false,
+        Intermediate: false,
+        Advanced: false,
+      },
+    })
+  };
+
+
+  render() {
+    return (
+      <div>
+        <div className="filters p-2">
+          <ButtonGroup>
+            <Button
+              value="null"
+              onClick={(event) => {
+                this.handleReset();
+              }}
+              className="btn-custom"
+            >
+              Clear Filters
+            </Button>
+            <DropdownButton
+              className="btn-custom"
+              id="dropdown-basic-button"
+              title="Filter Difficulty"
+            >
+              <Dropdown.Item
+                as={Form.Check}
+                value="Easiest"
+                checked={this.state.difficulty["Easiest"]}
+                label={`Easiest`}
+                onClick={(event) => {
+                  this.handleClick(event);
+                }}
+              />
+              <Dropdown.Item
+                as={Form.Check}
+                value="Easy"
+                checked={this.state.difficulty["Easy"]}
+                label={`Easy`}
+                onClick={(event) => {
+                  this.handleClick(event);
+                }}
+              />
+              <Dropdown.Item
+                as={Form.Check}
+                value="Intermediate"
+                checked={this.state.difficulty["Intermediate"]}
+                label={`Intermediate`}
+                onClick={(event) => {
+                  this.handleClick(event);
+                }}
+              />
+              <Dropdown.Item
+                as={Form.Check}
+                value="Advanced"
+                checked={this.state.difficulty["Advanced"]}
+                label={`Advanced`}
+                onClick={(event) => {
+                  this.handleClick(event);
+                }}
+              />
+            </DropdownButton>
+            <Button onClick={(event) => {
+                  this.handleSubmit(event);
+                }}
+                className="btn-custom">Filter</Button>
+          </ButtonGroup>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }

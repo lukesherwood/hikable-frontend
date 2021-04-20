@@ -27,8 +27,7 @@ const hikesReducer = (state = { hikes: [], loading: false, page: "1", pages: "1"
     case "SET_QUERY":
       return {
         ...state,
-        filterBy: action.data.filterBy,
-        keyword: action.data.keyword
+        filterData: action.data.filterData,
       }
     default:
       return state;
