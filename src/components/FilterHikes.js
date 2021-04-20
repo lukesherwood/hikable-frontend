@@ -9,21 +9,24 @@ import {
 // import { fetchHikes } from "../actions/hikeActions";
 
 export default class FilterHikes extends Component {
+  blankState = () => {
+    return {difficulty: {
+    Easiest: false,
+    Easy: false,
+    Intermediate: false,
+    Advanced: false,
+  }}}
+
   constructor(props) {
     super(props);
-    this.state = { //problem here is that we can't use pagination properly unless data is saved into redux store?
-      difficulty: {
-        Easiest: false,
-        Easy: false,
-        Intermediate: false,
-        Advanced: false,
-      },
-    };
+    this.state = //problem here is that we can't use pagination properly unless data is saved into redux store?
+      this.blankState()
   }
   
   handleClick = (event) => {
     const filter = event.target.value 
-    this.setState((prevState) => ({difficulty: {...prevState.difficulty, [filter]: !this.state.difficulty[filter]}})) // just need to abstract this a bit to be able to use for all filters
+    this.setState((prevState) => ({difficulty: {...prevState.difficulty, [filter]: !this.state.difficulty[filter]}}))// just need to abstract this a bit to be able to use for all filters
+    
   };
 
   handleSubmit = () => {
@@ -31,14 +34,8 @@ export default class FilterHikes extends Component {
   }
 
   handleReset = () => {
-    this.setState({
-      difficulty: {
-        Easiest: false,
-        Easy: false,
-        Intermediate: false,
-        Advanced: false,
-      },
-    })
+    this.setState(this.blankState())
+    this.props.fetchData(this.blankState())
   };
 
 
@@ -49,7 +46,7 @@ export default class FilterHikes extends Component {
           <ButtonGroup>
             <Button
               value="null"
-              onClick={(event) => {
+              onClick={() => {
                 this.handleReset();
               }}
               className="btn-custom"
