@@ -6,7 +6,6 @@ import {
   Form,
   Button
 } from "react-bootstrap";
-// import { fetchHikes } from "../actions/hikeActions";
 
 export default class FilterHikes extends Component {
   blankState = () => {
@@ -19,7 +18,7 @@ export default class FilterHikes extends Component {
 
   constructor(props) {
     super(props);
-    this.state = //problem here is that we can't use pagination properly unless data is saved into redux store?
+    this.state = 
       this.blankState()
   }
   
