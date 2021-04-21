@@ -17,7 +17,7 @@ import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 import Footer from "../components/Footer";
 import { fetchLists } from "../actions/listActions";
-import { fetchHikes } from "../actions/hikeActions";
+import { fetchHikes, fetchHike } from "../actions/hikeActions";
 import Container from "react-bootstrap/Container";
 import HikeShow from "../components/HikeShow";
 import AuthRoutes from "../components/AuthRoutes";
@@ -41,7 +41,7 @@ class App extends Component {
             <Route
               path="/hikes/:id"
               render={(params) => (
-                <HikeShow hikes={this.props.hikes} params={params} />
+                <HikeShow fetchHike={this.props.fetchHike} hikes={this.props.hikes} params={params} />
               )}
             />
             <AuthRoutes
@@ -90,6 +90,7 @@ const mapDispatchToProps = (dispatch) => {
     logUserOut: () => dispatch(logUserOut()),
     fetchLists: () => dispatch(fetchLists()),
     fetchHikes: () => dispatch(fetchHikes()),
+    fetchHike: (id) => dispatch(fetchHike(id)),
   };
 };
 

@@ -15,6 +15,7 @@ export default class FilterHikes extends Component {
     Intermediate: false,
     Advanced: false,
   }}}
+  // add for duration category to see how many there are
 
   constructor(props) {
     super(props);
