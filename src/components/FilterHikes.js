@@ -10,11 +10,19 @@ import {
 export default class FilterHikes extends Component {
   blankState = () => {
     return {difficulty: {
-    Easiest: false,
-    Easy: false,
-    Intermediate: false,
-    Advanced: false,
-  }}}
+      Easiest: false,
+      Easy: false,
+      Intermediate: false,
+      Advanced: false,
+    }, 
+    duration_category : {
+      "Under 1 hour": false, 
+      "Under 4 hours": false, 
+      "Over 4 hours": false,
+      "Multi-day": false,
+    }
+  }
+}
   // add for duration category to see how many there are
 
   constructor(props) {
@@ -23,11 +31,15 @@ export default class FilterHikes extends Component {
       this.blankState()
   }
   
-  handleClick = (event) => {
+  difficultyHandleClick = (event) => {
     const filter = event.target.value 
     this.setState((prevState) => ({difficulty: {...prevState.difficulty, [filter]: !this.state.difficulty[filter]}}))// just need to abstract this a bit to be able to use for all filters
-    
   };
+
+  durationHandleClick = (event) => {
+    const filter = event.target.value 
+    this.setState((prevState) => ({duration_category: {...prevState.duration_category, [filter]: !this.state.duration_category[filter]}}))
+  }
 
   handleSubmit = () => {
     this.props.fetchData(this.state)
@@ -65,7 +77,7 @@ export default class FilterHikes extends Component {
                 checked={this.state.difficulty["Easiest"]}
                 label={`Easiest`}
                 onClick={(event) => {
-                  this.handleClick(event);
+                  this.difficultyHandleClick(event);
                 }}
               />
               <Dropdown.Item
@@ -75,7 +87,7 @@ export default class FilterHikes extends Component {
                 checked={this.state.difficulty["Easy"]}
                 label={`Easy`}
                 onClick={(event) => {
-                  this.handleClick(event);
+                  this.difficultyHandleClick(event);
                 }}
               />
               <Dropdown.Item
@@ -85,7 +97,7 @@ export default class FilterHikes extends Component {
                 checked={this.state.difficulty["Intermediate"]}
                 label={`Intermediate`}
                 onClick={(event) => {
-                  this.handleClick(event);
+                  this.difficultyHandleClick(event);
                 }}
               />
               <Dropdown.Item
@@ -95,7 +107,55 @@ export default class FilterHikes extends Component {
                 checked={this.state.difficulty["Advanced"]}
                 label={`Advanced`}
                 onClick={(event) => {
-                  this.handleClick(event);
+                  this.difficultyHandleClick(event);
+                }}
+              />
+            </DropdownButton>
+            <DropdownButton
+              className="btn-custom"
+              id="dropdown-basic-button"
+              title="Filter Duration"
+            >
+              <Dropdown.Item
+                as={Form.Check}
+                value='["Under 1 hour"]'
+                id="Under 1 Hour"
+                // works
+                checked={this.state.duration_category['["Under 1 hour"]']}
+                label={`Short`}
+                onClick={(event) => {
+                  this.durationHandleClick(event);
+                }}
+              />
+              <Dropdown.Item
+                as={Form.Check}
+                value='["1-4 hours"]'
+                id="Under 4 Hours"
+                checked={this.state.duration_category['["1-4 hours"]']}
+                label={`1 - 4 Hours`}
+                onClick={(event) => {
+                  this.durationHandleClick(event);
+                }}
+              />
+              <Dropdown.Item
+                as={Form.Check}
+                value='["Over 4 hours"]' 
+                // works
+                id="Over 4 Hours"
+                checked={this.state.duration_category['["Over 4 hours"]']}
+                label={`Over 4 Hours`}
+                onClick={(event) => {
+                  this.durationHandleClick(event);
+                }}
+              />
+              <Dropdown.Item
+                as={Form.Check}
+                value='["Multi-night"]'
+                id="Multi-day"
+                checked={this.state.duration_category['["Multi-night"]']}
+                label={`Multi Day`}
+                onClick={(event) => {
+                  this.durationHandleClick(event);
                 }}
               />
             </DropdownButton>

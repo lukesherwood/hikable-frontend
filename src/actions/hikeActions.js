@@ -76,6 +76,7 @@ export const fetchHike = (id) => {
         },
       })
       .then((data) => {
+        console.log(data.data)
         dispatch({ type: "ADD_HIKE", hike: data.data });
       })
       .catch(function (error) {
