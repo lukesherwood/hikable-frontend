@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react"
 import Pagination from "react-bootstrap/Pagination";
 
 export default function PaginationComponent(props) {
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []); // need to make sure the top of page is shown after state change (doesn't work?)
+  const [jumpToTop, setJumpToTop] = useState(false);
+  useEffect(() => {
+    if(jumpToTop === true) {
+      window.scrollTo(0, 0)
+      setJumpToTop(false);
+    }
+  }, [jumpToTop])
+   const handleClick = (page) => {
+    setJumpToTop(true);
+    props.fetchData(filterData, page)
+  }
 
   let page = props.page;
   let pages = props.pages;
@@ -13,7 +21,7 @@ export default function PaginationComponent(props) {
   for (let number = page; number <= page + 4 && number < pages; number++) {
     items.push(
       <Pagination.Item
-        onClick={() => props.fetchData(filterData, number)}
+        onClick={() => handleClick(number)}
         key={"pageFilter" + number}
         active={number === page}
       >
@@ -27,24 +35,24 @@ export default function PaginationComponent(props) {
       <Pagination className="justify-content-center">
         <Pagination.First
           disabled={page === 1 ? true : false}
-          onClick={() => props.fetchData(filterData, 1)}
+          onClick={() => handleClick(1)}
         />
         <Pagination.Prev
           disabled={page === 1 ? true : false}
-          onClick={() => props.fetchData(filterData, page - 1)}
+          onClick={() => handleClick(page - 1)}
         />
         {items}
         <Pagination.Ellipsis />
-        <Pagination.Item onClick={() => props.fetchData(filterData, pages)}>
+        <Pagination.Item onClick={() => handleClick(pages)}>
           {pages}
         </Pagination.Item>
         <Pagination.Next
           disabled={page === pages ? true : false}
-          onClick={() => props.fetchData(filterData, page + 1)}
+          onClick={() => handleClick(page + 1)}
         />
         <Pagination.Last
           disabled={page === pages ? true : false}
-          onClick={() => props.fetchData(filterData, pages)}
+          onClick={() => handleClick(pages)}
         />
       </Pagination>
       <br />
