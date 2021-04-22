@@ -61,6 +61,7 @@ export default class FilterHikes extends Component {
               <Dropdown.Item
                 as={Form.Check}
                 value="Easiest"
+                id="Easiest"
                 checked={this.state.difficulty["Easiest"]}
                 label={`Easiest`}
                 onClick={(event) => {
@@ -70,6 +71,7 @@ export default class FilterHikes extends Component {
               <Dropdown.Item
                 as={Form.Check}
                 value="Easy"
+                id="Easy"
                 checked={this.state.difficulty["Easy"]}
                 label={`Easy`}
                 onClick={(event) => {
@@ -79,6 +81,7 @@ export default class FilterHikes extends Component {
               <Dropdown.Item
                 as={Form.Check}
                 value="Intermediate"
+                id="Intermediate"
                 checked={this.state.difficulty["Intermediate"]}
                 label={`Intermediate`}
                 onClick={(event) => {
@@ -88,6 +91,7 @@ export default class FilterHikes extends Component {
               <Dropdown.Item
                 as={Form.Check}
                 value="Advanced"
+                id="Advanced"
                 checked={this.state.difficulty["Advanced"]}
                 label={`Advanced`}
                 onClick={(event) => {

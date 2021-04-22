@@ -37,5 +37,5 @@ export default function HikeShow(props) {
         </div>
       );
     }
-    return (<div>no hike</div>)
+    return (<div>Sorry, we can't find that hike, try again.</div>)
 }
