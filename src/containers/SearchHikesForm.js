@@ -3,11 +3,18 @@ import { connect } from "react-redux";
 // import { searchHikes } from '../actions/hikeActions'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { Formik, Field } from "formik";
+import { Formik, Field, ErrorMessage } from "formik";
 // import Fuse from "fuse.js";
-// import * as Yup from "yup";
+import * as Yup from "yup";
 import ModalHikes from "../components/ModalHikes";
 import { searchHikes } from '../actions/hikeActions'
+
+const validationSchema = Yup.object().shape({
+  keyword: Yup.string()
+    .required("Input is required")
+    .min(2, "Input is too short - should be 2 chars minimum"),
+});
+
 class SearchHikesForm extends Component {
   constructor(props) {
     super(props);
@@ -26,6 +33,7 @@ class SearchHikesForm extends Component {
   //   });
   // };
 
+
   render() {
     return (
       <div className="search-bar-nav ml-auto">
@@ -37,6 +45,7 @@ class SearchHikesForm extends Component {
         />
         <Formik
           initialValues={{ keyword: "" }}
+          validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
             this.setState({ keyword: values });
@@ -58,6 +67,12 @@ class SearchHikesForm extends Component {
                   }
                   size="sm"
                   name="keyword"
+                />
+                <ErrorMessage
+                  name="keyword"
+                  component="div"
+                  style={{fontSize: "0.75rem"}}
+                  className="invalid-feedback text-sm"
                 />
               </Form.Group>
               <Form.Group className="pl-0 pr-0">

@@ -16,10 +16,10 @@ export default class FilterHikes extends Component {
       Advanced: false,
     }, 
     duration_category : {
-      "Under 1 hour": false, 
-      "Under 4 hours": false, 
-      "Over 4 hours": false,
-      "Multi-day": false,
+      '["Under 1 hour"]': false, 
+      '["1-4 hours"]': false, 
+      '["Over 4 hours"]': false,
+      '["Multi-night"]': false,
     }
   }
 }
