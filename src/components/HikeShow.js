@@ -3,6 +3,17 @@ import { useDispatch } from 'react-redux'
 import {fetchHike} from '../actions/hikeActions'
 export default function HikeShow(props) {
 
+  const convertArray = (array) => {
+    if (array) {
+      let formattedArray = array.split(",")
+      formattedArray = formattedArray.map(cat => cat.slice(2, -2))
+      if (formattedArray.length > 1) {
+        return formattedArray.map(category => <li key={category}>{category}</li>)
+      } 
+      return formattedArray
+    }
+  }
+
   const dispatch = useDispatch();
   const { hikes, params } = props;
   useEffect(() => { dispatch(fetchHike(params.match.params.id))}, [dispatch, params.match.params.id]
@@ -18,8 +29,12 @@ export default function HikeShow(props) {
             Difficulty: {hike.difficulty}
           </div>
           <div className="hike-card-duration">Duration: {hike.duration}</div>
-          <div className="hike-card-duration">Duration Category: {hike.duration_category === `["Under 1 hour"]` ? "Short" : hike.duration_category}</div>
-         
+          <div className="hike-card-duration">
+          Duration Category:
+            <ul>
+              {convertArray(hike.duration_category)}
+            </ul> 
+          </div>
           {hike.length ? (<div className="hike-card-length">Length: {hike.length}</div>) : null}
           <div className="hike-card-description">
             Description: {hike.description}
@@ -30,10 +45,12 @@ export default function HikeShow(props) {
           <div className="hike-card-dog">
             Dog Friendly: {hike.dog_friendly ? "Yes" : "No"}
           </div>
-          {hike.region ? (
           <div className="hike-card-region">
-            Region: {hike.region.slice(2,-2)}
-          </div> ) : null }
+          Region:
+            <ul>
+              {convertArray(hike.region)}
+            </ul> 
+          </div>
         </div>
       );
     }

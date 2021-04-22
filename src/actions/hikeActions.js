@@ -12,8 +12,8 @@ export const fetchHikes = (filterData, page) => {
       for (const filter in filterData) {
         for (const query in filterData[filter]) {
           if (filterData[filter][query]) {
-          stringQuery += `&${filter}[]=${query}`; // this appears to be the wrong query only fetches for last query
-          dispatch({ type: "SET_QUERY", data: {filterData} });
+            stringQuery += `&${filter}[]=${query}`;
+            dispatch({ type: "SET_QUERY", data: { filterData } });
           }
         }
       }
