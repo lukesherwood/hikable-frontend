@@ -22,18 +22,21 @@ import Container from "react-bootstrap/Container";
 import HikeShow from "../components/HikeShow";
 import AuthRoutes from "../components/AuthRoutes";
 import UserProfile from '../components/UserProfile'
+import ScrollTop from "../components/ScrollTop";
 
 class App extends Component {
   componentDidMount() {
     this.props.autoLogin();
     this.props.fetchLists();
     this.props.fetchHikes();
+    window.scrollTo(0, 0)
   }
 
   render() {
     return (
       <div className="App">
         <NavbarClass />
+          <ScrollTop>
         <Container>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -69,6 +72,7 @@ class App extends Component {
           </Switch>
           <NotificationContainer />
         </Container>
+          </ScrollTop>
         <Footer />
       </div>
     );
