@@ -21,9 +21,13 @@ export default function HikeShow(props) {
     const hike = hikes.find((h) => h.id === parseInt(params.match.params.id))
     if (hike) {
       return (
-        <div className="hike-item">
-          <h2>{hike.title}</h2>
-         <img width="100%" src={hike.photo} alt={`${hike.name}`} />
+        <div className="hike-item rounded">
+          <div className="hike-header rounded-top" style={{
+                        backgroundImage: `url(${hike.photo})`, backgroundRepeat: 'no-repeat', width: '100%', height: '500px',
+                    }}>
+            <h1>{hike.title}</h1>
+          </div>
+          <div className="hike-item-body p-4">
           <div className="hike-card-location">Location: {hike.location}</div>
           <div className="hike-card-difficulty">
             Difficulty: {hike.difficulty}
@@ -50,6 +54,7 @@ export default function HikeShow(props) {
             <ul>
               {convertArray(hike.region)}
             </ul> 
+          </div>
           </div>
         </div>
       );
