@@ -4,71 +4,82 @@ import {
   DropdownButton,
   Dropdown,
   Form,
-  Button
+  Button,
 } from "react-bootstrap";
 
 export default class FilterHikes extends Component {
   blankState = () => {
-    return {difficulty: {
-      Easiest: false,
-      Easy: false,
-      Intermediate: false,
-      Advanced: false,
-    }, 
-    duration_category : {
-      '["Under 1 hour"]': false, 
-      '["1-4 hours"]': false, 
-      '["Over 4 hours"]': false,
-      '["Multi-night"]': false,
-    }
-  }
-}
+    return {
+      difficulty: {
+        Easiest: false,
+        Easy: false,
+        Intermediate: false,
+        Advanced: false,
+      },
+      duration_category: {
+        '["Under 1 hour"]': false,
+        '["1-4 hours"]': false,
+        '["Over 4 hours"]': false,
+        '["Multi-night"]': false,
+      },
+    };
+  };
   // add for duration category to see how many there are
 
   constructor(props) {
     super(props);
-    this.state = 
-      this.blankState()
+    this.state = this.blankState();
   }
-  
+
   difficultyHandleClick = (event) => {
-    const filter = event.target.value 
-    this.setState((prevState) => ({difficulty: {...prevState.difficulty, [filter]: !this.state.difficulty[filter]}}))// just need to abstract this a bit to be able to use for all filters
+    const filter = event.target.value;
+    this.setState((prevState) => ({
+      difficulty: {
+        ...prevState.difficulty,
+        [filter]: !this.state.difficulty[filter],
+      },
+    })); // just need to abstract this a bit to be able to use for all filters
   };
 
   durationHandleClick = (event) => {
-    const filter = event.target.value 
-    this.setState((prevState) => ({duration_category: {...prevState.duration_category, [filter]: !this.state.duration_category[filter]}}))
-  }
-
-  handleSubmit = () => {
-    this.props.fetchData(this.state)
-  }
-
-  handleReset = () => {
-    this.setState(this.blankState())
-    this.props.fetchData(this.blankState())
+    const filter = event.target.value;
+    this.setState((prevState) => ({
+      duration_category: {
+        ...prevState.duration_category,
+        [filter]: !this.state.duration_category[filter],
+      },
+    }));
   };
 
+  handleSubmit = () => {
+    this.props.fetchData(this.state);
+  };
+
+  handleReset = () => {
+    this.setState(this.blankState());
+    this.props.fetchData(this.blankState());
+  };
+
+  countTrueValues = (object) => {
+    return Object.values(object).filter((item) => item === true).length;
+  };
 
   render() {
     return (
-      <div>
+      <div className="pb-3">
         <div className="filters">
           <ButtonGroup>
-            <Button
-              value="null"
-              onClick={() => {
-                this.handleReset();
-              }}
-              className="btn-custom"
-            >
-              Clear Filters
-            </Button>
             <DropdownButton
-              className="btn-custom"
+              variant="outline-secondary"
+              className="square"
               id="dropdown-basic-button"
-              title="Filter Difficulty"
+              title={
+                this.countTrueValues(this.state.difficulty) > 0
+                  ? `Difficulty (${this.countTrueValues(
+                      this.state.difficulty
+                    )})`
+                  : "Difficulty"
+              }
             >
               <Dropdown.Item
                 as={Form.Check}
@@ -112,15 +123,20 @@ export default class FilterHikes extends Component {
               />
             </DropdownButton>
             <DropdownButton
-              className="btn-custom"
+              variant="outline-secondary"
               id="dropdown-basic-button"
-              title="Filter Duration"
+              title={
+                this.countTrueValues(this.state.duration_category) > 0
+                  ? `Duration (${this.countTrueValues(
+                      this.state.duration_category
+                    )})`
+                  : "Duration"
+              }
             >
               <Dropdown.Item
                 as={Form.Check}
                 value='["Under 1 hour"]'
                 id="Under 1 Hour"
-                // works
                 checked={this.state.duration_category['["Under 1 hour"]']}
                 label={`Short`}
                 onClick={(event) => {
@@ -139,8 +155,7 @@ export default class FilterHikes extends Component {
               />
               <Dropdown.Item
                 as={Form.Check}
-                value='["Over 4 hours"]' 
-                // works
+                value='["Over 4 hours"]'
                 id="Over 4 Hours"
                 checked={this.state.duration_category['["Over 4 hours"]']}
                 label={`Over 4 Hours`}
@@ -159,10 +174,23 @@ export default class FilterHikes extends Component {
                 }}
               />
             </DropdownButton>
-            <Button onClick={(event) => {
-                  this.handleSubmit(event);
-                }}
-                className="btn-custom">Filter</Button>
+            <Button
+              onClick={(event) => {
+                this.handleSubmit(event);
+              }}
+              className="btn-custom"
+            >
+              Filter
+            </Button>
+            <Button
+              value="null"
+              onClick={() => {
+                this.handleReset();
+              }}
+              variant="outline-danger"
+            >
+              Clear
+            </Button>
           </ButtonGroup>
         </div>
       </div>
