@@ -54,7 +54,7 @@ export default class FilterHikes extends Component {
   render() {
     return (
       <div>
-        <div className="filters p-2">
+        <div className="filters">
           <ButtonGroup>
             <Button
               value="null"

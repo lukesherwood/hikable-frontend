@@ -44,7 +44,6 @@ export default function HikeShow(props) {
             Description: {hike.description}
           </div>
           <div className="hike-card-more-info">
-            <a href={hike.routeURL} target="_blank" rel="noopener noreferrer">DOC Website Information</a>
           </div>
           <div className="hike-card-dog">
             Dog Friendly: {hike.dog_friendly ? "Yes" : "No"}
@@ -55,6 +54,7 @@ export default function HikeShow(props) {
               {convertArray(hike.region)}
             </ul> 
           </div>
+            <a href={hike.routeURL} target="_blank" rel="noopener noreferrer">DOC Website Information</a>
           </div>
         </div>
       );

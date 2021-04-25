@@ -9,11 +9,10 @@ export default function Home() {
           <p>Your favorite hike is just around the corner.</p>
         </div>
         <div className="home-feature p-3">
-          <p>Find a hike. </p>
+          <p>Find a hikable hike. </p>
           <p>Create a list. </p>
           <p>Add hikes to your list. </p>
           <p>Get hiking!</p>
-          <p>Truly Hikable!</p>
         </div>
         <div className="home-link p-3">
           <Link to="/hikes" className="btn btn-custom btn-lg" role="button">
