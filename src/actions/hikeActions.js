@@ -129,6 +129,7 @@ export const addReviewToHike = (review) => {
         }
       )
       .then((data) => {
+        console.log(data.data, "hike")
         dispatch({ type: "ADD_REVIEW", hike: data.data });
       })
       .catch(function (error) {
