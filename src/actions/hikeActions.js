@@ -4,7 +4,6 @@ const axios = require("axios").default;
 const WEB_URL = config.url.API_URL;
 
 export const fetchHikes = (filterData, page) => {
-  // console.log(filterData, "data");
   let stringQuery = "";
   const page_number = page || "1";
   return (dispatch) => {
@@ -30,7 +29,7 @@ export const fetchHikes = (filterData, page) => {
       })
       .then((data) => {
         dispatch({ type: "ADD_HIKES", hikes: data.data.hikes });
-        dispatch({ type: "SET_PAGES", data: data.data });
+        dispatch({ type: "SET_PAGES", data: data.data.meta });
       })
       .catch(function (error) {
         NotificationManager.error(
@@ -76,7 +75,6 @@ export const fetchHike = (id) => {
         },
       })
       .then((data) => {
-        console.log(data.data)
         dispatch({ type: "ADD_HIKE", hike: data.data });
       })
       .catch(function (error) {
@@ -109,6 +107,33 @@ export const deleteHike = (list, hike) => {
       .catch(function (error) {
         NotificationManager.error(
           `Error while updating list!, ${error}`,
+          "Error!"
+        );
+      });
+  };
+};
+
+export const addReviewToHike = (review) => {
+  return (dispatch) => {
+    dispatch({ type: "LOADING_HIKES" });
+    axios
+      .post(
+        WEB_URL+`/hikes/${review.hike_id}/reviews`,
+        { review: review },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          }
+        }
+      )
+      .then((data) => {
+        dispatch({ type: "ADD_REVIEW", hike: data.data });
+      })
+      .catch(function (error) {
+        NotificationManager.error(
+          `Error while creating new comment!, ${error}`,
           "Error!"
         );
       });

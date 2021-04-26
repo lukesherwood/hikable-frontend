@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux'
 import {fetchHike} from '../actions/hikeActions'
+import Reviews from './Reviews';
 export default function HikeShow(props) {
 
   const convertArray = (array) => {
     if (array) {
       let formattedArray = array.split(",")
       formattedArray = formattedArray.map(cat => cat.slice(2, -2))
-      if (formattedArray.length > 1) {
+      if (formattedArray.length > 0) {
         return formattedArray.map(category => <li key={category}>{category}</li>)
       } 
       return formattedArray
@@ -56,6 +57,7 @@ export default function HikeShow(props) {
           </div>
             <a href={hike.routeURL} target="_blank" rel="noopener noreferrer">DOC Website Information</a>
           </div>
+          <Reviews hike={hike}/>
         </div>
       );
     }
