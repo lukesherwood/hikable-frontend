@@ -1,21 +1,24 @@
 import React from 'react'
 import moment from "moment";
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import {StarFill} from 'react-bootstrap-icons'
 
 export default function Review(props) {
+    const stars = (stars) => {
+        let array = []
+        for (let i = 0; i < stars; i++) {
+            console.log(stars)
+            array.push(<StarFill color="gold"/>)
+        }
+        return array
+    }
     const { review } = props;
     return (
         <div className="review-card">
-            <Row sm={1} >
-                <Col sm={1}>{review.username}</Col>
-                <Col md={4} className="blockquote-footer p-0">{moment(review.updated_at).format(
+                <h6><strong>{review.username}</strong></h6>
+                <span className='d-inline-block'>{ stars(review.rating)}</span>
+                <span className="d-inline-block blockquote-footer pb-2">{moment(review.updated_at).format(
                     "MMMM Do YYYY, h:mm a"
-                    )}
-                </Col>
-                <Col md={2}>{review.rating} stars</Col>
-            </Row>
-            <br></br>
+                    )}</span>
             <p>{review.content}</p>
         </div>
     )
