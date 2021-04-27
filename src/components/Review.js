@@ -8,8 +8,8 @@ export default function Review(props) {
     return (
         <div className="review-card">
             <Row sm={1} >
-                <Col sm={1}>{review.name}</Col>
-                <Col md={4} className="blockquote-footer">{moment(review.updated_at).format(
+                <Col sm={1}>{review.username}</Col>
+                <Col md={4} className="blockquote-footer p-0">{moment(review.updated_at).format(
                     "MMMM Do YYYY, h:mm a"
                     )}
                 </Col>

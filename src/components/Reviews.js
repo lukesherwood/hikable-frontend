@@ -1,6 +1,7 @@
 import React from "react";
 import CreateReviewForm from "../containers/CreateReviewForm";
 import Review from "./Review";
+import { useSelector} from 'react-redux'
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
@@ -8,6 +9,7 @@ import { Link } from "react-router-dom";
 export default function Reviews(props) {
   const hike = props.hike;
   const reviews = hike.reviews
+  const loggedIn = useSelector((state) => state.users.user);
   let reviewsList = []
   if (reviews) {
     reviewsList = reviews.map((review) => {
@@ -16,7 +18,7 @@ export default function Reviews(props) {
   }
 
     return (
-      <div className="reviews-container">
+      <div className="reviews-container p-4">
         <h3>Comments/Reviews</h3>
         <div>{reviews? reviewsList : null}</div>
         <Accordion>
@@ -30,7 +32,7 @@ export default function Reviews(props) {
             Leave a Review
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="0">
-            {hike? ( // change to loggedIn!
+            {loggedIn? (
               <CreateReviewForm hike={hike} />
             ) : (
               <div className="border p-4 text-center">
