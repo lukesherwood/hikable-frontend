@@ -113,13 +113,14 @@ export const deleteHike = (list, hike) => {
   };
 };
 
-export const addReviewToHike = (review) => {
+export const addReviewToHike = (reviewData, hikeId) => {
   return (dispatch) => {
     dispatch({ type: "LOADING_HIKES" });
+    console.log(reviewData)
     axios
       .post(
-        WEB_URL+`/hikes/${review.hike_id}/reviews`,
-        { review: review },
+        WEB_URL+`/hikes/${hikeId}/reviews`,
+        reviewData,
         {
           headers: {
             "Content-Type": "application/json",

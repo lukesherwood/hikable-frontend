@@ -6,7 +6,6 @@ export default function Review(props) {
     const stars = (stars) => {
         let array = []
         for (let i = 0; i < stars; i++) {
-            console.log(stars)
             array.push(<StarFill color="gold"/>)
         }
         return array

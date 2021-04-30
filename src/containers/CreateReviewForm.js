@@ -11,24 +11,27 @@ const validationSchema = Yup.object().shape({
     .required("*Content is required"),
 });
 class CreateReviewForm extends Component {
+
   render() {
     return (
       <div className="review-card">
         <br></br>
         <h3>New Review</h3>
         <Formik
-          initialValues={{ content: "", rating: "" }}
+          initialValues={{ content: "", rating: "", images: [] }}
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
-            const { content, rating } = values;
-            let review = {
-              content,
-              rating,
-              user_id: this.props.currentUser.id,
-              hike_id: this.props.hike.id,
-            };
-            this.props.addReviewToHike(review);
+            const { content, rating, images } = values;
+            const hikeId = this.props.hike.id || null
+            const userId = this.props.currentUser.id
+            let data = new FormData();
+            data.append("review[images]", images)
+            data.append("review[content]", content)
+            data.append("review[rating]", rating)
+            data.append("review[user_id]", userId)
+            data.append("review[hike_id]", hikeId)
+            this.props.addReviewToHike(data, hikeId);
             setSubmitting(false);
             resetForm()
             // document.getElementById("toggle-new-list-form")
@@ -36,7 +39,7 @@ class CreateReviewForm extends Component {
             //   : resetForm();
           }}
         >
-          {({ touched, errors, handleSubmit, isSubmitting }) => (
+          {({ touched, errors, handleSubmit, isSubmitting, setFieldValue }) => (
             <Form onSubmit={handleSubmit}>
               <Form.Group>
                 <Form.Label size="sm">Content</Form.Label>
@@ -81,6 +84,18 @@ class CreateReviewForm extends Component {
                   className="text-danger"
                 />
               </Form.Group>
+              <Form.Group>
+              <Form.Label size="sm"> Upload an Image </Form.Label>
+              <input
+                className="mb-2 mr-sm-2 form-control"
+                type="file"
+                name="image"
+                accept="image/*"
+                onChange={(event) =>{
+                  setFieldValue("image", event.target.files[0]);
+                }}
+              />
+              </Form.Group>
               <Button variant="primary" className="btn-custom" type="submit" disabled={isSubmitting}>
                 Create Review
               </Button>
@@ -100,7 +115,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addReviewToHike: (review) => dispatch(addReviewToHike(review)),
+    addReviewToHike: (review, hikeId) => dispatch(addReviewToHike(review, hikeId)),
   };
 };
 
