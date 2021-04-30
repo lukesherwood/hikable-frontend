@@ -89,10 +89,10 @@ class CreateReviewForm extends Component {
               <input
                 className="mb-2 mr-sm-2 form-control"
                 type="file"
-                name="image"
+                name="images"
                 accept="image/*"
                 onChange={(event) =>{
-                  setFieldValue("image", event.target.files[0]);
+                  setFieldValue("images", event.target.files[0]);
                 }}
               />
               </Form.Group>

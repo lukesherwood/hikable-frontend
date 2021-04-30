@@ -12,13 +12,14 @@ export default function Review(props) {
     }
     const { review } = props;
     return (
-        <div className="review-card">
+        <div className="review-card pb-2">
                 <h6><strong>{review.username}</strong></h6>
                 <span className='d-inline-block'>{ stars(review.rating)}</span>
                 <span className="d-inline-block blockquote-footer pb-2">{moment(review.updated_at).format(
                     "MMMM Do YYYY, h:mm a"
                     )}</span>
             <p>{review.content}</p>
+            <img src={review.images[0]} width="200px" alt='hike img'/>
         </div>
     )
 }
