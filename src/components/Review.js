@@ -1,6 +1,7 @@
 import React from 'react'
 import moment from "moment";
 import {StarFill} from 'react-bootstrap-icons'
+import {Image} from 'react-bootstrap'
 
 export default function Review(props) {
     const stars = (stars) => {
@@ -10,6 +11,12 @@ export default function Review(props) {
         }
         return array
     }
+
+    // if (review.images) {
+    //     reviewImgs = review.images.map((img) => {
+    //       return <Image key={review.id} review={review} />;
+    //     });
+    //   }
     const { review } = props;
     return (
         <div className="review-card pb-2">
@@ -19,7 +26,7 @@ export default function Review(props) {
                     "MMMM Do YYYY, h:mm a"
                     )}</span>
             <p>{review.content}</p>
-            <img src={review.images[0]} width="200px" alt='hike img'/>
+            {review.images.map((img, i) => <Image key={i + "-hike-img"} src={img} width="200px" alt='hike img'/>)}
         </div>
     )
 }

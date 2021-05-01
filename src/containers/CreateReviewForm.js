@@ -5,10 +5,11 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import Dropzone from "react-dropzone";
+import Thumb from "../components/Thumb";
 
 const validationSchema = Yup.object().shape({
-  content: Yup.string()
-    .required("*Content is required"),
+  content: Yup.string().required("*Content is required"),
 });
 class CreateReviewForm extends Component {
 
@@ -23,23 +24,30 @@ class CreateReviewForm extends Component {
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
             const { content, rating, images } = values;
-            const hikeId = this.props.hike.id || null
-            const userId = this.props.currentUser.id
+            const hikeId = this.props.hike.id || null;
+            const userId = this.props.currentUser.id;
             let data = new FormData();
-            data.append("review[images]", images)
-            data.append("review[content]", content)
-            data.append("review[rating]", rating)
-            data.append("review[user_id]", userId)
-            data.append("review[hike_id]", hikeId)
+            images.map((img) => data.append("review[images][]", img));
+            data.append("review[content]", content);
+            data.append("review[rating]", rating);
+            data.append("review[user_id]", userId);
+            data.append("review[hike_id]", hikeId);
             this.props.addReviewToHike(data, hikeId);
             setSubmitting(false);
-            resetForm()
+            resetForm();
             // document.getElementById("toggle-new-list-form")
             //   ? document.getElementById("toggle-new-list-form").click()
             //   : resetForm();
           }}
         >
-          {({ touched, errors, handleSubmit, isSubmitting, setFieldValue }) => (
+          {({
+            values,
+            touched,
+            errors,
+            handleSubmit,
+            isSubmitting,
+            setFieldValue,
+          }) => (
             <Form onSubmit={handleSubmit}>
               <Form.Group>
                 <Form.Label size="sm">Content</Form.Label>
@@ -51,12 +59,12 @@ class CreateReviewForm extends Component {
                   size="sm"
                   as="textarea"
                   name="content"
-                  />
+                />
                 <ErrorMessage
                   name="content"
                   component="div"
                   className="text-danger"
-                  />
+                />
               </Form.Group>
               <Form.Group>
                 <Form.Label size="sm">Rating</Form.Label>
@@ -64,9 +72,7 @@ class CreateReviewForm extends Component {
                   as="select"
                   className={
                     "form-control " +
-                    (errors.rating && touched.rating
-                      ? "is-invalid"
-                      : "")
+                    (errors.rating && touched.rating ? "is-invalid" : "")
                   }
                   size="sm"
                   name="rating"
@@ -85,18 +91,51 @@ class CreateReviewForm extends Component {
                 />
               </Form.Group>
               <Form.Group>
-              <Form.Label size="sm"> Upload an Image </Form.Label>
-              <input
-                className="mb-2 mr-sm-2 form-control"
-                type="file"
-                name="images"
-                accept="image/*"
-                onChange={(event) =>{
-                  setFieldValue("images", event.target.files[0]);
-                }}
-              />
+                <Form.Label size="sm"> Upload an Image </Form.Label>
+                <Dropzone
+                  accept="image/*"
+                  onDrop={(acceptedFiles) => {
+                    if (acceptedFiles.length === 0) {
+                      return;
+                    }
+                    this.setState({ preview: acceptedFiles })
+                    setFieldValue(
+                      "images",
+                      values.images.concat(acceptedFiles)
+                    );
+                  }}
+                >
+                  {({ getRootProps, getInputProps }) => {
+                    return (
+                      
+                      <section>
+                        <div className="dropzone" {...getRootProps()}>
+                          <input {...getInputProps()} />
+                          <p>
+                            Drag 'n' drop some files here, or click to select
+                            files
+                          </p>
+                          <div className="thumbs">
+                            {values.images.length > 0
+                              ? 
+                              values.images.map((file, i) => (
+                                  <Thumb key={i} file={file} />
+
+                                ))
+                              : null}
+                          </div>
+                        </div>
+                      </section>
+                    );
+                  }}
+                </Dropzone>
               </Form.Group>
-              <Button variant="primary" className="btn-custom" type="submit" disabled={isSubmitting}>
+              <Button
+                variant="primary"
+                className="btn-custom"
+                type="submit"
+                disabled={isSubmitting}
+              >
                 Create Review
               </Button>
             </Form>
@@ -115,7 +154,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addReviewToHike: (review, hikeId) => dispatch(addReviewToHike(review, hikeId)),
+    addReviewToHike: (review, hikeId) =>
+      dispatch(addReviewToHike(review, hikeId)),
   };
 };
 

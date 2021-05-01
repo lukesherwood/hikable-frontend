@@ -116,7 +116,6 @@ export const deleteHike = (list, hike) => {
 export const addReviewToHike = (reviewData, hikeId) => {
   return (dispatch) => {
     dispatch({ type: "LOADING_HIKES" });
-    console.log(reviewData)
     axios
       .post(
         WEB_URL+`/hikes/${hikeId}/reviews`,
@@ -130,7 +129,6 @@ export const addReviewToHike = (reviewData, hikeId) => {
         }
       )
       .then((data) => {
-        console.log(data.data, "hike")
         dispatch({ type: "ADD_REVIEW", hike: data.data });
       })
       .catch(function (error) {
