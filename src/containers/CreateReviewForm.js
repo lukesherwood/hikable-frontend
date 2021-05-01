@@ -7,6 +7,7 @@ import { Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Dropzone from "react-dropzone";
 import Thumb from "../components/Thumb";
+import {Upload} from 'react-bootstrap-icons'
 
 const validationSchema = Yup.object().shape({
   content: Yup.string().required("*Content is required"),
@@ -112,15 +113,15 @@ class CreateReviewForm extends Component {
                         <div className="dropzone" {...getRootProps()}>
                           <input {...getInputProps()} />
                           <p>
-                            Drag 'n' drop some files here, or click to select
+                            Drag-n-drop some files, or click to select
                             files
                           </p>
+                          <Upload size="32"/>
                           <div className="thumbs">
                             {values.images.length > 0
                               ? 
                               values.images.map((file, i) => (
                                   <Thumb key={i} file={file} />
-
                                 ))
                               : null}
                           </div>
