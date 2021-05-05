@@ -16,9 +16,9 @@ class CreateReviewForm extends Component {
 
   render() {
     return (
-      <div className="review-card">
+      <div className="review-form">
         <br></br>
-        <h3>New Review</h3>
+        <h2>New Review</h2>
         <Formik
           initialValues={{ content: "", rating: "", images: [] }}
           validationSchema={validationSchema}
