@@ -16,9 +16,10 @@ class CreateReviewForm extends Component {
 
   render() {
     return (
-      <div className="review-form">
+      <div >
         <br></br>
-        <h2>New Review</h2>
+        <h2 className="header-theme p-2">New Review</h2>
+        <div className="review-form">
         <Formik
           initialValues={{ content: "", rating: "", images: [] }}
           validationSchema={validationSchema}
@@ -36,9 +37,6 @@ class CreateReviewForm extends Component {
             this.props.addReviewToHike(data, hikeId);
             setSubmitting(false);
             resetForm();
-            // document.getElementById("toggle-new-list-form")
-            //   ? document.getElementById("toggle-new-list-form").click()
-            //   : resetForm();
           }}
         >
           {({
@@ -142,6 +140,7 @@ class CreateReviewForm extends Component {
             </Form>
           )}
         </Formik>
+        </div>
       </div>
     );
   }

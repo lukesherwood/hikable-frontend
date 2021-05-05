@@ -19,7 +19,7 @@ export default function Reviews(props) {
 
     return (
       <div className="reviews-container p-4">
-        <h3>Comments/Reviews</h3>
+        <h3 className="header-theme p-2">Comments/Reviews</h3>
         <div>{reviews? reviewsList : null}</div>
         <Accordion>
           <Accordion.Toggle
