@@ -29,7 +29,7 @@ export default function Review(props) {
                     "MMMM Do YYYY, h:mm a"
                     )}</span>
             <p>{review.content}</p>
-            {review.images.map((img, i) => <Image key={i + `user-${review.username}-img`} src={img} width="200px" alt='hike img'/>)}
+            {review.images.map((img, i) => <Image key={i + `user-${review.username}-img`} src={'https://tiny.pictures/api/demo/?width=200&source=' + img} width="200px" alt='hike img'/>)}
         </div>
     )
 }
