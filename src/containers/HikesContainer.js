@@ -33,8 +33,8 @@ class HikesContainer extends React.Component {
             <Hikes hikes={hikes} />
           )}
           <PaginationComponent
-            pages={this.props.pages}
-            page={this.props.page}
+            TotalPages={this.props.pages}
+            CurrentPage={this.props.page}
             fetchData={this.props.fetchHikes}
             filterData={this.props.filterData}
           />
