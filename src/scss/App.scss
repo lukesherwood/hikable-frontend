@@ -55,7 +55,7 @@ body {
 
 .hike-item {
   @include card-effect;
-  width: 920px;
+  width: 920px; // needs to be this wide else the images break if larger
   // padding: 20px;
   background-color: rgb(235, 233, 233);
 }
