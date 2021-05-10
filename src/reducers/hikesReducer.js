@@ -38,6 +38,17 @@ const hikesReducer = (
         hikes: [...state.hikes, action.hike],
         loading: false,
       };
+    case "ADD_REVIEW":
+      const hikeIndex = state.hikes[0].findIndex(
+        (hike) => hike.id === action.hike.id
+      );
+      const array = [...state.hikes];
+      array[hikeIndex] = action.hike;
+      return {
+        ...state,
+        loading: false,
+        hikes: array,
+      };
     default:
       return state;
   }

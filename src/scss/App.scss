@@ -60,6 +60,12 @@ body {
   background-color: rgb(235, 233, 233);
 }
 
+.dropzone {
+  border: black dotted;
+  padding: 10px;
+  text-align: center;
+}
+
 .hike-header {
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
