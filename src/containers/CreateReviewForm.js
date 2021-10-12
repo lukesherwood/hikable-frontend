@@ -18,7 +18,6 @@ class CreateReviewForm extends Component {
     return (
       <div >
         <br></br>
-        <h2 className="header-theme p-2">New Review</h2>
         <div className="review-form">
         <Formik
           initialValues={{ content: "", rating: "", images: [] }}
