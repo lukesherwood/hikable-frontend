@@ -32,7 +32,6 @@ export default function Reviews(props) {
                 {" "}
                 Sign In here{" "}
               </Link>
-              <br />
             </div>
           )}
         </Accordion.Collapse>

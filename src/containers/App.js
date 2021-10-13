@@ -36,43 +36,43 @@ class App extends Component {
     return (
       <div className="App">
         <NavbarClass />
-          <ScrollTop>
-        <Container>
+        <ScrollTop>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/hikes" component={HikesContainer} />
-            <Route
-              path="/hikes/:id"
-              render={(params) => (
-                <HikeShow fetchHike={this.props.fetchHike} hikes={this.props.hikes} params={params} />
-              )}
-            />
-            <AuthRoutes
-              exact
-              path="/lists"
-              loggedIn={this.props.loggedIn}
-              component={ListsContainer}
-            />
-            <AuthRoutes
-              path="/lists/:id"
-              loggedIn={this.props.loggedIn}
-              render={(params) => (
-                <ListShow lists={this.props.lists} params={params} />
-              )}
-            />
-            <AuthRoutes
-              path="/user"
-              loggedIn={this.props.loggedIn}
-              render={(params) => (
-                <UserProfile user={this.props.user} />
-              )}
-            />
-            <Route exact path="/signIn" component={SignIn} />
-            <Route exact path="/signUp" component={SignUp} />
+            <Container>
+              <Route exact path="/hikes" component={HikesContainer} />
+              <Route
+                path="/hikes/:id"
+                render={(params) => (
+                  <HikeShow fetchHike={this.props.fetchHike} hikes={this.props.hikes} params={params} />
+                )}
+              />
+              <AuthRoutes
+                exact
+                path="/lists"
+                loggedIn={this.props.loggedIn}
+                component={ListsContainer}
+              />
+              <AuthRoutes
+                path="/lists/:id"
+                loggedIn={this.props.loggedIn}
+                render={(params) => (
+                  <ListShow lists={this.props.lists} params={params} />
+                )}
+              />
+              <AuthRoutes
+                path="/user"
+                loggedIn={this.props.loggedIn}
+                render={(params) => (
+                  <UserProfile user={this.props.user} />
+                )}
+              />
+              <Route exact path="/signIn" component={SignIn} />
+              <Route exact path="/signUp" component={SignUp} />
+            </Container>
           </Switch>
           <NotificationContainer />
-        </Container>
-          </ScrollTop>
+        </ScrollTop>
         <Footer />
       </div>
     );
