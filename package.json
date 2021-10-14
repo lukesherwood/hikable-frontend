@@ -11,6 +11,7 @@
     "bootstrap": "^4.6.0",
     "formik": "^2.2.9",
     "fuse.js": "^6.4.6",
+    "google-map-react": "^2.1.10",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
     "moment-jdateformatparser": "^1.2.1",

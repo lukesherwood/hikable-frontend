@@ -22,7 +22,7 @@ export default function Reviews(props) {
       <h3 className="header-theme p-2">Comments/Reviews</h3>
       <div className="p-2">{reviewsList.empty ? reviewsList : "Be the first to leave a review!"}</div>
       <Accordion>
-        <Accordion.Collapse eventKey="0">
+        <Accordion.Collapse eventkey="0">
           {loggedIn ? (
             <CreateReviewForm hike={hike} />
           ) : (
@@ -40,7 +40,7 @@ export default function Reviews(props) {
           variant="primary"
           className="btn-custom"
           id="toggle-new-list-form"
-          eventKey="0"
+          eventkey="0"
         >
           Leave a Review
         </Accordion.Toggle>

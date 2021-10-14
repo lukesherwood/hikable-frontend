@@ -14,21 +14,21 @@ class NavbarClass extends React.Component {
     return (
       <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
         <Nav.Item>
-          <Navbar.Brand as={NavLink} to="/" eventKey={3} exact>
+          <Navbar.Brand as={NavLink} to="/" eventkey={3} exact>
             <img src="/Hikable-logo.png" alt="" height="80" width="150" />
           </Navbar.Brand>
         </Nav.Item>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav.Item>
-            <Nav.Link eventKey={1} as={NavLink} to="/hikes" exact>
+            <Nav.Link eventkey={1} as={NavLink} to="/hikes" exact>
               Hikes
             </Nav.Link>
           </Nav.Item>
           {this.props.loggedIn ? (
             <>
               <Nav.Item>
-                <Nav.Link eventKey={2} as={NavLink} to="/lists" exact>
+                <Nav.Link eventkey={2} as={NavLink} to="/lists" exact>
                   My Lists
                 </Nav.Link>
               </Nav.Item>

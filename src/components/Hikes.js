@@ -1,6 +1,7 @@
 import React from "react";
 import Hike from "./Hike";
 import Row from "react-bootstrap/Row";
+import MapContainer  from './GoogleMapComponent';
 
 export default function Hikes(props) {
   const { hikes } = props;
@@ -11,6 +12,7 @@ export default function Hikes(props) {
 
   return (
     <>
+    <MapContainer hikes={hikes}/>
     <Row className="hike-cards-row">
       {hikeList}
     </Row>
