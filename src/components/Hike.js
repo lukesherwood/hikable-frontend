@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import Card from "react-bootstrap/Card";
 import UpdateListHikes from "../containers/UpdateListHikes";
 import { ButtonGroup } from "react-bootstrap";
+import { addHikeToList } from "../actions/listActions";
+import DifficultyBadge from "./DifficultyBadge";
 
 export default function Hike(props) {
   const { hike } = props;
@@ -21,9 +23,9 @@ export default function Hike(props) {
         <Card.Title>{hike.title}</Card.Title>
 
         <Card.Subtitle className="mb-2 text-muted font-italic">
-          {hike.location}
+          {hike.location.map(location=> <div key={location}>-{location}</div>)}
         </Card.Subtitle>
-        <div className="hike-card-difficulty">{hike.difficulty}</div>
+        <DifficultyBadge difficulty={hike.difficulty}/>
         <div className="hike-card-duration">{hike.duration}</div>
         <div className="hike-card-length">{hike.length}</div>
         <div className="hike-card-description">{hike.description}</div>

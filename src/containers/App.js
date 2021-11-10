@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import "../scss/App.scss";
 
@@ -37,40 +37,36 @@ class App extends Component {
       <div className="App">
         <NavbarClass />
         <ScrollTop>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Container>
-              <Route exact path="/hikes" component={HikesContainer} />
+          <Container>
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/hikes" element={<HikesContainer />} />
               <Route
                 path="/hikes/:id"
-                render={(params) => (
-                  <HikeShow fetchHike={this.props.fetchHike} hikes={this.props.hikes} params={params} />
-                )}
+                element={
+                  <HikeShow fetchHike={this.props.fetchHike} hikes={this.props.hikes} />
+                }
               />
-              <AuthRoutes
-                exact
+              <Route
                 path="/lists"
-                loggedIn={this.props.loggedIn}
-                component={ListsContainer}
+                element={<ListsContainer loggedIn={this.props.loggedIn} />}
               />
-              <AuthRoutes
+              <Route
                 path="/lists/:id"
-                loggedIn={this.props.loggedIn}
-                render={(params) => (
-                  <ListShow lists={this.props.lists} params={params} />
-                )}
+                element={
+                  <ListShow lists={this.props.lists} loggedIn={this.props.loggedIn} />
+                }
               />
-              <AuthRoutes
+              <Route
                 path="/user"
-                loggedIn={this.props.loggedIn}
-                render={(params) => (
-                  <UserProfile user={this.props.user} />
-                )}
+                element={
+                  <UserProfile user={this.props.user} loggedIn={this.props.loggedIn} />
+                }
               />
-              <Route exact path="/signIn" component={SignIn} />
-              <Route exact path="/signUp" component={SignUp} />
-            </Container>
-          </Switch>
+              <Route exact path="/signIn" element={<SignIn />} />
+              <Route exact path="/signUp" element={<SignUp />} />
+            </Routes>
+          </Container>
           <NotificationContainer />
         </ScrollTop>
         <Footer />

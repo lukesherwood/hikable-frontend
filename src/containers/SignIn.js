@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { fetchUser } from "../actions/userActions";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import { Navigate } from "react-router-dom"
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email().required("Email is required"),
@@ -19,7 +19,7 @@ class SignIn extends Component {
 
   render() {
     return (
-      this.props.loggedIn ? <Redirect to="/"/> : (
+      this.props.loggedIn ? <Navigate to="/"/> : (
       <div className="sessions-container">
         <h2 className="recipe-header">Sign In</h2>
 
@@ -106,4 +106,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignIn));
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

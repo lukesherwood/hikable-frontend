@@ -1,54 +1,36 @@
 import React from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
+import { useState } from 'react';
+import { Link } from "react-router-dom";
 
 export default function MapContainer(props) {
 
+  const [selected, setSelected] = useState({});
+
   const mapStyles = {
-    height: "100vh",
-    width: "100%"
+    height: "75vh",
+    width: "65%"
   };
+
+  const onSelect = hike => {
+    setSelected(hike);
+  }
 
   const defaultCenter = {
     lat: -41.1228978, lng: 174.9458001
   }
-
-  const hikes = [
-    {
-      name: "Location 1",
+  const { hikes } = props
+  const locationsArray = hikes.map(hike => {
+    return {
+      name: hike.title,
+      id: hike.id,
+      description: hike.description,
       location: {
-        lat: -45.874304,
-        lng: 170.699755
-      },
-    },
-    {
-      name: "Location 2",
-      location: {
-        lat: -39.956188,
-        lng: 176.015403
-      }
-    },
-    {
-      name: "Location 3",
-      location: {
-        lat: -43.41486,
-        lng: 170.158842
-      }
-    },
-    {
-      name: "Location 4",
-      location: {
-        lat: -44.34282,
-        lng: 169.032178
-      }
-    },
-    {
-      name: "Location 5",
-      location: {
-        lat: -35.191977,
-        lng: 174.045518
+        lat: parseFloat(hike.latitude),
+        lng: parseFloat(hike.longitude)
       }
     }
-  ];
+  })
   const apiKey = process.env.REACT_APP_GOOGLE_API_KEY
   return (
     <LoadScript
@@ -58,12 +40,31 @@ export default function MapContainer(props) {
         zoom={6}
         center={defaultCenter}
       >
-        {hikes ?
-          hikes.map(hike => {
+        {locationsArray ?
+          locationsArray.map(hike => {
             return (
-              <Marker key={hike.name} position={hike.location} />
+              <Marker key={hike.name} onClick={() => onSelect(hike)} position={hike.location} />
             )
           }) : null
+        }
+        {
+          selected.location &&
+          (
+            <InfoWindow
+              position={selected.location}
+              clickable={true}
+              onCloseClick={() => setSelected({})}
+            >
+              <div>
+                <h6>
+                  <Link to={`/hikes/${selected.id}`}>
+                    {selected.name}
+                  </Link>
+                </h6>
+                <p>{selected.description}</p>
+              </div>
+            </InfoWindow>
+          )
         }
       </GoogleMap>
     </LoadScript>

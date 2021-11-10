@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { NotificationManager } from "react-notifications";
 import { NavDropdown } from "react-bootstrap";
 class LogoutLogin extends React.Component {
@@ -40,4 +40,4 @@ class LogoutLogin extends React.Component {
     );
   }
 }
-export default withRouter(LogoutLogin);
+export default LogoutLogin;

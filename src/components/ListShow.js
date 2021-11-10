@@ -1,11 +1,13 @@
 import React from "react";
 import Hikes from "./Hikes";
 import { Jumbotron } from "react-bootstrap";
+import { useParams } from 'react-router-dom'
 
 export default function ListShow(props) {
-  const { lists, params } = props;
+  const { lists } = props;
+  const { id } = useParams()
   if (lists) {
-    let list = lists.find((l) => l.id === parseInt(params.match.params.id));
+    let list = lists.find((l) => l.id === parseInt(id));
     if (list) {
       return (
         <div className="list-item w-100 rounded">

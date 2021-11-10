@@ -1,13 +1,13 @@
 import React from 'react'
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function UserProfile(props) {
-    let history = useHistory();
+    const navigate = useNavigate();
     return (
         <div>
             Sorry {props.user.username}, this is currently under construction...
             <div>
-            <button className="btn btn-secondary" onClick={() => history.goBack()}>Go Back to Safety</button>
+            <button className="btn btn-secondary" onClick={() => navigate(-1)}>Go Back to Safety</button>
             </div>
         </div>
      

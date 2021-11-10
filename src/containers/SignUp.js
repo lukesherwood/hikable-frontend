@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter, Link, Redirect } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { signUserUp } from "../actions/userActions";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+
 
 const validationSchema = Yup.object().shape({
   username: Yup.string()
@@ -23,7 +24,7 @@ const validationSchema = Yup.object().shape({
 class Signup extends Component {
   render() {
     return (
-      this.props.loggedIn ? <Redirect to="/"/> : (
+      this.props.loggedIn ? <Navigate to="/"/> : (
       <div className="sessions-container">
         <h2 className="recipe-header">Sign Up</h2>
         <Formik
@@ -145,4 +146,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Signup));
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
