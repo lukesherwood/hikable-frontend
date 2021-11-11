@@ -1,5 +1,5 @@
 import React from 'react';
-import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
+import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 
@@ -31,10 +31,8 @@ export default function MapContainer(props) {
       }
     }
   })
-  const apiKey = process.env.REACT_APP_GOOGLE_API_KEY
+
   return (
-    <LoadScript
-      googleMapsApiKey={apiKey} >
       <GoogleMap
         mapContainerStyle={mapStyles}
         zoom={6}
@@ -67,6 +65,5 @@ export default function MapContainer(props) {
           )
         }
       </GoogleMap>
-    </LoadScript>
   )
 }
