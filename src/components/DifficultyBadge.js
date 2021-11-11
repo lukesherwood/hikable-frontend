@@ -5,13 +5,13 @@ export default function DifficultyBadge(props) {
     const badges = difficulty.map(badge => {
         switch (badge) {
             case 'Easiest':
-                return <span className="badge badge-primary">{badge}</span>
+                return <span key={badge} className="badge badge-primary">{badge}</span>
             case 'Easy':
-                return <span className="badge badge-success">{badge}</span>
+                return <span key={badge} className="badge badge-success">{badge}</span>
             case 'Hard':
-                return <span className="badge badge-warning">{badge}</span>
+                return <span key={badge} className="badge badge-warning">{badge}</span>
             case 'Advanced':
-                return <span className="badge badge-danger">{badge}</span>
+                return <span key={badge} className="badge badge-danger">{badge}</span>
             default:
                 return null;
         }

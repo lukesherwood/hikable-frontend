@@ -38,8 +38,8 @@ class App extends Component {
         <ScrollTop>
           <Container>
             <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route exact path="/hikes" element={<HikesContainer />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/hikes" element={<HikesContainer />} />
               <Route
                 path="/hikes/:id"
                 element={
@@ -62,8 +62,8 @@ class App extends Component {
                   <UserProfile user={this.props.user} loggedIn={this.props.loggedIn} />
                 }
               />
-              <Route exact path="/signIn" element={<SignIn />} />
-              <Route exact path="/signUp" element={<SignUp />} />
+              <Route path="/signIn" element={<SignIn />} />
+              <Route path="/signUp" element={<SignUp />} />
             </Routes>
           </Container>
           <NotificationContainer />

@@ -26,7 +26,7 @@ You can then view the website in your browser at http://localhost:3000
 ## Future updates
  -  Add ability for user to add their own hikes to the database.
  -  Update to Bootstrap v5
- -  Update google map component with hooks so it unmounts properly
+ -  fix sorry cant find that hike, and unable to load outside fetched page of hikes
  -  add tab interface for google maps and hike cards
  -  fix scroll issue on home page
  -  ensure auth routes are still protected
