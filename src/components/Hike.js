@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import Card from "react-bootstrap/Card";
 import UpdateListHikes from "../containers/UpdateListHikes";
 import { ButtonGroup } from "react-bootstrap";
-import { addHikeToList } from "../actions/listActions";
 import DifficultyBadge from "./DifficultyBadge";
 
 export default function Hike(props) {

@@ -20,7 +20,6 @@ import { fetchLists } from "../actions/listActions";
 import { fetchHikes, fetchHike } from "../actions/hikeActions";
 import Container from "react-bootstrap/Container";
 import HikeShow from "../components/HikeShow";
-import AuthRoutes from "../components/AuthRoutes";
 import UserProfile from '../components/UserProfile'
 import ScrollTop from "../components/ScrollTop";
 

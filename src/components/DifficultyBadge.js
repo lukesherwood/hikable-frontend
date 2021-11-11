@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function DifficultyBadge(props) {
-    const {difficulty} = props
+    const { difficulty } = props
     const badges = difficulty.map(badge => {
         switch (badge) {
             case 'Easiest':
@@ -13,11 +13,12 @@ export default function DifficultyBadge(props) {
             case 'Advanced':
                 return <span className="badge badge-danger">{badge}</span>
             default:
-                break;
-        }})
+                return null;
+        }
+    })
     return (
         <div className="hike-card-difficulty">
-           {badges}
+            {badges}
         </div>
     )
 }
