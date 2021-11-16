@@ -7,10 +7,11 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
 export default function Reviews(props) {
-  const hike = props.hike;
-  const reviews = hike.reviews
-  const loggedIn = useSelector((state) => state.users.user);
+  
   let reviewsList = []
+  const hike = useSelector(state=> state.hikes.hike)
+  const {reviews} = hike
+  const loggedIn = useSelector((state) => state.users.user);
   if (reviews) {
     reviewsList = reviews.map((review) => {
       return <Review key={review.id} review={review} />;
@@ -20,9 +21,9 @@ export default function Reviews(props) {
   return (
     <div className="reviews-container p-4">
       <h3 className="header-theme p-2">Comments/Reviews</h3>
-      <div className="p-2">{reviewsList.empty ? reviewsList : "Be the first to leave a review!"}</div>
+      <div className="p-2">{reviewsList ? reviewsList : "Be the first to leave a review!"}</div>
       <Accordion>
-        <Accordion.Collapse eventkey="0">
+        <Accordion.Collapse eventKey="0">
           {loggedIn ? (
             <CreateReviewForm hike={hike} />
           ) : (
@@ -40,7 +41,7 @@ export default function Reviews(props) {
           variant="primary"
           className="btn-custom"
           id="toggle-new-list-form"
-          eventkey="0"
+          eventKey="0"
         >
           Leave a Review
         </Accordion.Toggle>

@@ -61,6 +61,6 @@ export default function HikeShow(props) {
         color="#00BFFF"
         height={80}
         width={80}/>
-        : "Sorry we couldn't find that hike"
+        :"Sorry we couldn't find that hike"
     )
 }

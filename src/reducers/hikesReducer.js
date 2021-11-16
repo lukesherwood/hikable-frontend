@@ -43,15 +43,10 @@ const hikesReducer = (
         hike: action.hike
       }
     case "ADD_REVIEW":
-      const hikeIndex = state.hikes[0].findIndex(
-        (hike) => hike.id === action.hike.id
-      );
-      const array = [...state.hikes];
-      array[hikeIndex] = action.hike;
       return {
         ...state,
         loading: false,
-        hikes: array,
+        hike: action.hike,
       };
     default:
       return state;
