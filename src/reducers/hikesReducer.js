@@ -12,7 +12,6 @@ const hikesReducer = (
     case "LOADING_HIKES":
       return {
         ...state,
-        hikes: [state.hikes],
         loading: true,
       };
     case "SEARCH_HIKES":
@@ -38,6 +37,11 @@ const hikesReducer = (
         hikes: [...state.hikes, action.hike],
         loading: false,
       };
+    case "SET_HIKE":
+      return {
+        ...state,
+        hike: action.hike
+      }
     case "ADD_REVIEW":
       const hikeIndex = state.hikes[0].findIndex(
         (hike) => hike.id === action.hike.id

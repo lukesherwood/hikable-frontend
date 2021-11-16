@@ -32,6 +32,7 @@ export const fetchHikes = (filterData, page) => {
         dispatch({ type: "SET_PAGES", data: data.data.meta });
       })
       .catch(function (error) {
+        dispatch({ type: "LOADING_ERROR" });
         NotificationManager.error(
           `Error while fetching hikes!, ${error}`,
           "Error!"
@@ -55,6 +56,7 @@ export const searchHikes = (keyword) => {
         dispatch({ type: "SEARCH_HIKES", hikes: data.data.hikes });
       })
       .catch(function (error) {
+        dispatch({ type: "LOADING_ERROR" });
         // NotificationManager.error(
         //   `Error while updating new list!, ${error}`,
         //   "Error!"
@@ -75,9 +77,10 @@ export const fetchHike = (id) => {
         },
       })
       .then((data) => {
-        dispatch({ type: "ADD_HIKE", hike: data.data });
+        dispatch({ type: "SET_HIKE", hike: data.data });
       })
       .catch(function (error) {
+        dispatch({ type: "LOADING_ERROR" });
         // NotificationManager.error(
         //   `Error while updating new list!, ${error}`,
         //   "Error!"
@@ -136,6 +139,7 @@ export const addReviewToHike = (reviewData, hikeId) => {
           `Error while creating new comment!, ${error}`,
           "Error!"
         );
+        dispatch({ type: "LOADING_ERROR" });
       });
   };
 };
