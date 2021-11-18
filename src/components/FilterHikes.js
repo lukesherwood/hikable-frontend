@@ -66,7 +66,7 @@ export default class FilterHikes extends Component {
 
   render() {
     return (
-      <div className="pb-3">
+      <div className="pb-3 d-flex justify-content-center">
         <div className="filters">
           <ButtonGroup>
             <DropdownButton
@@ -85,7 +85,7 @@ export default class FilterHikes extends Component {
                 as={Form.Check}
                 value="Easiest"
                 id="Easiest"
-                checked={this.state.difficulty["Easiest"]}
+                defaultChecked={this.state.difficulty["Easiest"]}
                 label={`Easiest`}
                 onClick={(event) => {
                   this.difficultyHandleClick(event);
@@ -95,7 +95,7 @@ export default class FilterHikes extends Component {
                 as={Form.Check}
                 value="Easy"
                 id="Easy"
-                checked={this.state.difficulty["Easy"]}
+                defaultChecked={this.state.difficulty["Easy"]}
                 label={`Easy`}
                 onClick={(event) => {
                   this.difficultyHandleClick(event);
@@ -105,7 +105,7 @@ export default class FilterHikes extends Component {
                 as={Form.Check}
                 value="Intermediate"
                 id="Intermediate"
-                checked={this.state.difficulty["Intermediate"]}
+                defaultChecked={this.state.difficulty["Intermediate"]}
                 label={`Intermediate`}
                 onClick={(event) => {
                   this.difficultyHandleClick(event);
@@ -115,7 +115,7 @@ export default class FilterHikes extends Component {
                 as={Form.Check}
                 value="Advanced"
                 id="Advanced"
-                checked={this.state.difficulty["Advanced"]}
+                defaultChecked={this.state.difficulty["Advanced"]}
                 label={`Advanced`}
                 onClick={(event) => {
                   this.difficultyHandleClick(event);
@@ -137,7 +137,7 @@ export default class FilterHikes extends Component {
                 as={Form.Check}
                 value='["Under 1 hour"]'
                 id="Under 1 Hour"
-                checked={this.state.duration_category['["Under 1 hour"]']}
+                defaultChecked={this.state.duration_category['["Under 1 hour"]']}
                 label={`Short`}
                 onClick={(event) => {
                   this.durationHandleClick(event);
@@ -147,7 +147,7 @@ export default class FilterHikes extends Component {
                 as={Form.Check}
                 value='["1-4 hours"]'
                 id="Under 4 Hours"
-                checked={this.state.duration_category['["1-4 hours"]']}
+                defaultChecked={this.state.duration_category['["1-4 hours"]']}
                 label={`1 - 4 Hours`}
                 onClick={(event) => {
                   this.durationHandleClick(event);
@@ -157,7 +157,7 @@ export default class FilterHikes extends Component {
                 as={Form.Check}
                 value='["Over 4 hours"]'
                 id="Over 4 Hours"
-                checked={this.state.duration_category['["Over 4 hours"]']}
+                defaultChecked={this.state.duration_category['["Over 4 hours"]']}
                 label={`Over 4 Hours`}
                 onClick={(event) => {
                   this.durationHandleClick(event);
@@ -167,7 +167,7 @@ export default class FilterHikes extends Component {
                 as={Form.Check}
                 value='["Multi-night"]'
                 id="Multi-day"
-                checked={this.state.duration_category['["Multi-night"]']}
+                defaultChecked={this.state.duration_category['["Multi-night"]']}
                 label={`Multi Day`}
                 onClick={(event) => {
                   this.durationHandleClick(event);

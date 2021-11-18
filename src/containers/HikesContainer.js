@@ -3,13 +3,12 @@ import { fetchHikes } from "../actions/hikeActions";
 import { connect } from "react-redux";
 import Hikes from "../components/Hikes";
 import PaginationComponent from "../components/PaginationComponent";
-// import SearchBar from '../components/SearchBar'
 import Loader from "react-loader-spinner";
+import FilterHikes from "../components/FilterHikes";
 
 class HikesContainer extends React.Component {
   componentDidMount() {
     this.props.fetchHikes();
-    
   }
   
   render() {
@@ -29,7 +28,8 @@ class HikesContainer extends React.Component {
             </div>
           ) : (
             <>
-            <Hikes fetchData={fetchHikes} hikes={hikes} />
+            <FilterHikes fetchData={fetchHikes}/>
+            <Hikes hikes={hikes} />
             </>
             )}
           <PaginationComponent

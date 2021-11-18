@@ -8,8 +8,8 @@ export default function MapContainer(props) {
   const [selected, setSelected] = useState({});
 
   const mapStyles = {
-    height: "75vh",
-    width: "65%"
+    height: "100vh",
+    width: "100%"
   };
 
   const onSelect = hike => {
