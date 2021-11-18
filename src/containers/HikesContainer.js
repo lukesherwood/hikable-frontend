@@ -5,20 +5,18 @@ import Hikes from "../components/Hikes";
 import PaginationComponent from "../components/PaginationComponent";
 // import SearchBar from '../components/SearchBar'
 import Loader from "react-loader-spinner";
-import FilterHikes from "../components/FilterHikes";
 
 class HikesContainer extends React.Component {
   componentDidMount() {
     this.props.fetchHikes();
+    
   }
-
+  
   render() {
-    const { hikes } = this.props;
-    const { loading } = this.props;
+    const { fetchHikes, hikes, loading, pages, page, filterData } = this.props
     return (
       <div className="hikes-container">
         <div className="justify-content-center">
-          <FilterHikes fetchData={this.props.fetchHikes}/>
           {loading ? (
             <div className="vh-100 w-100">
               <Loader
@@ -30,13 +28,15 @@ class HikesContainer extends React.Component {
               />
             </div>
           ) : (
-            <Hikes hikes={hikes} />
-          )}
+            <>
+            <Hikes fetchData={fetchHikes} hikes={hikes} />
+            </>
+            )}
           <PaginationComponent
-            TotalPages={this.props.pages}
-            CurrentPage={this.props.page}
-            fetchData={this.props.fetchHikes}
-            filterData={this.props.filterData}
+            TotalPages={pages}
+            CurrentPage={page}
+            fetchData={fetchHikes}
+            filterData={filterData}
           />
         </div>
       </div>

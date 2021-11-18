@@ -24,7 +24,6 @@ You can then view the website in your browser at http://localhost:3000
 
 
 ## Future updates
- -  review not showing after submit, reviews not showing at all?
  -  add tab interface for google maps and hike cards
  -  ensure auth routes are still protected
  -  Add ability for user to add their own hikes to the database.
