@@ -7,6 +7,7 @@ import Lists from "../components/Lists";
 class ListsContainer extends React.Component {
   componentDidMount() {
     this.props.fetchLists();
+    document.title = "My Lists | Hikable"
   }
 
   render() {

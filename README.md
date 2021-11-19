@@ -24,11 +24,12 @@ You can then view the website in your browser at http://localhost:3000
 
 
 ## Future updates
- -  add tab interface for google maps and hike cards
  -  ensure auth routes are still protected
+ -  rework hike show page to work with array attributes.
+-   improve home landing page and fix scroll horizontal issue
+ -  filter functions need improvement  - ie work with multiple filters returning both rather than &&
  -  Add ability for user to add their own hikes to the database.
  -  Update to Bootstrap v5 ??
- -  fix scroll issue on home page
  -  fix footer links
  -  complete user profile page
- -  fix all pages header being just hikable
+ -  search function improvements, show on typing and then close once clicked, don't show input is required

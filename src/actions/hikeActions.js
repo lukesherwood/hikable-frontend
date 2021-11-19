@@ -8,6 +8,9 @@ export const fetchHikes = (filterData, page) => {
   const page_number = page || "1";
   return (dispatch) => {
     if (filterData) {
+      if ( filterData === 'Reset' ){
+        dispatch({type: 'RESET_FILTERS'})
+      }
       for (const filter in filterData) {
         for (const query in filterData[filter]) {
           if (filterData[filter][query]) {

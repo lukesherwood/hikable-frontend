@@ -9,6 +9,7 @@ import FilterHikes from "../components/FilterHikes";
 class HikesContainer extends React.Component {
   componentDidMount() {
     this.props.fetchHikes();
+    document.title = "Hikes | Hikable"
   }
   
   render() {
@@ -28,7 +29,7 @@ class HikesContainer extends React.Component {
             </div>
           ) : (
             <>
-            <FilterHikes fetchData={fetchHikes}/>
+            <FilterHikes/>
             <Hikes hikes={hikes} />
             </>
             )}

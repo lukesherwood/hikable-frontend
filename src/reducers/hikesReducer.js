@@ -14,6 +14,11 @@ const hikesReducer = (
         ...state,
         loading: true,
       };
+    case "RESET_FILTER":
+      return {
+        ...state,
+        filterData: [],
+      };
     case "SEARCH_HIKES":
       return {
         ...state,

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { fetchHikes } from "../actions/hikeActions";
 import {
   ButtonGroup,
   DropdownButton,
@@ -6,8 +7,9 @@ import {
   Form,
   Button,
 } from "react-bootstrap";
+import { connect } from "react-redux";
 
-export default class FilterHikes extends Component {
+class FilterHikes extends Component {
   blankState = () => {
     return {
       difficulty: {
@@ -17,19 +19,19 @@ export default class FilterHikes extends Component {
         Advanced: false,
       },
       duration_category: {
-        '["Under 1 hour"]': false,
-        '["1-4 hours"]': false,
-        '["Over 4 hours"]': false,
-        '["Multi-night"]': false,
+        "Under 1 hour": false,
+        "1-4 hours": false,
+        "Over 4 hours": false,
+        "Multi-night": false,
       },
     };
   };
-  // add for duration category to see how many there are
 
   constructor(props) {
     super(props);
-    this.state = this.blankState();
-  }
+    console.log(this.props, "init")
+    this.state = {...this.blankState(), ...this.props.filterData}
+  }  
 
   difficultyHandleClick = (event) => {
     const filter = event.target.value;
@@ -52,12 +54,12 @@ export default class FilterHikes extends Component {
   };
 
   handleSubmit = () => {
-    this.props.fetchData(this.state);
+    this.props.fetchHikes(this.state);
   };
 
   handleReset = () => {
     this.setState(this.blankState());
-    this.props.fetchData(this.blankState());
+    this.props.fetchHikes('Reset');
   };
 
   countTrueValues = (object) => {
@@ -85,9 +87,9 @@ export default class FilterHikes extends Component {
                 as={Form.Check}
                 value="Easiest"
                 id="Easiest"
-                defaultChecked={this.state.difficulty["Easiest"]}
+                checked={this.state.difficulty["Easiest"]}
                 label={`Easiest`}
-                onClick={(event) => {
+                onChange={(event) => {
                   this.difficultyHandleClick(event);
                 }}
               />
@@ -95,9 +97,9 @@ export default class FilterHikes extends Component {
                 as={Form.Check}
                 value="Easy"
                 id="Easy"
-                defaultChecked={this.state.difficulty["Easy"]}
+                checked={this.state.difficulty["Easy"]}
                 label={`Easy`}
-                onClick={(event) => {
+                onChange={(event) => {
                   this.difficultyHandleClick(event);
                 }}
               />
@@ -105,9 +107,9 @@ export default class FilterHikes extends Component {
                 as={Form.Check}
                 value="Intermediate"
                 id="Intermediate"
-                defaultChecked={this.state.difficulty["Intermediate"]}
+                checked={this.state.difficulty["Intermediate"]}
                 label={`Intermediate`}
-                onClick={(event) => {
+                onChange={(event) => {
                   this.difficultyHandleClick(event);
                 }}
               />
@@ -115,9 +117,9 @@ export default class FilterHikes extends Component {
                 as={Form.Check}
                 value="Advanced"
                 id="Advanced"
-                defaultChecked={this.state.difficulty["Advanced"]}
+                checked={this.state.difficulty["Advanced"]}
                 label={`Advanced`}
-                onClick={(event) => {
+                onChange={(event) => {
                   this.difficultyHandleClick(event);
                 }}
               />
@@ -135,41 +137,41 @@ export default class FilterHikes extends Component {
             >
               <Dropdown.Item
                 as={Form.Check}
-                value='["Under 1 hour"]'
+                value="Under 1 hour"
                 id="Under 1 Hour"
-                defaultChecked={this.state.duration_category['["Under 1 hour"]']}
+                checked={this.state.duration_category["Under 1 hour"]}
                 label={`Short`}
-                onClick={(event) => {
+                onChange={(event) => {
                   this.durationHandleClick(event);
                 }}
               />
               <Dropdown.Item
                 as={Form.Check}
-                value='["1-4 hours"]'
+                value="1-4 hours"
                 id="Under 4 Hours"
-                defaultChecked={this.state.duration_category['["1-4 hours"]']}
+                checked={this.state.duration_category["1-4 hours"]}
                 label={`1 - 4 Hours`}
-                onClick={(event) => {
+                onChange={(event) => {
                   this.durationHandleClick(event);
                 }}
               />
               <Dropdown.Item
                 as={Form.Check}
-                value='["Over 4 hours"]'
+                value="Over 4 hours"
                 id="Over 4 Hours"
-                defaultChecked={this.state.duration_category['["Over 4 hours"]']}
+                checked={this.state.duration_category["Over 4 hours"]}
                 label={`Over 4 Hours`}
-                onClick={(event) => {
+                onChange={(event) => {
                   this.durationHandleClick(event);
                 }}
               />
               <Dropdown.Item
                 as={Form.Check}
-                value='["Multi-night"]'
+                value="Multi-night"
                 id="Multi-day"
-                defaultChecked={this.state.duration_category['["Multi-night"]']}
+                checked={this.state.duration_category["Multi-night"]}
                 label={`Multi Day`}
-                onClick={(event) => {
+                onChange={(event) => {
                   this.durationHandleClick(event);
                 }}
               />
@@ -197,3 +199,17 @@ export default class FilterHikes extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    filterData: state.hikes.filterData,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchHikes: (filterBy, keyword, page) => dispatch(fetchHikes(filterBy, keyword, page)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilterHikes)
