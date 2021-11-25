@@ -22,7 +22,7 @@ export default function Hike(props) {
         <Card.Title>{hike.title}</Card.Title>
 
         <Card.Subtitle className="mb-2 text-muted font-italic">
-          {hike.location.map(location=> <div key={location}>-{location}</div>)}
+          {hike.location.map(location=> <div key={location}><span>&#8226;</span> {location}</div>)}
         </Card.Subtitle>
         <DifficultyBadge difficulty={hike.difficulty}/>
         <div className="hike-card-duration">{hike.duration}</div>
