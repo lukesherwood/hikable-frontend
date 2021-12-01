@@ -10,7 +10,7 @@ import ListsContainer from './ListsContainer';
 import Home from '../components/Home';
 import NavbarClass from './Navbar';
 import ListShow from '../components/ListShow';
-import { PrivateRoute } from '../components/PrivateRoute';
+// import { PrivateRoute } from '../components/PrivateRoute';
 
 import { autoLogin, logUserOut } from '../actions/userActions';
 
@@ -55,7 +55,7 @@ class App extends Component {
                 path="/lists"
                 element={(
                   // <PrivateRoute>
-                    <ListsContainer loggedIn={loggedIn} />
+                  <ListsContainer loggedIn={loggedIn} />
                   // </PrivateRoute>
                 )}
               />
@@ -63,7 +63,7 @@ class App extends Component {
                 path="/lists/:id"
                 element={(
                   // <PrivateRoute>
-                    <ListShow lists={lists} loggedIn={loggedIn} />
+                  <ListShow lists={lists} loggedIn={loggedIn} />
                   // </PrivateRoute>
                 )}
               />
@@ -71,7 +71,7 @@ class App extends Component {
                 path="user"
                 element={(
                   // <PrivateRoute>
-                    <UserProfile user={user} loggedIn={loggedIn} />
+                  <UserProfile user={user} loggedIn={loggedIn} />
                   // </PrivateRoute>
                 )}
               />

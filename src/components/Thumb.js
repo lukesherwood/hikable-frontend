@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 
 export default class Thumb extends React.Component {

@@ -1,3 +1,4 @@
+/* eslint-disable default-param-last */
 const hikesReducer = (
   state = { hikes: [], loading: false, page: '1', pages: '1' },
   action,

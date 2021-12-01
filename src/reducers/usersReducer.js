@@ -1,3 +1,4 @@
+/* eslint-disable default-param-last */
 const usersReducer = (state = { user: '', loggedIn: false }, action) => {
   switch (action.type) {
     case 'SET_USER':

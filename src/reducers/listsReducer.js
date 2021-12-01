@@ -1,3 +1,4 @@
+/* eslint-disable default-param-last */
 const listsReducer = (state = { lists: [], loading: false, error: '' }, action) => {
   switch (action.type) {
     case 'ADD_LISTS':
