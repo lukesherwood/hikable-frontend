@@ -56,10 +56,12 @@ class FilterHikes extends Component {
   };
 
   handleSubmit = () => {
+    const { fetchHikes } = this.props;
     fetchHikes(this.state);
   };
 
   handleReset = () => {
+    const { fetchHikes } = this.props;
     this.setState(this.blankState());
     fetchHikes('Reset');
   };

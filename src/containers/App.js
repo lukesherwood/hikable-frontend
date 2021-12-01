@@ -10,7 +10,6 @@ import ListsContainer from './ListsContainer';
 import Home from '../components/Home';
 import NavbarClass from './Navbar';
 import ListShow from '../components/ListShow';
-// import { PrivateRoute } from '../components/PrivateRoute';
 
 import { autoLogin, logUserOut } from '../actions/userActions';
 
@@ -23,6 +22,7 @@ import { fetchHikes, fetchHike } from '../actions/hikeActions';
 import HikeShow from '../components/HikeShow';
 import UserProfile from '../components/UserProfile';
 import ScrollTop from '../components/ScrollTop';
+import { Unauthorized } from '../components/Unauthorized';
 
 class App extends Component {
   componentDidMount() {
@@ -53,27 +53,16 @@ class App extends Component {
               />
               <Route
                 path="/lists"
-                element={(
-                  // <PrivateRoute>
-                  <ListsContainer loggedIn={loggedIn} />
-                  // </PrivateRoute>
-                )}
+                element={loggedIn ? <ListsContainer loggedIn={loggedIn} /> : <Unauthorized />}
               />
               <Route
                 path="/lists/:id"
-                element={(
-                  // <PrivateRoute>
-                  <ListShow lists={lists} loggedIn={loggedIn} />
-                  // </PrivateRoute>
-                )}
+                // check user is the owner of this list
+                element={loggedIn ? <ListShow lists={lists} loggedIn={loggedIn} /> : <Unauthorized />}
               />
               <Route
                 path="user"
-                element={(
-                  // <PrivateRoute>
-                  <UserProfile user={user} loggedIn={loggedIn} />
-                  // </PrivateRoute>
-                )}
+                element={loggedIn ? <UserProfile user={user} loggedIn={loggedIn} /> : <Unauthorized />}
               />
               <Route path="/signIn" element={<SignIn />} />
               <Route path="/signUp" element={<SignUp />} />

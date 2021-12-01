@@ -35,8 +35,8 @@ class HikesContainer extends React.Component {
             </>
           )}
           <PaginationComponent
-            TotalPages={pages}
-            CurrentPage={page}
+            totalPages={pages}
+            currentPage={page}
             fetchData={fetchHikes}
             filterData={filterData}
           />

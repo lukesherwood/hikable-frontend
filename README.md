@@ -24,8 +24,9 @@ You can then view the website in your browser at http://localhost:3000
 
 
 ## Future updates
- -  ensure auth routes are still protected
  -  rework hike show page to work with array attributes.
+ -  fix sign user out component to work with react router v6
+ -  make lists protected by only created by user can see
 -   improve home landing page and fix scroll horizontal issue
  -  filter functions need improvement  - ie work with multiple filters returning both rather than &&
  -  Add ability for user to add their own hikes to the database.
