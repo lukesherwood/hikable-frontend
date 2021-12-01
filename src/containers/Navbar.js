@@ -1,15 +1,17 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import LogoutOrLogin from "../components/LogoutOrLogin";
-import { logUserOut } from "../actions/userActions";
-import { connect } from "react-redux";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import SearchHikesForm from "./SearchHikesForm";
-import { NavDropdown } from "react-bootstrap";
-import { PersonCircle } from "react-bootstrap-icons";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import { NavDropdown } from 'react-bootstrap';
+import { PersonCircle } from 'react-bootstrap-icons';
+import SearchHikesForm from './SearchHikesForm';
+import { logUserOut } from '../actions/userActions';
+import LogoutOrLogin from '../components/LogoutOrLogin';
+
 class NavbarClass extends React.Component {
   render() {
+    const { user, loggedIn, logUserOut } = this.props;
     const navDropdownTitle = <PersonCircle size="32" />;
     return (
       <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
@@ -25,14 +27,12 @@ class NavbarClass extends React.Component {
               Hikes
             </Nav.Link>
           </Nav.Item>
-          {this.props.loggedIn ? (
-            <>
-              <Nav.Item>
-                <Nav.Link eventkey={2} as={NavLink} to="/lists">
-                  My Lists
-                </Nav.Link>
-              </Nav.Item>
-            </>
+          {loggedIn ? (
+            <Nav.Item>
+              <Nav.Link eventkey={2} as={NavLink} to="/lists">
+                My Lists
+              </Nav.Link>
+            </Nav.Item>
           ) : null}
           <SearchHikesForm />
           <Nav.Item>
@@ -42,9 +42,9 @@ class NavbarClass extends React.Component {
               id="basic-nav-dropdown"
             >
               <LogoutOrLogin
-                currentUser={this.props.user}
-                loggedIn={this.props.loggedIn}
-                logUserOut={this.props.logUserOut}
+                currentUser={user}
+                loggedIn={loggedIn}
+                logUserOut={logUserOut}
               />
             </NavDropdown>
           </Nav.Item>

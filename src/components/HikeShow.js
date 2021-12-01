@@ -1,24 +1,24 @@
 import React, { useEffect } from 'react';
 import Loader from 'react-loader-spinner';
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import { fetchHike } from '../actions/hikeActions'
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { fetchHike } from '../actions/hikeActions';
 import Reviews from './Reviews';
-export default function HikeShow(props) {
 
+export default function HikeShow() {
   const dispatch = useDispatch();
-  const { id } = useParams()
-  // this is sometime rerendering multiple times and ending with no hike??
-  useEffect(() => { dispatch(fetchHike(id)) }, [dispatch, id]
-  )
-  const hike = useSelector(state=> state.hikes.hike)
-  const loading = useSelector(state=> state.hikes.loading)
+  const { id } = useParams();
+  useEffect(() => { dispatch(fetchHike(id)); }, [dispatch, id]);
+  const hike = useSelector(state => state.hikes.hike);
+  const loading = useSelector(state => state.hikes.loading);
   if (hike) {
     return (
       <div className="hike-item rounded">
-        <div className="hike-header rounded-top" style={{
-          backgroundImage: `url(${hike.photo})`, backgroundRepeat: 'no-repeat', width: '100%', height: '500px',
-        }}>
+        <div
+          className="hike-header rounded-top" style={{
+            backgroundImage: `url(${hike.photo})`, backgroundRepeat: 'no-repeat', width: '100%', height: '500px',
+          }}
+        >
           <h1>{hike.title}</h1>
         </div>
         <div className="hike-item-body p-4">
@@ -37,8 +37,7 @@ export default function HikeShow(props) {
           <div className="hike-card-description">
             Description: {hike.description}
           </div>
-          <div className="hike-card-more-info">
-          </div>
+          <div className="hike-card-more-info" />
           <div className="hike-card-dog">
             Dogs: {hike.dog_friendly}
           </div>
@@ -53,14 +52,17 @@ export default function HikeShow(props) {
         <Reviews hike={hike} />
       </div>
     );
-    }
-    return (
-      loading ?
-        <Loader className="text-center"
+  }
+  return (
+    loading ? (
+      <Loader
+        className="text-center"
         type="TailSpin"
         color="#00BFFF"
         height={80}
-        width={80}/>
-        :"Sorry we couldn't find that hike"
+        width={80}
+      />
     )
+      : "Sorry we couldn't find that hike"
+  );
 }

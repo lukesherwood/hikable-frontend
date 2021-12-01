@@ -54,25 +54,25 @@ class App extends Component {
               <Route
                 path="/lists"
                 element={(
-                  <PrivateRoute>
+                  // <PrivateRoute>
                     <ListsContainer loggedIn={loggedIn} />
-                  </PrivateRoute>
+                  // </PrivateRoute>
                 )}
               />
               <Route
                 path="/lists/:id"
                 element={(
-                  <PrivateRoute>
+                  // <PrivateRoute>
                     <ListShow lists={lists} loggedIn={loggedIn} />
-                  </PrivateRoute>
+                  // </PrivateRoute>
                 )}
               />
               <Route
                 path="user"
                 element={(
-                  <PrivateRoute>
+                  // <PrivateRoute>
                     <UserProfile user={user} loggedIn={loggedIn} />
-                  </PrivateRoute>
+                  // </PrivateRoute>
                 )}
               />
               <Route path="/signIn" element={<SignIn />} />

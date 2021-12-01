@@ -1,3 +1,5 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable react/function-component-definition */
 import React from 'react';
 
 export default function DifficultyBadge(props) {

@@ -1,22 +1,23 @@
-import React from "react";
-import { connect } from "react-redux";
-import { deleteList, fetchLists } from "../actions/listActions";
-import Lists from "../components/Lists";
-// import CreateListForm from '../components/CreateListForm';
+import React from 'react';
+import { connect } from 'react-redux';
+import { deleteList, fetchLists } from '../actions/listActions';
+import Lists from '../components/Lists';
 
 class ListsContainer extends React.Component {
   componentDidMount() {
-    this.props.fetchLists();
-    document.title = "My Lists | Hikable"
+    const { fetchLists } = this.props;
+    fetchLists();
+    document.title = 'My Lists | Hikable';
   }
 
   render() {
+    const { lists, currentUser, deleteList } = this.props;
     return (
       <div className="lists-container">
         <Lists
-          lists={this.props.lists}
-          currentUser={this.props.currentUser}
-          deleteList={this.props.deleteList}
+          lists={lists}
+          currentUser={currentUser}
+          deleteList={deleteList}
         />
       </div>
     );

@@ -1,53 +1,53 @@
 const hikesReducer = (
-  state = { hikes: [], loading: false, page: "1", pages: "1" },
-  action
+  state = { hikes: [], loading: false, page: '1', pages: '1' },
+  action,
 ) => {
   switch (action.type) {
-    case "ADD_HIKES":
+    case 'ADD_HIKES':
       return {
         ...state,
         hikes: action.hikes,
         loading: false,
       };
-    case "LOADING_HIKES":
+    case 'LOADING_HIKES':
       return {
         ...state,
         loading: true,
       };
-    case "RESET_FILTER":
+    case 'RESET_FILTER':
       return {
         ...state,
         filterData: [],
       };
-    case "SEARCH_HIKES":
+    case 'SEARCH_HIKES':
       return {
         ...state,
         searchHikes: action.hikes,
         loading: false,
       };
-    case "SET_PAGES":
+    case 'SET_PAGES':
       return {
         ...state,
         page: action.data.page,
         pages: action.data.pages,
       };
-    case "SET_QUERY":
+    case 'SET_QUERY':
       return {
         ...state,
         filterData: action.data.filterData,
       };
-    case "ADD_HIKE":
+    case 'ADD_HIKE':
       return {
         ...state,
         hikes: [...state.hikes, action.hike],
         loading: false,
       };
-    case "SET_HIKE":
+    case 'SET_HIKE':
       return {
         ...state,
-        hike: action.hike
-      }
-    case "ADD_REVIEW":
+        hike: action.hike,
+      };
+    case 'ADD_REVIEW':
       return {
         ...state,
         loading: false,

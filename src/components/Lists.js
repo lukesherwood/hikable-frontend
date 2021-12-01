@@ -1,13 +1,13 @@
-import React from "react";
-import List from "./List";
-import CreateListForm from "../containers/CreateListForm";
-import Accordion from "react-bootstrap/Accordion"
-import Row from "react-bootstrap/Row"
+import React from 'react';
+import Accordion from 'react-bootstrap/Accordion';
+import Row from 'react-bootstrap/Row';
+import List from './List';
+import CreateListForm from '../containers/CreateListForm';
 
 export default function Lists(props) {
-  const { lists } = props;
+  const { lists, deleteList, currentUser } = props;
   const listsArray = lists.map((list) => {
-    return <List key={list.id} list={list} deleteList={props.deleteList} />;
+    return <List key={list.id} list={list} deleteList={deleteList} />;
   });
 
   return (
@@ -24,7 +24,7 @@ export default function Lists(props) {
             Create a new list
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="0">
-            <CreateListForm currentUser={props.currentUser} />
+            <CreateListForm currentUser={currentUser} />
           </Accordion.Collapse>
         </Accordion>
       </Row>

@@ -26,7 +26,7 @@ export const signUserUp = (userInfo) => (dispatch) => {
         );
       }
     })
-    .catch((error) => {
+    .catch(() => {
       NotificationManager.error(
         'Error while creating new user, please try again',
         'Error!',
@@ -34,7 +34,7 @@ export const signUserUp = (userInfo) => (dispatch) => {
     });
 };
 
-export const fetchUser = (userInfo, ownProps) => (dispatch) => {
+export const fetchUser = (userInfo) => (dispatch) => {
   axios
     .post(
       `${WEB_URL}/users/sign_in`,
@@ -55,7 +55,7 @@ export const fetchUser = (userInfo, ownProps) => (dispatch) => {
         );
       }
     })
-    .catch((error) => {
+    .catch(() => {
       NotificationManager.error(
         'Error while signing in, please try again',
         'Error!',
@@ -63,7 +63,7 @@ export const fetchUser = (userInfo, ownProps) => (dispatch) => {
     });
 };
 
-export const autoLogin = () => (dispatch, props) => {
+export const autoLogin = () => (dispatch) => {
   const { token } = localStorage;
   if (token) {
     axios
@@ -85,7 +85,7 @@ export const autoLogin = () => (dispatch, props) => {
           dispatch(setUser(data.data));
         }
       })
-      .catch((error) => {
+      .catch(() => {
         NotificationManager.error(
           'Error while signing in, please try again',
           'Error!',

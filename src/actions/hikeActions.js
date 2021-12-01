@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable guard-for-in */
 import { NotificationManager } from 'react-notifications';
 import { config } from '../Constants';
 
@@ -7,7 +9,7 @@ const WEB_URL = config.url.API_URL;
 
 export const fetchHikes = (filterData, page) => {
   let stringQuery = '';
-  const page_number = page || '1';
+  const pageNumber = page || '1';
   return (dispatch) => {
     if (filterData) {
       if (filterData === 'Reset') {
@@ -25,7 +27,7 @@ export const fetchHikes = (filterData, page) => {
 
     dispatch({ type: 'LOADING_HIKES' });
     axios
-      .get(`${WEB_URL}/hikes/?page=${page_number}${stringQuery}`, {
+      .get(`${WEB_URL}/hikes/?page=${pageNumber}${stringQuery}`, {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
@@ -59,7 +61,7 @@ export const searchHikes = (keyword) => (dispatch) => {
     .then((data) => {
       dispatch({ type: 'SEARCH_HIKES', hikes: data.data.hikes });
     })
-    .catch((error) => {
+    .catch(() => {
       dispatch({ type: 'LOADING_ERROR' });
       // NotificationManager.error(
       //   `Error while updating new list!, ${error}`,
@@ -81,7 +83,7 @@ export const fetchHike = (id) => (dispatch) => {
     .then((data) => {
       dispatch({ type: 'SET_HIKE', hike: data.data });
     })
-    .catch((error) => {
+    .catch(() => {
       dispatch({ type: 'LOADING_ERROR' });
       // NotificationManager.error(
       //   `Error while updating new list!, ${error}`,

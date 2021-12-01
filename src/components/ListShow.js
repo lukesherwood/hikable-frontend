@@ -1,13 +1,13 @@
-import React from "react";
-import Hikes from "./Hikes";
-import { Jumbotron } from "react-bootstrap";
-import { useParams } from 'react-router-dom'
+import React from 'react';
+import { Jumbotron } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
+import Hikes from './Hikes';
 
 export default function ListShow(props) {
   const { lists } = props;
-  const { id } = useParams()
+  const { id } = useParams();
   if (lists) {
-    let list = lists.find((l) => l.id === parseInt(id));
+    const list = lists.find((list) => list.id === parseInt(id, 10));
     if (list) {
       return (
         <div className="list-item w-100 rounded">
@@ -18,12 +18,12 @@ export default function ListShow(props) {
             <hr className="my-4" />
           </Jumbotron>
           <div className="list-hikes-rows">
-          <h3>Saved Hikes:</h3>
-          <Hikes hikes={list.hikes} list={list} />
+            <h3>Saved Hikes:</h3>
+            <Hikes hikes={list.hikes} list={list} />
           </div>
         </div>
       );
     }
   }
-  return <div>Sorry that list doesn't exist</div>;
+  return <div>Sorry that list does not exist</div>;
 }

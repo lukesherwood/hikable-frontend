@@ -1,19 +1,20 @@
-import React from "react";
-import { fetchHikes } from "../actions/hikeActions";
-import { connect } from "react-redux";
-import Hikes from "../components/Hikes";
-import PaginationComponent from "../components/PaginationComponent";
-import Loader from "react-loader-spinner";
-import FilterHikes from "../components/FilterHikes";
+import React from 'react';
+import { connect } from 'react-redux';
+import Loader from 'react-loader-spinner';
+import { fetchHikes } from '../actions/hikeActions';
+import Hikes from '../components/Hikes';
+import PaginationComponent from '../components/PaginationComponent';
+import FilterHikes from '../components/FilterHikes';
 
 class HikesContainer extends React.Component {
   componentDidMount() {
-    this.props.fetchHikes();
-    document.title = "Hikes | Hikable"
+    const { fetchHikes } = this.props;
+    fetchHikes();
+    document.title = 'Hikes | Hikable';
   }
-  
+
   render() {
-    const { fetchHikes, hikes, loading, pages, page, filterData } = this.props
+    const { fetchHikes, hikes, loading, pages, page, filterData } = this.props;
     return (
       <div className="hikes-container">
         <div className="justify-content-center">
@@ -29,10 +30,10 @@ class HikesContainer extends React.Component {
             </div>
           ) : (
             <>
-            <FilterHikes/>
-            <Hikes hikes={hikes} />
+              <FilterHikes />
+              <Hikes hikes={hikes} />
             </>
-            )}
+          )}
           <PaginationComponent
             TotalPages={pages}
             CurrentPage={page}

@@ -1,9 +1,11 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
+/* eslint-disable react/function-component-definition */
+/* eslint-disable func-names */
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 
-export default function Footer() {
+const Footer = function () {
   return (
     <div className="footer">
       <Navbar collapseOnSelect expand="md" className="navbar-bottom" bg="dark" variant="dark">
@@ -28,4 +30,5 @@ export default function Footer() {
       </Navbar>
     </div>
   );
-}
+};
+export default Footer;

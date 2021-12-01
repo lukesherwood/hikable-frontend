@@ -1,23 +1,25 @@
-import React, { Component } from "react";
-import { addHikeToList, fetchLists } from "../actions/listActions";
-import { deleteHike } from '../actions/hikeActions'
-import { connect } from "react-redux";
-import Button from "react-bootstrap/Button";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
-import CreateListModal from "../components/CreateListModal";
-// import CreateListForm from "./CreateListForm";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Button from 'react-bootstrap/Button';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
+import { deleteHike } from '../actions/hikeActions';
+import { addHikeToList, fetchLists } from '../actions/listActions';
+import CreateListModal from '../components/CreateListModal';
+
 class UpdateListHikes extends Component {
   handleDelete = () => {
-    this.props.deleteHike(this.props.list, this.props.hike);
+    const { deleteHike, list, hike } = this.props;
+    deleteHike(list, hike);
   };
 
   handleClick = (event, list) => {
-    this.props.addHikeToList(list, this.props.hike);
+    const { addHikeToList, hike } = this.props;
+    addHikeToList(list, hike);
   };
 
   render() {
-    const { lists } = this.props.lists; // need to pass in lists
+    const { lists: { lists }, addHikeToList, list, signedIn } = this.props;
     const listItems = lists.map((item) => {
       return (
         <Dropdown.Item
@@ -30,14 +32,14 @@ class UpdateListHikes extends Component {
     });
     listItems.push(
       <CreateListModal
-        key={"create-list"}
-        addHikeToList={this.props.addHikeToList}
-      />
+        key="create-list"
+        addHikeToList={addHikeToList}
+      />,
     );
     return (
       <div>
         <div>
-          {this.props.signedIn && !this.props.list ? (
+          {signedIn && !list ? (
             <DropdownButton
               id="dropdown-basic-button"
               title="Add to list"
@@ -50,7 +52,7 @@ class UpdateListHikes extends Component {
           ) : null}
         </div>
         <div>
-          {this.props.list ? (
+          {list ? (
             <Button
               variant="outline-danger"
               size="sm"

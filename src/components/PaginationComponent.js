@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import Pagination from "react-bootstrap/Pagination";
+import React, { useEffect, useState } from 'react';
+import Pagination from 'react-bootstrap/Pagination';
 
 export default function PaginationComponent(props) {
+  const { fetchData } = props;
   const [jumpToTop, setJumpToTop] = useState(false);
   useEffect(() => {
     if (jumpToTop === true) {
@@ -11,26 +12,24 @@ export default function PaginationComponent(props) {
   }, [jumpToTop]);
   const handleClick = (page) => {
     setJumpToTop(true);
-    props.fetchData(filterData, page);
+    fetchData(filterData, page);
   };
 
-  const CurrentPage = props.CurrentPage;
-  const TotalPages = props.TotalPages;
-  const filterData = props.filterData;
+  const { currentPage, totalPages, filterData } = props;
   const items = [];
   for (
-    let number = CurrentPage;
-    number <= CurrentPage + 4 && number < TotalPages;
-    number++
+    let number = currentPage;
+    number <= currentPage + 4 && number < totalPages;
+    number += 1
   ) {
     items.push(
       <Pagination.Item
         onClick={() => handleClick(number)}
-        key={"pageFilter" + number}
-        active={number === CurrentPage}
+        key={'pageFilter' + number}
+        active={number === currentPage}
       >
         {number}
-      </Pagination.Item>
+      </Pagination.Item>,
     );
   }
 
@@ -38,25 +37,25 @@ export default function PaginationComponent(props) {
     <div>
       <Pagination className="justify-content-center">
         <Pagination.First
-          disabled={CurrentPage === 1 ? true : false}
+          disabled={currentPage === 1}
           onClick={() => handleClick(1)}
         />
         <Pagination.Prev
-          disabled={CurrentPage === 1 ? true : false}
-          onClick={() => handleClick(CurrentPage - 1)}
+          disabled={currentPage === 1}
+          onClick={() => handleClick(currentPage - 1)}
         />
         {items}
         <Pagination.Ellipsis />
-        <Pagination.Item onClick={() => handleClick(TotalPages)}>
-          {TotalPages}
+        <Pagination.Item onClick={() => handleClick(totalPages)}>
+          {totalPages}
         </Pagination.Item>
         <Pagination.Next
-          disabled={CurrentPage === TotalPages ? true : false}
-          onClick={() => handleClick(CurrentPage + 1)}
+          disabled={currentPage === totalPages}
+          onClick={() => handleClick(currentPage + 1)}
         />
         <Pagination.Last
-          disabled={CurrentPage === TotalPages ? true : false}
-          onClick={() => handleClick(TotalPages)}
+          disabled={currentPage === totalPages}
+          onClick={() => handleClick(totalPages)}
         />
       </Pagination>
       <br />

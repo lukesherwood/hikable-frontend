@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 export default function Home() {
   useEffect(() => {
-    document.title = "Hikable - Your new favorite hike is just around the corner"
+    document.title = 'Hikable - Your new favorite hike is just around the corner';
   }, []);
   return (
     <div className="home">

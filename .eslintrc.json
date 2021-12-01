@@ -1,0 +1,97 @@
+{
+  "env": {
+    "browser": true,
+    "jasmine": true
+  },
+  "extends": ["airbnb", "plugin:react/recommended", "eslint:recommended"],
+  "parser": "babel-eslint",
+  "plugins": [
+    "react",
+    "import",
+    "only-warn"
+  ],
+  "rules": {
+    "linebreak-style": [
+      "error",
+      "windows"
+    ],
+    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/anchor-is-valid": [
+      "warn",
+      {
+        "aspects": [
+          "invalidHref"
+        ]
+      }
+    ],
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "function-declaration"
+      }
+    ],
+    "jsx-a11y/control-has-associated-label": "off",
+    "import/extensions": "off",
+    "import/first": "off",
+    "import/no-unresolved": "off",
+    "import/no-extraneous-dependencies": "off",
+    "global-require": "off",
+    "eqeqeq": 0,
+    "react/prop-types": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/sort-comp": "off",
+    "react/prefer-stateless-function": "off",
+    "react/button-has-type": "off",
+    "object-curly-newline": [
+      "off",
+      {
+        "ObjectExpression": {
+          "minProperties": 20,
+          "multiline": true,
+          "consistent": true
+        },
+        "ObjectPattern": {
+          "minProperties": 20,
+          "multiline": true,
+          "consistent": true
+        }
+      }
+    ],
+    "react/jsx-first-prop-new-line": [
+      "error",
+      "multiline"
+    ],
+    "react/jsx-max-props-per-line": [
+      "warn",
+      {
+        "maximum": 3,
+        "when": "multiline"
+      }
+    ],
+    "jsx-a11y/label-has-for": "off",
+    "max-len": "off",
+    "no-use-before-define": "off",
+    "prefer-template": "off",
+    "prefer-arrow-callback": "off",
+    "no-mixed-operators": "off",
+    "no-restricted-properties": "off",
+    "no-throw-literal": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "no-nested-ternary": "warn",
+    "react/no-unescaped-entities": "warn",
+    "react/no-array-index-key": "warn",
+    "jsx-a11y/anchor-has-content": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "arrow-parens": "off",
+    "arrow-body-style": "off",
+    "import/prefer-default-export": "off",
+    "react/no-string-refs": "off",
+    "no-console": "off",
+    "no-case-declarations": "off",
+    "no-shadow": "off",
+    "operator-linebreak": "off"
+  }
+}

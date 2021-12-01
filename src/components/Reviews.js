@@ -1,16 +1,15 @@
-import React from "react";
-import CreateReviewForm from "../containers/CreateReviewForm";
-import Review from "./Review";
-import { useSelector } from 'react-redux'
-import Accordion from "react-bootstrap/Accordion";
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import Accordion from 'react-bootstrap/Accordion';
+import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
+import Review from './Review';
+import CreateReviewForm from '../containers/CreateReviewForm';
 
-export default function Reviews(props) {
-  
-  let reviewsList = []
-  const hike = useSelector(state=> state.hikes.hike)
-  const {reviews} = hike
+export default function Reviews() {
+  let reviewsList = [];
+  const hike = useSelector(state => state.hikes.hike);
+  const { reviews } = hike;
   const loggedIn = useSelector((state) => state.users.user);
   if (reviews) {
     reviewsList = reviews.map((review) => {
@@ -21,7 +20,7 @@ export default function Reviews(props) {
   return (
     <div className="reviews-container p-4">
       <h3 className="header-theme p-2">Comments/Reviews</h3>
-      <div className="p-2">{reviewsList ? reviewsList : "Be the first to leave a review!"}</div>
+      <div className="p-2">{reviewsList || 'Be the first to leave a review!'}</div>
       <Accordion>
         <Accordion.Collapse eventKey="0">
           {loggedIn ? (
@@ -30,8 +29,8 @@ export default function Reviews(props) {
             <div className="border p-4 text-center">
               <div> You need to be logged in to leave a review</div>
               <Link to="/signIn" className="btn btn-custom btn-sm">
-                {" "}
-                Sign In here{" "}
+                {' '}
+                Sign In here{' '}
               </Link>
             </div>
           )}

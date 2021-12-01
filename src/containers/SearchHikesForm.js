@@ -1,55 +1,42 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-// import { searchHikes } from '../actions/hikeActions'
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import { Formik, Field, ErrorMessage } from "formik";
-// import Fuse from "fuse.js";
-import * as Yup from "yup";
-import ModalHikes from "../components/ModalHikes";
-import { searchHikes } from '../actions/hikeActions'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import { Formik, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import ModalHikes from '../components/ModalHikes';
+import { searchHikes } from '../actions/hikeActions';
 
 const validationSchema = Yup.object().shape({
   keyword: Yup.string()
-    .required("Input is required")
-    .min(2, "Input is too short - should be 2 chars minimum"),
+    .required('Input is required')
+    .min(2, 'Input is too short - should be 2 chars minimum'),
 });
 
 class SearchHikesForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { modalShow: false, results: [], keyword: "" };
+    this.state = { modalShow: false, keyword: '' };
   }
 
-  // fuseSearch = (keyword) => {
-  //   const hikes = this.props.hikes;
-  //   const fuse = new Fuse(hikes, {
-  //     threshold: 0.3,
-  //     keys: ["title", "difficulty", "location", "description"],
-  //   });
-  //   const matches = fuse.search(keyword);
-  //   return matches.map(({ item }) => {
-  //     return item;
-  //   });
-  // };
-
-
   render() {
+    const { hikes, searchHikes } = this.props;
+    const { keyword, modalShow } = this.state;
     return (
       <div className="search-bar-nav ml-auto">
         <ModalHikes
-          show={this.state.modalShow}
-          onHide={() => this.setState({ modalShow: false })} // might be able to clear hikes from state here aswell so that you can't see results of hike a second time
-          keyword={this.state.keyword}
-          hikes={this.props.hikes}
+          show={modalShow}
+          onHide={() => this.setState({ modalShow: false })} // might be able to clear hikes from state here as well so that you can't see results of hike a second time
+          keyword={keyword}
+          hikes={hikes}
         />
         <Formik
-          initialValues={{ keyword: "" }}
+          initialValues={{ keyword: '' }}
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
             this.setState({ keyword: values });
-            this.props.searchHikes(this.state.keyword.keyword);
+            searchHikes(keyword.keyword);
             setSubmitting(false);
             this.setState({ modalShow: true });
             resetForm();
@@ -62,8 +49,8 @@ class SearchHikesForm extends Component {
                   type="search"
                   placeholder="Search for hikes"
                   className={
-                    "form-control " +
-                    (errors.keyword && touched.keyword ? "is-invalid" : "")
+                    'form-control ' +
+                    (errors.keyword && touched.keyword ? 'is-invalid' : '')
                   }
                   size="sm"
                   name="keyword"
@@ -71,7 +58,7 @@ class SearchHikesForm extends Component {
                 <ErrorMessage
                   name="keyword"
                   component="div"
-                  style={{fontSize: "0.75rem"}}
+                  style={{ fontSize: '0.75rem' }}
                   className="invalid-feedback text-sm"
                 />
               </Form.Group>
@@ -93,7 +80,7 @@ class SearchHikesForm extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    hikes: state.hikes.searchHikes // change this to be the received hikes from server
+    hikes: state.hikes.searchHikes,
   };
 };
 
