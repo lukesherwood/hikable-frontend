@@ -1,5 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable react/function-component-definition */
 import React from 'react';
 
 export default function DifficultyBadge(props) {
@@ -19,8 +17,8 @@ export default function DifficultyBadge(props) {
     }
   });
   return (
-    <div className="hike-card-difficulty">
+    <span>
       {badges}
-    </div>
+    </span>
   );
 }
