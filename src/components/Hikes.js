@@ -14,8 +14,8 @@ export default function Hikes(props) {
   return (
     <Tabs>
       <TabList className="nav nav-tabs">
-        <Tab className="border nav-link nav-item color-dark react-tabs__tab--selected" selectedClassName="active font-weight-bolder">List View</Tab>
-        <Tab className="border nav-link nav-item color-dark react-tabs__tab--selected" selectedClassName="active font-weight-bolder">Map View</Tab>
+        <Tab style={{ cursor: 'pointer' }} className="border nav-link nav-item color-dark react-tabs__tab--selected" selectedClassName="active font-weight-bolder">List View</Tab>
+        <Tab style={{ cursor: 'pointer' }} className="border nav-link nav-item color-dark react-tabs__tab--selected" selectedClassName="active font-weight-bolder">Map View</Tab>
       </TabList>
       <TabPanel>
         <Row className="hike-cards-row">
